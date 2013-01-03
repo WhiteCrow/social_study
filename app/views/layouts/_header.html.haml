@@ -1,14 +1,13 @@
 %div#header
-  %div.navbar.navbar-fixed-top
+  %div.navbar.navbar-fixed-top.navbar-inverse
     %div.navbar-inner
       %div#header-content.container
 
-        %h3
-          %a{:href=>'/'}学社
-
         %ul.nav
+          %li.title
+            %a{:href=>'#'}学社
           %li
-            %a{:href=>'/'}知识
+            %a{:href=>'#'}知识
           %li
             %a{:href=>'#'}参考
           %li
@@ -18,6 +17,7 @@
           %li
             %form.navbar-search.pull-right{:action=>'/search', :method=>"get"}
               %input.span3{:type=>"text", :name=>"q", :placeholder=>"搜索"}
+              %input.btn.btn-inverse.ser{:type=>"submit",:value=>'搜索'}
           %li
             %a#user_notifications_count{:href=>"notifications"}
               %span.badge 0
