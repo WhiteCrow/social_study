@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @knowledge.title
+%p
+  %b Second title:
+  = @knowledge.second_title
+%p
+  %b Description:
+  = @knowledge.description
+%p
+  %b Knowledge association:
+  = @knowledge.knowledge_association_id
+
+= link_to 'Edit', edit_knowledge_path(@knowledge)
+\|
+= link_to 'Back', knowledges_path

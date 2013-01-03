@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+%html
+  %head
+    %title 结对学习
+    =stylesheet_link_tag    "application", :media => "all"
+    =javascript_include_tag "application"
+    =csrf_meta_tags
+  %body
+    =render 'layouts/header'
+    %div#content
+      =yield
+    =render 'layouts/footer'
+

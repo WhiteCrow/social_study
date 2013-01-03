@@ -1,0 +1,25 @@
+%div#header
+  %div.navbar.navbar-fixed-top
+    %div.navbar-inner
+      %div#header-content.container
+        %h2
+
+          %a{:href=>'/'}学社
+          %ul.nav
+            %li
+              %a{:href=>'/'}知识
+            %li
+              %a{:href=>'#'}参考
+            %li
+              %a{:href=>'#'}小组
+
+          %form{:action=>'/search',:class=>"navbar-search pull-left", :method=>"get"}
+            %input.span3{:type=>"text", :name=>"q", :placeholder=>"搜索"}
+
+          %ul.nav.pull-right#userbar
+            %li
+              %a#user_notifications_count{:href=>"notifications"}
+                %span.badge 0
+            %li.dropdown
+
+
