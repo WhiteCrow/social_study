@@ -14,7 +14,7 @@ gem 'bootstrap-sass', '~> 2.2.2.0'
 # Mongoid 辅助插件
 gem "mongoid", "3.0.14"
 #gem 'mongo-rails-instrumentation','0.2.4'
-gem 'mongoid_auto_increment_id', "0.5.0"
+#gem 'mongoid_auto_increment_id', "0.5.0"
 #gem 'mongoid_rails_migrations', '1.0.0'
 #
 # debug
