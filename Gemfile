@@ -18,6 +18,7 @@ gem "mongoid", ">= 3.0.3"
 gem 'pry-rails', '0.2.2'
 #User management
 gem 'devise', ">= 2.1.2"
+gem "cancan"
 #gem 'omniauth'
 #gem 'omniauth-douban-oauth2'
 #gem 'oa-oauth', :require => 'omniauth/oauth'
