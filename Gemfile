@@ -21,6 +21,10 @@ gem 'devise', ">= 2.1.2"
 #gem 'omniauth'
 #gem 'omniauth-douban-oauth2'
 #gem 'oa-oauth', :require => 'omniauth/oauth'
+
+#backend
+gem 'rails_admin'
+
 group :development, :test do
   gem 'thin'
   gem 'rspec-rails', '>= 2.11.0'
