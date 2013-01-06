@@ -22,5 +22,7 @@
             %a#user_notifications_count{:href=>"notifications"}
               %span.badge 0
           %li.dropdown
+          %li 
+            =current_user.name if current_user
 
 

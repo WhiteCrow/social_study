@@ -19,6 +19,7 @@ gem 'pry-rails', '0.2.2'
 #User management
 gem 'devise', ">= 2.1.2"
 #gem 'omniauth'
+#gem 'omniauth-douban-oauth2'
 #gem 'oa-oauth', :require => 'omniauth/oauth'
 group :development, :test do
   gem 'thin'

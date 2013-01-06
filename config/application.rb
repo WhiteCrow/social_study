@@ -21,6 +21,9 @@ module SocialStudy
       g.view_specs false
       g.helper_specs false
     end
+
+    #We don’t want passwords written to our log file.
+    config.filter_parameters += [:password, :password_confirmation]
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
