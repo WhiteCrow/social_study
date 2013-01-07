@@ -22,7 +22,9 @@
             %a#user_notifications_count{:href=>"notifications"}
               %span.badge 0
           %li.dropdown
-          %li 
-            =current_user.name if current_user
+          %li
+            - if current_user
+              =current_user.name
+              =link_to "Sign out", destroy_user_session_path, :method => :delete
 
 
