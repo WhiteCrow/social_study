@@ -7,7 +7,7 @@
           %li= msg
 
   .field
-    = f.text_area :content
+    = f.text_area :content, :class=> 'span12 pull-right', :rows => 4
 
   .actions
-    = f.submit '发布'
+    = f.submit '发布', :class=>'btn btn-success pull-right'

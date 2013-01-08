@@ -1,4 +1,7 @@
-%h3 Home
-
 - if current_user
-  =render 'microblogs/form'
+  %div.span8.well
+    %div.row-fluid
+      %h4有什么想告诉大家：
+      =render 'microblogs/form'
+  %div.span4.well
+    test

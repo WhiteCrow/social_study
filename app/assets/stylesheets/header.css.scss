@@ -1,14 +1,17 @@
 #header{
   li{
     margin-bottom:-5px;
-    font-size:16px;
-    .ser{
-        margin-top:-12px;
-        margin-left:3px;
+    font-size:14px;
+    a{
+      display:inline-block;
     }
-  }
+   }
   .title{
-      font-size:19px;
+      font-size:16px;
       font-weight:bold;
+   }
+   .dropdown-menu a{
+     display:block;
+     line-height:18px;
    }
 }
