@@ -1,0 +1,18 @@
+%h1 Listing microblogs
+
+%table
+  %tr
+    %th Content
+    %th
+    %th
+
+  - @microblogs.each do |microblog|
+    %tr
+      %td= microblog.content
+      %td= link_to 'Show', microblog
+      %td= link_to 'Edit', edit_microblog_path(microblog)
+      %td= link_to 'Destroy', microblog, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Microblog', new_microblog_path

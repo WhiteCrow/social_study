@@ -1,5 +1,4 @@
 %h3 Home
-- @users.each do |user|
-  %p 
-    User:
-    = user.name
+
+- if current_user
+  =render 'microblogs/form'

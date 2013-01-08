@@ -1,0 +1,13 @@
+= form_for @microblog do |f|
+  - if @microblog.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@microblog.errors.count, "error")} prohibited this microblog from being saved:"
+      %ul
+        - @microblog.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.text_area :content
+
+  .actions
+    = f.submit '发布'

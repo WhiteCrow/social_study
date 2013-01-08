@@ -1,5 +1,8 @@
 SocialStudy::Application.routes.draw do
 
+  resources :microblogs
+
+
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
   devise_for :users
