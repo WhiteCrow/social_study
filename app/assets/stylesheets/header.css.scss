@@ -4,6 +4,27 @@
     font-size:14px;
     a{
       display:inline-block;
+      .badge{
+        margin-right:-15px;
+        margin-left:5px;
+      }
+    }
+    .navbar-search{
+      input{
+        border:0;
+        color:#999;
+        background-color:#515151;
+      }
+      .add-on, button{
+        border:0;
+        color:#222;
+        background-color:#515151;
+      }
+      button{
+        width:41px;
+        height:28px;
+        margin-top:-5px;
+      }
     }
    }
   .title{

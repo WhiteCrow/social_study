@@ -16,13 +16,16 @@
         %ul.nav.pull-right#userbar
           %li
             %form.navbar-search.pull-right{:action=>'/search', :method=>"get"}
-              %input.span3.search-query{:type=>"text", :name=>"q", :placeholder=>"知识、参考、成员、广播"}
-              %input.btn.btn-inverse{:type=>"submit",:value=>'搜索', :style=>'margin-top:0'}
+              %div.input-append
+                %input.span3{:type=>"text", :name=>"q", :placeholder=>"知识、参考、成员、广播"}
+                %span.add-on
+                  %button{:type=>"submit",:value=>'搜索'}
+                    搜索
           %li.dropdown
           - if current_user
             %li
               %a#user_notifications_count{:href=>"notifications"}
-                %span.badge 0
+                .badge 0
             %li.dropdown#user_menu
               =link_to '#user_menu', :class=>'dropdown-toggle', "data-toggle"=>"dropdown" do
                 =current_user.name
