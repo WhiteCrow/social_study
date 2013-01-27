@@ -23,6 +23,10 @@ gem "cancan"
 #gem 'omniauth-douban-oauth2'
 #gem 'oa-oauth', :require => 'omniauth/oauth'
 
+#upload files
+gem "carrierwave", "~> 0.8.0"
+gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
+
 #backend
 gem 'rails_admin'
 

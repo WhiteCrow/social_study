@@ -1,7 +1,11 @@
 - if current_user
-  %div.span8.well
-    %div.row-fluid
+  %div.span8
+    %div.row.well
       %h4有什么想告诉大家：
       =render 'microblogs/form'
-  %div.span4.well
-    test
+    %div
+      =render 'dynamics/index'
+    
+  %div.span4
+    %div.well
+      test
