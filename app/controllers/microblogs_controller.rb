@@ -41,10 +41,11 @@ class MicroblogsController < ApplicationController
   # POST /microblogs.json
   def create
     @microblog = Microblog.new(params[:microblog])
+    @microblog.user = current_user
 
     respond_to do |format|
       if @microblog.save
-        format.html { redirect_to @microblog, notice: 'Microblog was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Microblog was successfully created.' }
         format.json { render json: @microblog, status: :created, location: @microblog }
       else
         format.html { render action: "new" }

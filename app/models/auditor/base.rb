@@ -6,7 +6,7 @@ class Auditor::Base
   belongs_to :user
   attr_accessible :auditable_type, :auditable_id, :body
 
-  validates_inclusion_of :act, :in => ["update", "create"]
+  validates_inclusion_of :act, :in => ["update", "create", "destroy"]
   validates_presence_of :auditable, :act
 
   field :act, type: String

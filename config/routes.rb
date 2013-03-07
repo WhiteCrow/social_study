@@ -5,9 +5,13 @@ SocialStudy::Application.routes.draw do
 
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
-  devise_for :users, controllers: {
-    sessions: :sessions
-  }
+  devise_for :users, :path => "account", :controllers => {
+    :registrations => :account,
+    :sessions => :sessions,
+    :omniauth_callbacks => "users/omniauth_callbacks"
+    } do
+    get "account/update_private_token" => "account#update_private_token", :as => :update_private_token_account
+  end
 
   resources :knowledges
 

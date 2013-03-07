@@ -10,11 +10,13 @@
             %a{:href=>'#'}知识
           %li
             %a{:href=>'#'}参考
+        /
           %li
             %a{:href=>'#'}小组
 
         %ul.nav.pull-right#userbar
           %li
+          /
             %form.navbar-search.pull-right{:action=>'/search', :method=>"get"}
               %div.input-append
                 %input.span3{:type=>"text", :name=>"q", :placeholder=>"知识、参考、成员、广播"}
@@ -31,6 +33,20 @@
                 =current_user.name
                 %b.caret
               %ul.dropdown-menu
+                %br
+                %li
+                  =link_to "我的主页", '#'
+                  %br
+                %li
+                  =link_to "帐号设置", '#'
+                  %br
                 %li
                   =link_to "退出", destroy_user_session_path, :method => :delete
+                  %br
+          - else
+            %li
+              =link_to "注册", new_user_registration_path
+            %li
+              =link_to "登录", new_user_session_path
+
 
