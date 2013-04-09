@@ -1,0 +1,15 @@
+%p#notice= notice
+
+.field
+  = label :title, '标题'
+  = @reference.title
+.field
+  = label :url_add, '参考网址'
+  = link_to @reference.url_add, @reference.url_add, target: '_blank'
+.field
+  = label :description, '描述'
+  = @reference.description
+
+= link_to '申请修改', edit_reference_path(@reference)
+\|
+= link_to '取消', references_path

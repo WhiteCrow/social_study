@@ -1,0 +1,20 @@
+= form_for @reference do |f|
+  - if @reference.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@reference.errors.count, "error")} prohibited this reference from being saved:"
+      %ul
+        - @reference.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :title, '标题'
+    = f.text_field :title
+  .field
+    = f.label :url_add, '参考网址'
+    = f.text_field :url_add
+  .field
+    = f.label :description, '描述'
+    = f.text_area :description
+  .actions
+    = f.submit 'Save', class: 'btn btn-primary'
+    = link_to 'Back', references_path, class: 'btn'

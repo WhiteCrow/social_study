@@ -2,7 +2,6 @@ SocialStudy::Application.routes.draw do
 
   resources :microblogs
 
-
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
   devise_for :users, :path => "account", :controllers => {
@@ -14,6 +13,7 @@ SocialStudy::Application.routes.draw do
   end
 
   resources :knowledges
+  resources :references
 
   root :to => "home#index"
   # The priority is based upon order of creation:
