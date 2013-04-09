@@ -9,7 +9,6 @@
 .field
   = label :description, '描述'
   = @reference.description
-
-= link_to '申请修改', edit_reference_path(@reference)
-\|
-= link_to '取消', references_path
+.action
+  = link_to '申请修改', edit_reference_path(@reference), class: 'btn btn-warning'
+  = link_to '取消', references_path, class: 'btn'

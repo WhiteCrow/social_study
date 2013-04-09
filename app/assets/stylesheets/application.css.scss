@@ -26,9 +26,11 @@ body{}
   margin-top:60px;
 }
 textarea{
-  width:500px;
-  height:250px;
+  min-width:500px;
+  max-height:250px;
 }
-.btn-primary{
-  margin-right: 5px;
+.action{
+  .btn-primary, .btn-warning{
+    margin-right: 5px;
+  }
 }
