@@ -8,6 +8,8 @@ class User
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :microblogs
+  has_and_belongs_to_many :following, :class_name => 'User', :inverse_of => :followers
+  has_and_belongs_to_many :followers, :class_name => 'User', :inverse_of => :following
 
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me
 
@@ -20,6 +22,9 @@ class User
     self.role == target_role.to_sym||target_role.to_s
   end
 
+  def image
+    Rails.root + 'app/assets/images/default-user.png'
+  end
 
 
   ## Database authenticatable

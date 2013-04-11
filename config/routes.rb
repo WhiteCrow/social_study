@@ -12,6 +12,13 @@ SocialStudy::Application.routes.draw do
     get "account/update_private_token" => "account#update_private_token", :as => :update_private_token_account
   end
 
+  resources :users, :only => [:show] do
+    member do
+      get :follow
+      get :following
+      get :followers
+    end
+  end
   resources :knowledges
   resources :references
 
