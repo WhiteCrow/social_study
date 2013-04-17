@@ -26,6 +26,21 @@ class User
     Rails.root + 'app/assets/images/default-user.png'
   end
 
+  def followed?(user)
+    self.following_ids.include? user.id
+  end
+
+  def can_follow?(user)
+    !(([self.id] + self.following_ids).include? user.id)
+  end
+
+  def follow(user)
+    self.following << user
+  end
+
+  def unfollow(user)
+    self.following.delete(user)
+  end
 
   ## Database authenticatable
   field :name,               :type => String

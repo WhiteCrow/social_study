@@ -1,0 +1,2 @@
+/$('.follow-btn').html(#{link_to '关注他', follow_user_path(@user), remote: true, class: 'btn btn-primary'});
+$('.follow-btn').html('#{j link_to('关注他', follow_user_path(@user), remote: true, class: 'btn btn-primary')}')

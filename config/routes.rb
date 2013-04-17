@@ -15,6 +15,7 @@ SocialStudy::Application.routes.draw do
   resources :users, :only => [:show] do
     member do
       get :follow
+      get :unfollow
       get :following
       get :followers
     end
