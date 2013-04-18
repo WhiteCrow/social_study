@@ -23,7 +23,7 @@ class User
   end
 
   def image
-    Rails.root + 'app/assets/images/default-user.png'
+    'default-user.png'
   end
 
   def followed?(user)
