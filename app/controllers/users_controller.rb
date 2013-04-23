@@ -7,7 +7,7 @@ class UsersController < ApplicationController
 
   def follow
     @user = User.find(params[:id])
-    current_user.follow(@user)
+    current_user.following << @user
     respond_to do |format|
       format.js
     end
@@ -15,7 +15,7 @@ class UsersController < ApplicationController
 
   def unfollow
     @user = User.find(params[:id])
-    current_user.unfollow(@user)
+    current_user.following.delete(@user)
     respond_to do |format|
       format.js
     end
@@ -30,4 +30,5 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @followers = @user.followers
   end
+
 end

@@ -2,14 +2,15 @@
 %div.span4
   %div.well
     =image_tag @user.image, class: 'user-face'
-    %h4 我的关注
-    %h4 我被 #{current_user.followers.count} 人关注
+    %br
+    %br
     - if current_user.blank? or current_user != @user
       - if current_user.can_follow?(@user)
         %span.follow-btn
           = follow_btn
       - elsif current_user.followed?(@user)
         %span.follow-btn
-          =link_to '取消关注', unfollow_user_path(@user), remote: true, class: 'btn btn-danger'
+          = unfollow_btn
+    %h4 我的关注
     %h4 #{@user.name} 关注 #{@user.following_ids.count} 人
     %h4 #{@user.name} 被 #{@user.follower_ids.count} 人关注
