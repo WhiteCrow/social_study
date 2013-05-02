@@ -1,25 +1,13 @@
-%h1 Listing knowledges
+%div.span9
+  %div{class: "index-carousel"}
+    %h2 最新知识
+    /  %div{id: "myCarousel", class: "carousel slide"}
+    /    %div{class: "carousel-inner"}
+    %ul
+      - @newest_knowledges.each do |k|
+        %li
+          = link_to 'Show' do
+            =image_tag k.image
 
-%table
-  %tr
-    %th Title
-    %th Second title
-    %th Description
-    %th Knowledge association
-    %th
-    %th
-    %th
+  %br
 
-  - @knowledges.each do |knowledge|
-    %tr
-      %td= knowledge.title
-      %td= knowledge.second_title
-      %td= knowledge.description
-      %td= knowledge.knowledge_association_id
-      %td= link_to 'Show', knowledge
-      %td= link_to 'Edit', edit_knowledge_path(knowledge)
-      %td= link_to 'Destroy', knowledge, method: :delete, data: { confirm: 'Are you sure?' }
-
-%br
-
-= link_to 'New Knowledge', new_knowledge_path

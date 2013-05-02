@@ -11,4 +11,7 @@ class Knowledge
   validates_presence_of :title, :description
   validates_uniqueness_of :title
 
+  def image
+    'default-know.jpg'
+  end
 end
