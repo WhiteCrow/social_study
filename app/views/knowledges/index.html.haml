@@ -1,13 +1,27 @@
 %div.span9
   %div{class: "index-carousel"}
     %h2 最新知识
-    /  %div{id: "myCarousel", class: "carousel slide"}
-    /    %div{class: "carousel-inner"}
-    %ul
-      - @newest_knowledges.each do |k|
-        %li
-          = link_to 'Show' do
-            =image_tag k.image
+    %div{id: "newestKnowCarousel", class: "carousel slide"}
+      %ol{class: 'carousel-indicators'}
+        - (@newest_knowledges.count/5 + 1).times.each do |index|
+          %li{'data-target'=>'#newestKnowCarousel', 'data-slide-to' => index, class: ('active' if 0==index)}
+      %ol{class: "carousel-indicators"}
+
+      <!-- Carousel items -->
+      %div{class: "carousel-inner"}
+        - @newest_knowledges.each_slice(5).with_index do |(*arr), index|
+          %div{class: (0 == index ? 'item active' : 'item')}
+            - arr.each do |k|
+              = link_to k do
+                = image_tag k.image
+                %h4
+                  =k.title
+
+      <!-- Carousel nav -->
+      %a{class: 'carousel-control left', href: '#newestKnowCarousel', 'data-slide'=>'prev'}
+        &lsaquo;
+      %a{class: 'carousel-control right', href: '#newestKnowCarousel', 'data-slide'=>'next'}
+        &rsaquo;
 
   %br
 

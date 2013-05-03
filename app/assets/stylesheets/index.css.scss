@@ -1,0 +1,25 @@
+//index pages
+.index-carousel{
+  .carousel{
+    .carousel-inner{padding-left:47px;}
+    .item{
+      a{
+        display:block;
+        float:left;
+        text-align:center;
+      }
+      img{
+        margin-left:15px;
+        width:106px;
+        height:150px;
+      }
+    }
+
+  }
+  .carousel-control{
+    height:30px;
+    width:30px;
+    font-size:40px;
+    line-height:24px;
+  }
+}
