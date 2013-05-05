@@ -18,6 +18,9 @@
   padding:0;
   margin:0;
 }
+h1,h2,h3,h4,h5,h6{
+  margin:0px;
+}
 body{}
 #content{
   position:relative;
@@ -35,9 +38,37 @@ textarea{
   }
 }
 ul{
- // margin: 0px;
-//  list-style:none;
+  margin: 0px;
+  list-style:none;
   li{
-   // float:left;
+    float:left;
+  }
+}
+
+.inner{
+  border:1px;
+}
+
+//image version
+.normal{
+  width:106px;
+  max-height:150px;
+}
+
+//Bootstrap
+.carousel-indicators{
+  margin-right:10px;
+  .active{
+      background-color: #aaa;
+  }
+  li{
+    display: block;
+    float: left;
+    width: 10px;
+    height: 10px;
+    margin-left: 5px;
+    text-indent: -999px;
+    background-color: #ccc;
+    border-radius: 5px;
   }
 }

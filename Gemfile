@@ -11,7 +11,7 @@ group :assets do
 end
 gem "haml-rails"
 gem 'jquery-rails'
-gem 'bootstrap-sass', '~> 2.2.2.0'
+gem 'bootstrap-sass'#, '~> 2.2.2.0'
 
 # Mongoid plugins
 gem "mongoid", ">= 3.0.3"
