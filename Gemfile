@@ -15,6 +15,7 @@ gem 'bootstrap-sass'#, '~> 2.2.2.0'
 
 # Mongoid plugins
 gem "mongoid", ">= 3.0.3"
+gem 'mongoid_auto_increment_id', "0.6.0"
 # debug
 gem 'pry-rails', '0.2.2'
 #User management

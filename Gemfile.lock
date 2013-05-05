@@ -136,6 +136,8 @@ GEM
       mongoid (>= 3.0.1)
       rake
       rspec (>= 2.9)
+    mongoid_auto_increment_id (0.6.0)
+      mongoid (>= 3.0.0, < 4.1.0)
     moped (1.4.5)
     multi_json (1.7.2)
     nokogiri (1.5.6)
@@ -262,6 +264,7 @@ DEPENDENCIES
   launchy (>= 2.1.2)
   mongoid (>= 3.0.3)
   mongoid-rspec (>= 1.4.6)
+  mongoid_auto_increment_id (= 0.6.0)
   pry-rails (= 0.2.2)
   rails
   rails-i18n (= 0.1.8)
