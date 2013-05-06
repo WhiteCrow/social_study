@@ -45,8 +45,12 @@ ul{
   }
 }
 
-.inner{
-  border:1px;
+//intro page
+#intro-page{
+  background: url('sephirothic_tree.jpg') no-repeat;
+  background-position-y: -25px;
+  min-height:757px;
+  .form-actions{background-color:white;}
 }
 
 //image version
