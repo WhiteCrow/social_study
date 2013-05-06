@@ -2,30 +2,6 @@
 <h2 class="title">进入学社</h2>
 <hr>
 
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <div>
-    <%= f.label '邮箱' %>
-    <%= f.email_field :email %>
-  </div>
-
-  <div>
-    <%= f.label '密码' %>
-    <%= f.password_field :password %>
-  </div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div>
-      <%= f.check_box :remember_me, style:'float:left' %>
-      &nbsp;记住我的登录状态
-    </div>
-  <% end -%>
-
-  <div class="form-actions">
-    <%= f.submit "登录", class: 'btn btn-primary' %>
-    <br>
-    <br>
-    <%= render "devise/shared/links" %>
-  </div>
-<% end %>
+  <%= render 'sign_in' %>
 
 </div>

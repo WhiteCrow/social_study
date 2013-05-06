@@ -12,4 +12,15 @@
       test
 
 - else
-  %h3请登录
+  %div.span4.offset8
+    %div.tabbable
+      %ul.nav.nav-tabs
+        %li.active
+          =link_to "登录", '#sign_in', "data-toggle"=>"tab"
+        %li
+          =link_to "注册", '#sign_up', "data-toggle"=>"tab"
+      %div.tab-content
+        %div.tab-pane.active#sign_in
+          =render 'devise/sessions/sign_in'
+        %div.tab-pane#sign_up
+          =render 'devise/registrations/sign_up'
