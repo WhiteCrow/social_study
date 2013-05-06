@@ -1,0 +1,23 @@
+%div{class: "index-carousel"}
+  %div{id: "newestKnowCarousel", class: "carousel slide"}
+    %h3
+      =title
+    %ol{class: 'carousel-indicators'}
+      - (items.count/5 + 1).times.each do |index|
+        %li{'data-target'=>'#newestKnowCarousel', 'data-slide-to' => index, class: ('active' if 0==index)}
+
+    <!-- Carousel items -->
+    %div{class: "carousel-inner"}
+      - items.each_slice(5).with_index do |(*arr), index|
+        %div{class: (0 == index ? 'item active' : 'item')}
+          - arr.each do |k|
+            = link_to k do
+              = image_tag k.image, class: 'normal'
+              %h4
+                =k.title
+
+    <!-- Carousel nav -->
+    %a{class: 'carousel-control left', href: '#newestKnowCarousel', 'data-slide'=>'prev'}
+      &lsaquo;
+    %a{class: 'carousel-control right', href: '#newestKnowCarousel', 'data-slide'=>'next'}
+      &rsaquo;
