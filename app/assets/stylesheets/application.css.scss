@@ -32,11 +32,6 @@ textarea{
   min-width:500px;
   max-height:250px;
 }
-.action{
-  .btn-primary, .btn-warning{
-    margin-right: 5px;
-  }
-}
 ul{
   margin: 0px;
   list-style:none;
@@ -44,7 +39,20 @@ ul{
     float:left;
   }
 }
-
+.action{
+  .btn-primary, .btn-warning{
+    margin-right: 5px;
+  }
+}
+.inner{
+  padding:20px;
+  -webkit-box-shadow: 0 1px 3px 1px rgba(0,0,0,0.3);
+  box-shadow: 0 1px 3px 1px rgba(0,0,0,0.3);
+  min-height: 200px;
+  .tabbable{
+    clear:both;
+  }
+}
 //intro page
 #intro-page{
   background: url('sephirothic_tree.jpg') no-repeat;
