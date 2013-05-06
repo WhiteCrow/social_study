@@ -1,5 +1,8 @@
 SocialStudy::Application.routes.draw do
 
+  resources :notes
+
+
   resources :microblogs
 
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'

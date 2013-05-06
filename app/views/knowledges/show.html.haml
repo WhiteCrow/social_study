@@ -1,11 +1,24 @@
 %div.item-show.span8.offset2
   %div.inner
-    = image_tag @knowledge.image, class: 'normal pull-left'
-    %div.info
-      %h3
-        = @knowledge.title
-      %p
-        = @knowledge.description
+    %div.profile
+      = image_tag @knowledge.image, class: 'normal pull-left'
+      %div.info
+        %h3
+          = @knowledge.title
+        %p
+          = @knowledge.description
+      %br.clear-float
+
+    %div
+      %hr
+      =link_to new_note_path do
+        %li.icon-pencil
+        写笔记
+      &nbsp;
+      =link_to '#' do
+        %li.icon-file
+        写心得
+
     %div.tabbable
       %hr
       %ul.nav.nav-tabs
