@@ -9,9 +9,12 @@
   .field
     = f.label '标题'
     = f.text_field :title
-  .field
+
     = f.label :内容
     = f.text_area :content
+
+    = f.hidden_field :knowledge_id, valuse: params[:knowledge_id]
+
   .form-actions
     = f.submit '提交', class: 'btn btn-success'
     &nbsp;
