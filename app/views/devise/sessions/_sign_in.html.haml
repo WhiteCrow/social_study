@@ -8,11 +8,11 @@
 
   - if devise_mapping.rememberable?
     %div
-      = f.check_box :remember_me, style:'float:left'
+      = f.check_box :remember_me, class:'pull-left'
       &nbsp;记住我的登录状态
 
   %div.form-actions
-    = f.submit "登录", class: 'btn btn-primary'
+    = f.submit "登录", class: 'btn btn-success'
     %br
     %br
     = render "devise/shared/links"

@@ -39,11 +39,6 @@ ul{
     float:left;
   }
 }
-.action{
-  .btn-primary, .btn-warning{
-    margin-right: 5px;
-  }
-}
 .inner{
   padding:20px;
   -webkit-box-shadow: 0 1px 3px 1px rgba(0,0,0,0.3);
@@ -59,7 +54,7 @@ ul{
   background-position-y: -25px;
   min-height:1000px;
   background-size:61.8%;
-  .well, .form-actions{background-color:white;}
+  .well{background-color:white;}
 }
 
 //image version
