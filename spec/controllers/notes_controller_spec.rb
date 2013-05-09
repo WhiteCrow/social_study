@@ -2,15 +2,7 @@ require 'spec_helper'
 
 describe NotesController do
 
-  def valid_attributes
-    { "title" => "MyString" }
-  end
-
-  def valid_session
-    {}
-  end
-
-  describe "authenticated" do
+  describe "unauthenticated" do
     describe "GET index" do
       it "always can access" do
         get :index
@@ -20,6 +12,12 @@ describe NotesController do
   end
 
   describe "authenticated" do
+    let(:user) { create :user }
+    let(:knowledge) { create :knowledge }
+    let(:note) { create :note, user: user, knowledge: knowledge }
+
+    before(:each) { sign_in user }
+
     describe "GET show" do
       it "assigns the requested note as @note" do
         note = Note.create! valid_attributes
@@ -30,7 +28,7 @@ describe NotesController do
 
     describe "GET new" do
       it "assigns a new note as @note" do
-        get :new, {}, valid_session
+        get :new
         assigns(:note).should be_a_new(Note)
       end
     end

@@ -20,6 +20,9 @@ module SocialStudy
     config.generators do |g|
       g.view_specs false
       g.helper_specs false
+      g.stylesheets = false
+      g.javascripts = false
+      g.helper = false
     end
 
     #We don’t want passwords written to our log file.

@@ -1,8 +1,7 @@
 source 'http://ruby.taobao.org'
 #source 'https://rubygems.org'
 
-gem 'rails'
-gem "rails-i18n","0.1.8"
+gem 'rails', '3.2.10'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -21,8 +20,8 @@ gem "mongoid_colored_logger", "0.2.2", :group => :development
 gem 'pry-rails', '0.2.2'
 #User management
 gem 'devise', ">= 2.1.2"
+gem "omniauth", "~> 1.0.1"
 gem "cancan"
-#gem 'omniauth'
 #gem 'omniauth-douban-oauth2'
 #gem 'oa-oauth', :require => 'omniauth/oauth'
 
@@ -35,8 +34,8 @@ gem 'rails_admin'
 
 group :development, :test do
   gem 'thin'
-  gem 'rspec-rails', '>= 2.11.0'
-  gem 'factory_girl_rails', ">= 4.0.0"
+  gem 'rspec-rails'
+  gem 'factory_girl_rails', ">= 4.2.0"
 end
 
 group :test do
