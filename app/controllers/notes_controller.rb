@@ -1,6 +1,6 @@
 class NotesController < ApplicationController
 
-  before_filter :require_user, except: [:show]
+  before_filter :require_user, except: [:show, :index]
 
   def index
     @notes = Note.all
