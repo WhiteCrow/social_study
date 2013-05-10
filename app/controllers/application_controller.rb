@@ -11,12 +11,6 @@ class ApplicationController < ActionController::Base
     request.referrer
   end
 
-  def after_sign_in_path_for(user)
-    redirect_to :back
-  end
-
-
-
   def require_user
     if current_user.blank?
       respond_to do |format|
