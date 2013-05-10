@@ -57,12 +57,6 @@ describe NotesController do
           }.to change(Note, :count).by(1)
         end
 
-        it "assigns a newly created note as @note" do
-          post :create, {:note => valid_attributes}
-          assigns(:note).should be_a(Note)
-          assigns(:note).should be_persisted
-        end
-
         it "redirects to the created note" do
           post :create, {:note => valid_attributes}
           response.should redirect_to(Note.last)
