@@ -1,6 +1,16 @@
 require 'spec_helper'
 
 describe NotesController do
+  let(:user) { create :user }
+  let(:knowledge) { create :knowledge }
+  let(:note) { create :note, user: user, knowledge: knowledge }
+
+  def valid_attributes
+    {title: 'ruby',
+    content: 'ruby',
+    user_id: user.id,
+    knowledge_id: knowledge.id}
+  end
 
   describe "unauthenticated" do
     describe "GET index" do
@@ -9,22 +19,20 @@ describe NotesController do
         response.should be_success
       end
     end
-  end
-
-  describe "authenticated" do
-    let(:user) { create :user }
-    let(:knowledge) { create :knowledge }
-    let(:note) { create :note, user: user, knowledge: knowledge }
-
-    before(:each) { sign_in user }
 
     describe "GET show" do
       it "assigns the requested note as @note" do
-        note = Note.create! valid_attributes
-        get :show, {:id => note.to_param}, valid_session
+        note
+        get :show, {:id => note.to_param}
         assigns(:note).should eq(note)
       end
     end
+
+  end
+
+  describe "authenticated" do
+
+    before(:each) { sign_in user; knowledge }
 
     describe "GET new" do
       it "assigns a new note as @note" do
@@ -45,18 +53,18 @@ describe NotesController do
       describe "with valid params" do
         it "creates a new Note" do
           expect {
-            post :create, {:note => valid_attributes}, valid_session
+            post :create, {:note => valid_attributes}
           }.to change(Note, :count).by(1)
         end
 
         it "assigns a newly created note as @note" do
-          post :create, {:note => valid_attributes}, valid_session
+          post :create, {:note => valid_attributes}
           assigns(:note).should be_a(Note)
           assigns(:note).should be_persisted
         end
 
         it "redirects to the created note" do
-          post :create, {:note => valid_attributes}, valid_session
+          post :create, {:note => valid_attributes}
           response.should redirect_to(Note.last)
         end
       end
