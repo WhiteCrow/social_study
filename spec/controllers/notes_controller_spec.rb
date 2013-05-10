@@ -35,8 +35,8 @@ describe NotesController do
 
     describe "GET edit" do
       it "assigns the requested note as @note" do
-        note = Note.create! valid_attributes
-        get :edit, {:id => note.to_param}, valid_session
+        note
+        get :edit, {:id => note.to_param}
         assigns(:note).should eq(note)
       end
     end
