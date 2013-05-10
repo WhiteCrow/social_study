@@ -1,9 +1,9 @@
 = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
   %div
-    = f.label '邮箱'
+    = f.label '邮箱', for: :user_email
     = f.email_field :email
   %div
-    = f.label '密码'
+    = f.label '密码', for: :user_password
     = f.password_field :password
 
   - if devise_mapping.rememberable?
