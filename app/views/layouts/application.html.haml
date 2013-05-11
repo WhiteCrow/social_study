@@ -8,6 +8,6 @@
   %body
     =render 'layouts/header'
     %div#content.row-fluid
-      =yield
+      = content_for?(:main) ? yield(:main) : yield
     =render 'layouts/footer'
 

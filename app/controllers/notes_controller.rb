@@ -1,6 +1,7 @@
 class NotesController < ApplicationController
 
   before_filter :require_user, except: [:show, :index]
+  layout 'main', except: [:index]
 
   def index
     @notes = Note.all

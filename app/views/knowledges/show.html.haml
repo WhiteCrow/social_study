@@ -1,32 +1,30 @@
-%div.item-show.span8.offset2
-  %div.inner
-    %div.profile
-      = image_tag @knowledge.image, class: 'normal pull-left'
-      %div.info
-        %h3
-          = @knowledge.title
-        %p
-          = @knowledge.description
-      %br.clear-float
+%div.profile
+  = image_tag @knowledge.image, class: 'normal pull-left'
+  %div.info
+    %h3
+      = @knowledge.title
+    %p
+      = @knowledge.description
+  %br.clear-float
 
-    %div
-      %hr
-      =link_to new_note_path(knowledge_id: @knowledge) do
-        %li.icon-pencil
-        写笔记
-      &nbsp;
-      =link_to '#' do
-        %li.icon-file
-        写心得
+%div
+  %hr
+  =link_to new_note_path(knowledge_id: @knowledge) do
+    %li.icon-pencil
+    写笔记
+  &nbsp;
+  =link_to '#' do
+    %li.icon-file
+    写心得
 
-    %div.tabbable
-      %hr
-      %ul.nav.nav-tabs
-        %li.active
-          =link_to "心得", '#', "data-toggle"=>"tab"
-        %li
-          =link_to "笔记", '#', "data-toggle"=>"tab"
-        %li
-          =link_to "资源", '#', "data-toggle"=>"tab"
-        %li
-          =link_to "我学", '#', "data-toggle"=>"tab"
+%div.tabbable
+  %hr
+  %ul.nav.nav-tabs
+    %li.active
+      =link_to "心得", '#', "data-toggle"=>"tab"
+    %li
+      =link_to "笔记", '#', "data-toggle"=>"tab"
+    %li
+      =link_to "资源", '#', "data-toggle"=>"tab"
+    %li
+      =link_to "我学", '#', "data-toggle"=>"tab"
