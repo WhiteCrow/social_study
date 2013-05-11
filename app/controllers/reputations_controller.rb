@@ -1,0 +1,2 @@
+class ReputationsController < ApplicationController
+end

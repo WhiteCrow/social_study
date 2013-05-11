@@ -1,5 +1,8 @@
 SocialStudy::Application.routes.draw do
 
+  resources :experiences
+
+
   resources :notes
 
 
@@ -21,6 +24,8 @@ SocialStudy::Application.routes.draw do
       get :unfollow
       get :following
       get :followers
+      get :repute
+      get :unrepute
     end
   end
   resources :knowledges
