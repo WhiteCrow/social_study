@@ -22,11 +22,8 @@ h1,h2,h3,h4,h5,h6{
   margin:0px;
 }
 body{}
-#content{
-  position:relative;
-  width:960px;
-  margin:0 auto;
-  margin-top:60px;
+.big{
+  line-height:2;
 }
 textarea{
   min-width:500px;
@@ -39,8 +36,15 @@ ul{
     float:left;
   }
 }
+#content{
+  position:relative;
+  width:960px;
+  margin:0 auto;
+  margin-top:60px;
+}
 .inner{
   padding:20px;
+  padding-bottom:0px;
   -webkit-box-shadow: 0 1px 3px 1px rgba(0,0,0,0.3);
   box-shadow: 0 1px 3px 1px rgba(0,0,0,0.3);
   min-height: 200px;

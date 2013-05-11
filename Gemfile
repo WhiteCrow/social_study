@@ -8,16 +8,22 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
 end
+
+# front end
 gem "haml-rails"
 gem 'jquery-rails'
 gem 'bootstrap-sass'#, '~> 2.2.2.0'
+
+gem "cells", "3.8.8"
 
 # Mongoid plugins
 gem "mongoid", ">= 3.1.1"
 gem 'mongoid_auto_increment_id', "0.6.0"
 gem "mongoid_colored_logger", "0.2.2", :group => :development
+
 # debug
 gem 'pry-rails', '0.2.2'
+
 #User management
 gem 'devise', ">= 2.2.3"
 gem "omniauth", "~> 1.0.1"

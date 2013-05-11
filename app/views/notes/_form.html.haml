@@ -18,4 +18,4 @@
   .form-actions
     = f.submit '提交', class: 'btn btn-success'
     &nbsp;
-    = link_to '返回', :back, class: 'btn'
+    = link_to '返回', (@note.new_record? ? @note.knowledge : @note), class: 'btn'
