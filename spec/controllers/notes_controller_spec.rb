@@ -36,7 +36,7 @@ describe NotesController do
 
     describe "GET new" do
       it "assigns a new note as @note" do
-        get :new
+        get :new, {knowledge_id: knowledge.id}
         assigns(:note).should be_a_new(Note)
       end
     end
