@@ -47,7 +47,7 @@ class User
   field :name,               :type => String
   field :email,              :type => String, :default => ""
   field :encrypted_password, :type => String, :default => ""
-  field :role,               :type => String, :default => "normal"
+  field :role,               :type => String, :default => "user"
 
   ## Recoverable
   field :reset_password_token,   :type => String
