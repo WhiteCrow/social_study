@@ -1,8 +1,12 @@
 %p#notice= notice
 
-%p
-  %h4
+%div
+  %h4.pull-left
     = "#{@note.knowledge.title} 的笔记 - #{@note.title}"
+
+  = link_to new_note_path(knowledge_id: @knowledge.id), class: 'pull-right' do
+    继续写笔记
+%br.clear-float
 %hr
 %div
   = @note.content
@@ -10,10 +14,10 @@
 .form-actions
   = link_to @note.user.name, @note.user
   在学
-  = link_to @note.knowledge.title, @note.knowledge
+  = link_to @knowledge.title, @knowledge
   %br.big
   = @note.updated_at.getlocal
   %div.pull-right
     = link_to '编辑', edit_note_path(@note)
     \|
-    = link_to '返回', @note.knowledge
+    = link_to '返回', @knowledge

@@ -14,14 +14,17 @@ class NotesController < ApplicationController
 
   def show
     @note = Note.find(params[:id])
+    @knowledge = @note.knowledge
   end
 
   def new
     @note = current_user.notes.build(knowledge_id: params[:knowledge_id])
+    @knowledge = Knowledge.find(params[:knowledge_id])
   end
 
   def edit
     @note = Note.find(params[:id])
+    @knowledge = @note.knowledge
   end
 
   def create
