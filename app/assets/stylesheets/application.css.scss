@@ -32,9 +32,6 @@ textarea{
 ul{
   margin: 0px;
   list-style:none;
-  li{
-    float:left;
-  }
 }
 #content{
   position:relative;
@@ -42,11 +39,23 @@ ul{
   margin:0 auto;
   margin-top:60px;
 }
+#sidebar{
+  font-size:15px;
+  li{margin-bottom:10px;}
+  strong{font-size:18px;}
+}
 .inner{
   padding:20px;
   -webkit-box-shadow: 0 1px 3px 1px rgba(0,0,0,0.3);
   box-shadow: 0 1px 3px 1px rgba(0,0,0,0.3);
   min-height: 200px;
+}
+.box{
+  padding: 10px;
+}
+.left-line{
+  border-left:1px solid #ddd;
+  padding-left:15px;
 }
 .clear-float{
   clear:both;

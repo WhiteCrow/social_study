@@ -1,3 +1,7 @@
-%div.span9
-  =render 'common/carousel', title: '最新知识', items: @newest_knowledges
-  =render 'common/carousel', title: '热门知识', items: @hottest_knowledges
+%div{style: 'margin-left:60px;'}
+  %div.span2.box
+    =render 'sidebar'
+  %div.span10.box.left-line
+    =render 'common/carousel', title: '最新知识', items: @newest_knowledges
+    %hr
+    =render 'common/carousel', title: '热门知识', items: @hottest_knowledges

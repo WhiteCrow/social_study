@@ -1,23 +1,29 @@
 %div{class: "index-carousel"}
-  %div{id: "newestKnowCarousel", class: "carousel slide"}
-    %h3
-      =title
-    %ol{class: 'carousel-indicators'}
-      - (items.count/5 + 1).times.each do |index|
-        %li{'data-target'=>'#newestKnowCarousel', 'data-slide-to' => index, class: ('active' if 0==index)}
+  %div{id: "Carousel#{title.hash}", class: "carousel slide"}
 
-    <!-- Carousel items -->
+    /Carousel nav
+    %div.carousel-nav
+      %h3
+        %small
+          =title
+      %ol{class: 'carousel-indicators'}
+        - (items.count/5 + 1).times.each do |index|
+          %li{'data-target'=>"#Carousel#{title.hash}", 'data-slide-to' => index, class: ('active' if 0==index)}
+
+      %a{class: 'carousel-control right left-side', href: "#Carousel#{title.hash}", 'data-slide'=>'prev', style: 'margin-right:112px;'}
+        &lsaquo;
+      %a{class: 'carousel-control right', href: "#Carousel#{title.hash}", 'data-slide'=>'next'}
+        &rsaquo;
+
+    %div{style:'height: 3px;'}
+
+    /Carousel items
     %div{class: "carousel-inner"}
       - items.each_slice(5).with_index do |(*arr), index|
         %div{class: (0 == index ? 'item active' : 'item')}
           - arr.each do |k|
             = link_to k do
               = image_tag k.image, class: 'normal'
+              %br
               %h4
                 =k.title
-
-    <!-- Carousel nav -->
-    %a{class: 'carousel-control left', href: '#newestKnowCarousel', 'data-slide'=>'prev'}
-      &lsaquo;
-    %a{class: 'carousel-control right', href: '#newestKnowCarousel', 'data-slide'=>'next'}
-      &rsaquo;
