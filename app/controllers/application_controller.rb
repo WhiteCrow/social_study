@@ -1,4 +1,7 @@
 class ApplicationController < ActionController::Base
+
+  #after_filter :store_location
+
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to root_path, :alert => exception.message
   end

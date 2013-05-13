@@ -1,23 +1,42 @@
-%p#notice= notice
-
 %div
   %h4.pull-left
     = "#{@note.knowledge.title} 的笔记 - #{@note.title}"
 
-  = link_to new_note_path(knowledge_id: @knowledge.id), class: 'pull-right' do
-    继续写笔记
-%br.clear-float
-%hr
-%div
-  = @note.content
-%br
-.form-actions
+  %br.big
   = link_to @note.user.name, @note.user
   在学
   = link_to @knowledge.title, @knowledge
+
   %br.big
   = @note.updated_at.getlocal
+
+  -if operable(@note)
+    = link_to new_note_path(knowledge_id: @knowledge.id), class: 'pull-right' do
+      继续写笔记
+  %hr.clear-float
+
+%div
+  = @note.content
+  %br
+  %br
+  %br
+
+.form-actions
+  %div.reputations.pull-left
+    %span.alert.alert-warning
+      有用
+    =@note.repute_count('useful')
+
+    %span{style: 'width:11px;display:inline-block'}
+
+    %span.alert.alert-info
+      没用
+    =@note.repute_count('useless')
+
   %div.pull-right
-    = link_to '编辑', edit_note_path(@note)
-    \|
+    -if operable(@note)
+      = link_to '编辑', edit_note_path(@note)
+      \|
     = link_to '返回', @knowledge
+  %br
+  %br

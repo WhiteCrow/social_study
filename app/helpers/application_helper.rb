@@ -19,4 +19,8 @@ module ApplicationHelper
     link_to('unfollow', unfollow_user_path(@user), remote: true, class: 'btn btn-danger')
   end
 
+  def operable(item)
+    item.user == current_user and current_user.present?
+  end
+
 end

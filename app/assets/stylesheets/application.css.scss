@@ -50,9 +50,9 @@ ul{
   box-shadow: 0 1px 3px 1px rgba(0,0,0,0.3);
   min-height: 200px;
 }
-.box{
-  padding: 10px;
-}
+.alert{padding:5px 8px;}
+.reputations .alert{margin-right:8px;}
+.box{padding: 10px;}
 .left-line{
   border-left:1px solid #ddd;
   padding-left:15px;
@@ -63,7 +63,9 @@ ul{
 .form-actions{
   margin-bottom:0px;
   padding-bottom:0px;
+  background:white;
 }
+.well .form-actions{background: whitesmoke;}
 //intro page
 #intro-page{
   background: url('sephirothic_tree.jpg') no-repeat;

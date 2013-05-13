@@ -3,8 +3,11 @@ SocialStudy::Application.routes.draw do
   resources :experiences
 
 
-  resources :notes
-
+  resources :notes do
+    member do
+      get :reputed
+    end
+  end
 
   resources :microblogs
 

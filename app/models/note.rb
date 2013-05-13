@@ -16,4 +16,8 @@ class Note
   field :title, type: String
   field :content, type: String
 
+  def repute_count(type)
+    self.reputations.where(type: type).count
+  end
+
 end
