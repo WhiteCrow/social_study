@@ -2,7 +2,7 @@ class Note
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  has_many :reputations, dependent: :destroy
+  has_many :reputations, as: :reputable, dependent: :destroy
   belongs_to :user
   belongs_to :knowledge
 

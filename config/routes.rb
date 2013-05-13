@@ -5,7 +5,7 @@ SocialStudy::Application.routes.draw do
 
   resources :notes do
     member do
-      get :reputed
+      post :reputed
     end
   end
 

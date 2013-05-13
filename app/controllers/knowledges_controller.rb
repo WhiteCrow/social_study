@@ -52,7 +52,4 @@ class KnowledgesController < ApplicationController
     end
   end
 
-  def reputed(item)
-    current_user.reputions.create({reputable: self, type: item})
-  end
 end

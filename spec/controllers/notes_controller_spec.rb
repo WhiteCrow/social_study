@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe NotesController do
   let(:user) { create :user }
+  let(:admin) { create :admin }
   let(:knowledge) { create :knowledge }
   let(:note) { create :note, user: user, knowledge: knowledge }
 
@@ -119,6 +120,23 @@ describe NotesController do
         note
         delete :destroy, {:id => note.to_param}
         response.should redirect_to(notes_url)
+      end
+    end
+
+    describe 'reputed' do
+      before(:each) { sign_in admin }
+      it 'useful' do
+        note
+        expect {
+              post :reputed_useful, {id: note.to_param }
+            }.to change(Reputation.useful, :count).by(1)
+      end
+
+      it 'useless' do
+        note
+        expect {
+              post :reputed_useless, {id: note.to_param }
+            }.to change(Reputation.useless, :count).by(1)
       end
     end
 

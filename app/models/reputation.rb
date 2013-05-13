@@ -12,6 +12,8 @@ class Reputation
   index reputable_id: 1
 
   VoteTypes = %w(useful useless)
+  scope :useful, where(type: 'useful')
+  scope :useless, where(type: 'useless')
 
   validates_inclusion_of :type, in: VoteTypes,
                                 if: Proc.new{|r| ['Note', 'Experience', 'Review'].include? r.reputable_type}

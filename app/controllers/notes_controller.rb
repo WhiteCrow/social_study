@@ -8,7 +8,6 @@ class NotesController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @notes }
     end
   end
 
@@ -58,6 +57,16 @@ class NotesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to notes_url }
     end
+  end
+
+  def reputed
+    @note = Note.find(params[:id])
+    if reputation = current_user.reputations.select{|r| r.reputable == @note }.first
+      #delete duplicated or conflict reputation
+      reputation.destroy
+    end
+    @reputation = @note.reputations.create!({user: current_user, type: params[:repute_type]})
+    respond_js
   end
 
 end
