@@ -62,11 +62,15 @@ class NotesController < ApplicationController
   def reputed
     @note = Note.find(params[:id])
     if reputation = current_user.reputations.select{|r| r.reputable == @note }.first
-      #delete duplicated or conflict reputation
+      #delete duplicated or conflict reputation or exisit reputation
+      @pre_reputed_type = reputation.type
       reputation.destroy
     end
-    @reputation = @note.reputations.create!({user: current_user, type: params[:repute_type]})
-    respond_js
+    if params[:repute_type] != @pre_reputed_type
+      @reputation = @note.reputations.create!({user: current_user, type: params[:repute_type]})
+    end
+    respond_to do |format|
+      format.js
+    end
   end
-
 end

@@ -128,17 +128,24 @@ describe NotesController do
       it 'useful' do
         note
         expect {
-              post :reputed_useful, {id: note.to_param }
-            }.to change(Reputation.useful, :count).by(1)
+              post :reputed, {id: note.to_param, repute_type: 'useful' }
+            }.to change(admin.reputations.useful, :count).by(1)
+        #cancel useful
+        expect {
+              post :reputed, {id: note.to_param, repute_type: 'useful' }
+            }.to change(admin.reputations.useful, :count).by(-1)
       end
 
       it 'useless' do
         note
         expect {
-              post :reputed_useless, {id: note.to_param }
-            }.to change(Reputation.useless, :count).by(1)
+              post :reputed, {id: note.to_param, repute_type: 'useless' }
+            }.to change(admin.reputations.useless, :count).by(1)
+        #cancel useful
+        expect {
+              post :reputed, {id: note.to_param, repute_type: 'useless' }
+            }.to change(admin.reputations.useless, :count).by(-1)
       end
     end
-
   end
 end
