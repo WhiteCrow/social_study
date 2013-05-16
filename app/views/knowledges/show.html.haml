@@ -21,10 +21,28 @@
   %hr
   %ul.nav.nav-tabs
     %li.active
-      =link_to "心得", '#', "data-toggle"=>"tab"
+      =link_to "心得", '#experiences', "data-toggle"=>"tab"
     %li
-      =link_to "笔记", '#', "data-toggle"=>"tab"
+      =link_to "笔记", '#notes', "data-toggle"=>"tab"
     %li
-      =link_to "资源", '#', "data-toggle"=>"tab"
+      =link_to "资源", '#resources', "data-toggle"=>"tab"
     %li
-      =link_to "我学", '#', "data-toggle"=>"tab"
+      =link_to "我学", '#my-study', "data-toggle"=>"tab"
+  .tab-content
+    .tab-pane.active#experiences
+      experiences
+    .tab-pane#notes
+      - @knowledge.notes.each do |n|
+        %p
+          =n.user.name
+          的笔记
+          =link_to n.title, n, target: '_blank'
+        %p
+          =n.content
+        %p
+          %small
+            ="#{n.updated_at.getlocal} 有用：#{n.reputations.useful.count} 没用：#{n.reputations.useless.count}"
+        %hr
+    .tab-pane#resources
+
+    .tab-pane#my-study
