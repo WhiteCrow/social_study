@@ -15,6 +15,9 @@ class Note
 
   field :title, type: String
   field :content, type: String
+  field :reputations_count, type: Integer, default: 0
+
+  scope :top, desc(:reputations_count)
 
   def repute_count(type)
     self.reputations.where(type: type).count

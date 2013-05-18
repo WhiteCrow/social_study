@@ -2,7 +2,9 @@
 
 FactoryGirl.define do
   factory :note do
-    title "MyString"
+    sequence(:title){|n| "title #{n}" }
     content "MyText"
+    association :user
+    association :knowledge
   end
 end

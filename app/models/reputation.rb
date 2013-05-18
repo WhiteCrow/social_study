@@ -2,6 +2,7 @@
 class Reputation
   include Mongoid::Document
   include Mongoid::Timestamps::Created
+  include Mongoid::CounterCache
 
   belongs_to :user
   belongs_to :reputable, polymorphic: true
@@ -10,6 +11,8 @@ class Reputation
   index user_id: 1
   index reputable_type: 1
   index reputable_id: 1
+
+  counter_cache :name => :reputable, :inverse_of => :reputations
 
   VoteTypes = %w(useful useless)
   scope :useful, where(type: 'useful')
