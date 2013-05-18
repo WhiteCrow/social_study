@@ -6,16 +6,14 @@
       %h3
         %small
           =title
-      %ol{class: 'carousel-indicators'}
+      %ol.carousel-indicators
         - (items.count/5 + 1).times.each do |index|
           %li{'data-target'=>"#Carousel#{title.hash}", 'data-slide-to' => index, class: ('active' if 0==index)}
 
-      %a{class: 'carousel-control right left-side', href: "#Carousel#{title.hash}", 'data-slide'=>'prev', style: 'margin-right:112px;'}
+      %a{class: 'carousel-control right left-side', href: "#Carousel#{title.hash}", 'data-slide'=>'prev'}
         &lsaquo;
       %a{class: 'carousel-control right', href: "#Carousel#{title.hash}", 'data-slide'=>'next'}
         &rsaquo;
-
-    %div{style:'height: 3px;'}
 
     /Carousel items
     %div{class: "carousel-inner"}

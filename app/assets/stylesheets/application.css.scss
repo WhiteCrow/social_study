@@ -97,9 +97,32 @@ small{
   margin-right:15px;
 }
 
-//Bootstrap
+//carousel
+.carousel-nav{margin-bottom:3px;}
+.index-carousel{
+  width: 710px;
+  h3{margin-top:-8px;}
+  .carousel .item{
+    a{
+      display:block;
+      float:left;
+      text-align:center;
+    }
+    img{margin-right:15px;}
+  }
+  .carousel-control{
+    margin-right:102px;
+    height:20px;
+    width:20px;
+    font-size:24px;
+    line-height:18px;
+    margin-top:10px;
+    top: -2%;
+  }
+  .left-side{margin-right: 127px;}
+}
 .carousel-indicators{
-  margin-right:10px;
+  margin-right:160px;
   .active{
       background-color: #aaa;
   }
