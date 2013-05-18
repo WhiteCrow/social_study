@@ -17,7 +17,7 @@ class Note
   field :content, type: String
   field :reputations_count, type: Integer, default: 0
 
-  scope :top, desc(:reputations_count)
+  scope :top, ->(num=nil){ desc(:reputations_count).limit(num) }
 
   def repute_count(type)
     self.reputations.where(type: type).count

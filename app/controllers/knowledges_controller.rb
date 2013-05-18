@@ -5,6 +5,7 @@ class KnowledgesController < ApplicationController
   def index
     @newest_knowledges = Knowledge.order_by(created_at: :desc)
     @hottest_knowledges = Knowledge.order_by(created_at: :desc)
+    @notes = Note.top(4)
   end
 
   def show

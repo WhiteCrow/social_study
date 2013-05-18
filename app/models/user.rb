@@ -24,8 +24,13 @@ class User
     self.role == target_role.to_sym||target_role.to_s
   end
 
-  def image
-    'default-user.png'
+  def image(version=:normal)
+    case version
+    when :small
+      'default-user-small.png'
+    else
+      'default-user.png'
+    end
   end
 
   def followed?(user)

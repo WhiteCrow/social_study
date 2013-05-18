@@ -1,0 +1,18 @@
+%h3
+  %small 热门笔记
+- @notes.each do |note|
+  %div.span5{style: 'padding-bottom: 15px;'}
+    %div
+      =link_to note.user do
+        = image_tag note.user.image(:small), class: 'user-face'
+    %div.pull-left
+      =link_to note.user do
+        = note.user.name
+      %br.big
+      = "写了#{note.knowledge.title}的笔记"
+      %br.big
+      =link_to note do
+        = note.title
+      %br.big
+      %small
+        ="#{note.reputations.useful.count}有用 #{note.created_at.getlocal.to_date}"

@@ -13,7 +13,7 @@
   -if operable(@note)
     = link_to new_note_path(knowledge_id: @knowledge.id), class: 'pull-right' do
       继续写笔记
-  %hr.clear-float
+  %hr.clear
 
 %div
   = @note.content
