@@ -1,0 +1,11 @@
+- @knowledge.notes.each do |n|
+  %p
+    =n.user.name
+    的笔记
+    =link_to n.title, n, target: '_blank'
+  %p
+    =n.content
+  %p
+    %small
+      ="#{n.updated_at.getlocal} 有用：#{n.reputations.useful.count} 没用：#{n.reputations.useless.count}"
+  %hr

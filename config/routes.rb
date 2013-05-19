@@ -31,7 +31,11 @@ SocialStudy::Application.routes.draw do
       get :unrepute
     end
   end
-  resources :knowledges
+  resources :knowledges do
+    get :notes
+    get :reviews
+    get :my
+  end
   resources :references
 
   root :to => "home#index"

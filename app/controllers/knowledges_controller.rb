@@ -1,6 +1,7 @@
 class KnowledgesController < ApplicationController
 
- layout 'main', except: [:index]
+ layout 'main', only: [:new, :edit]
+ layout 'sidebar', only: [:index, :show]
 
   def index
     @newest_knowledges = Knowledge.order_by(created_at: :desc)
@@ -8,8 +9,20 @@ class KnowledgesController < ApplicationController
     @notes = Note.top(4)
   end
 
+  def notes
+    @knowledge = Knowledge.find(params[:knowledge_id])
+    @notes = @knowledge.notes.top
+  end
+
+  def reviews
+    @knowledge = Knowledge.find(params[:knowledge_id])
+    @reviews = @knowledge.reviews.top
+  end
+
+
   def show
     @knowledge = Knowledge.find(params[:id])
+    @notes = @knowledge.notes.top(4)
   end
 
   def new

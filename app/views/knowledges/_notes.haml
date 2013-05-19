@@ -10,7 +10,9 @@
       =link_to note.user do
         = note.user.name
       %br.big
-      = "写了#{note.knowledge.title}的笔记"
+      的
+      =link_to note.knowledge.title, note.knowledge
+      笔记
       %br.big
       =link_to note do
         = note.title

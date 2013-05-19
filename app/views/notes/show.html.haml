@@ -8,7 +8,8 @@
   = link_to @knowledge.title, @knowledge
 
   %br.big
-  = @note.updated_at.getlocal
+  %small
+    = @note.updated_at.getlocal
 
   -if operable(@note)
     = link_to new_note_path(knowledge_id: @knowledge.id), class: 'pull-right' do

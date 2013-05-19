@@ -1,0 +1,7 @@
+=content_for :sidebar do
+  %div.span1
+  %div.span2.box
+    =render 'common/sidebar'
+  %div.span8.box.left-line
+    =yield
+= render :template => 'layouts/application'

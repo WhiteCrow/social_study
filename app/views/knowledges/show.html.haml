@@ -7,42 +7,14 @@
       = @knowledge.description
   %br.clear
 
-%div
-  %hr
-  =link_to new_note_path(knowledge_id: @knowledge) do
-    %li.icon-pencil
-    写笔记
-  &nbsp;
-  =link_to '#' do
-    %li.icon-file
-    写心得
-
-%div.tabbable
-  %hr
-  %ul.nav.nav-tabs
-    %li.active
-      =link_to "心得", '#experiences', "data-toggle"=>"tab"
-    %li
-      =link_to "笔记", '#notes', "data-toggle"=>"tab"
-    %li
-      =link_to "资源", '#resources', "data-toggle"=>"tab"
-    %li
-      =link_to "我学", '#my-study', "data-toggle"=>"tab"
-  .tab-content
-    .tab-pane.active#experiences
-      experiences
-    .tab-pane#notes
-      - @knowledge.notes.each do |n|
-        %p
-          =n.user.name
-          的笔记
-          =link_to n.title, n, target: '_blank'
-        %p
-          =n.content
-        %p
-          %small
-            ="#{n.updated_at.getlocal} 有用：#{n.reputations.useful.count} 没用：#{n.reputations.useless.count}"
-        %hr
-    .tab-pane#resources
-
-    .tab-pane#my-study
+  %div
+    %hr
+    =link_to new_note_path(knowledge_id: @knowledge) do
+      %li.icon-pencil
+      写笔记
+    &nbsp;
+    =link_to '#' do
+      %li.icon-file
+      写心得
+    %hr
+  =render 'notes'
