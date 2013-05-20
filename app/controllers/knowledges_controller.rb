@@ -1,7 +1,7 @@
 class KnowledgesController < ApplicationController
 
  layout 'main', only: [:new, :edit]
- layout 'sidebar', only: [:index, :show]
+ layout 'sidebar', only: [:index, :show, :notes]
 
   def index
     @newest_knowledges = Knowledge.order_by(created_at: :desc)
