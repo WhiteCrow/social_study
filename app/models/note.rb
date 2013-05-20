@@ -3,6 +3,7 @@ class Note
   include Mongoid::Timestamps
 
   has_many :reputations, as: :reputable, dependent: :destroy
+  has_many :comments, as: :commentable, dependent: :destroy
   belongs_to :user
   belongs_to :knowledge
 

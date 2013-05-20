@@ -1,6 +1,6 @@
 class Microblog
   include Mongoid::Document
-  include Mongoid::Timestamps
+  include Mongoid::Timestamps::Created
 
   belongs_to :user
   attr_accessible :content

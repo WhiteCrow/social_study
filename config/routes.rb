@@ -1,5 +1,8 @@
 SocialStudy::Application.routes.draw do
 
+  resources :comments
+
+
   resources :experiences
 
 
