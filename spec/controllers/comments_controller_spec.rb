@@ -18,9 +18,11 @@ describe CommentsController do
    describe "POST create" do
     describe "with valid params" do
       it "creates a new Comment" do
-        expect {
-          post :create, {:comment => valid_attributes}
-        }.to change(Comment, :count).by(1)
+        Comment.count.should eq 0
+        post :create, comment: valid_attributes
+        Comment.count.should eq 1
+        Comment.last.commentable.comments.count.should eq 1
+        Comment.last.user.comments.count.should eq 1
       end
 
       it "assigns a newly created comment as @comment" do
@@ -32,15 +34,6 @@ describe CommentsController do
       it "redirects to the created comment" do
         post :create, {:comment => valid_attributes}
         response.should redirect_to(Comment.last.commentable)
-      end
-    end
-
-    describe "with invalid params" do
-      it "assigns a newly created but unsaved comment as @comment" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        Comment.any_instance.stub(:save).and_return(false)
-        post :create, {:comment => {}}
-        assigns(:comment).should be_a_new(Comment)
       end
     end
   end

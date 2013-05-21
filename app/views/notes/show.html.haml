@@ -16,13 +16,13 @@
       继续写笔记
   %hr.clear
 
-%div
+%div.text
   = @note.content
-  %br
-  %br
-  %br
 
-.form-actions
+%br.big
+%br.big
+
+%div
   %div.reputations.pull-left
     =link_to reputed_note_path(repute_type: 'useful'), remote: true, method: :post do
       %span.alert.alert-warning
@@ -45,6 +45,9 @@
     = link_to '返回', @knowledge
   %br
   %hr
+
+%div
+  =render 'comments/index', commentable: @note
 
 %div
   =render 'comments/new', commentable: @note

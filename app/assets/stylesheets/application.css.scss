@@ -22,7 +22,13 @@ h1,h2,h3,h4,h5,h6{
   margin:0px;
 }
 h3 small{font-size: 17px;}
-small {font-size:14px;}
+.text{
+  word-wrap: break-word;
+}
+small {
+  font-size:14px;
+  color:#888;
+}
 body{}
 .big{
   line-height:2;
@@ -34,9 +40,6 @@ textarea{
 ul{
   margin: 0px;
   list-style:none;
-}
-small{
-  color:#888;
 }
 //width and height
 .h358{height:358px;}
