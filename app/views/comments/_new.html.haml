@@ -1,0 +1,14 @@
+- if current_user.blank?
+  请
+  =link_to '登录', new_user_session_path
+  后发表评论，没有帐号请
+  =link_to '注册', new_user_registration_path
+  。
+- else
+  .field
+    = form_for current_user.comments.build do |f|
+      = f.text_area :content, rows: 2, class: 'span12'
+      = f.hidden_field :commentable_type, value: commentable.class.name
+      = f.hidden_field :commentable_id, value: commentable.id
+      .actions
+        = f.submit '评论', :class=>'btn btn-success pull-right'

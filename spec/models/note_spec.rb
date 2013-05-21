@@ -16,7 +16,6 @@ describe Note do
     it 'top' do
       note; note_hotter; note_useless; reputation_1; reputation_2; reputation_3
       top_notes = Note.top
-      binding.pry
       top_notes[0].reputations.count.should eq 2
       top_notes[1].reputations.count.should eq 1
       top_notes[2].reputations.count.should eq 0

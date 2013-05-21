@@ -1,9 +1,7 @@
 class CommentsController < ApplicationController
 
   def create
-    @comment = Comment.new(params[:comment])
-    @comment.user = current_user
-    binding.pry
+    @comment = current_user.comments.build(params[:comment])
 
     respond_to do |format|
       if @comment.save
@@ -14,10 +12,12 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment = Comment.find(params[:id])
+    commentable = @comment.commentable
     @comment.destroy
 
     respond_to do |format|
-      format.html { redirect_to comments_url }
+      format.html { redirect_to commentable }
     end
   end
+
 end
