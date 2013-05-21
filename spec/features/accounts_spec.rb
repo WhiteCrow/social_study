@@ -1,7 +1,9 @@
 # coding: utf-8
 require 'spec_helper'
 
-describe "Account management" do
+describe "Account management", type: :feature do
+  let(:user) { create :user }
+
   it 'sign up' do
     visit '/account/sign_up' do
       fill_in '昵称', with: 'nickname'
@@ -14,7 +16,6 @@ describe "Account management" do
     end
   end
 
-  let(:user) { create :user }
   it 'sign in' do
     user
     visit '/account/sign_in' do
