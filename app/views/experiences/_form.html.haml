@@ -7,10 +7,15 @@
           %li= msg
 
   .field
-    = f.label :title
+    = f.label '标题'
     = f.text_field :title
-  .field
-    = f.label :content
+
+    = f.label :内容
     = f.text_area :content
-  .actions
-    = f.submit 'Save'
+
+    = f.hidden_field :knowledge_id, valuse: params[:knowledge_id]
+
+  .form-actions
+    = f.submit '提交', class: 'btn btn-success'
+    &nbsp;
+    = link_to '返回', (@experience.new_record? ? @knowledge : @experience), class: 'btn'

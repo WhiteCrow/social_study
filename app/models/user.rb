@@ -9,6 +9,7 @@ class User
 
   has_many :microblogs
   has_many :notes
+  has_many :experiences
   has_many :comments
   has_many :reputations
   has_and_belongs_to_many :following, :class_name => 'User', :inverse_of => :followers

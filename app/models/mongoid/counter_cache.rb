@@ -1,19 +1,3 @@
-# coding: utf-8
-#
-# https://gist.github.com/1033906
-#
-# class Forum
-#   references_many :topics
-#   references_many :posts
-# end
-#
-#
-# class Topic
-#   referenced_in :forum
-#   include Mongoid::CounterCache
-#   counter_cache name: :forum, inverse_of: :posts
-# end
-# ===================================
 module Mongoid
   module CounterCache
     extend ActiveSupport::Concern

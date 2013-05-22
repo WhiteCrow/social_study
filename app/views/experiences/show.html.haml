@@ -1,12 +1,50 @@
-%p#notice= notice
+%div
+  %h4.pull-left
+    = "#{@experience.knowledge.title} 的心得 - #{@experience.title}"
 
-%p
-  %b Title:
-  = @experience.title
-%p
-  %b Content:
+  %br.big
+  = link_to @experience.user.name, @experience.user
+  在学
+  = link_to @knowledge.title, @knowledge
+
+  %br.big
+  %small
+    = @experience.updated_at.getlocal
+
+  %hr.clear
+
+%div.text
   = @experience.content
 
-= link_to 'Edit', edit_experience_path(@experience)
-\|
-= link_to 'Back', experiences_path
+%br.big
+%br.big
+
+%div
+  %div.reputations.pull-left
+    =link_to reputed_experience_path(repute_type: 'useful'), remote: true, method: :post do
+      %span.alert.alert-warning
+        有用
+    %span.useful-count
+      =@experience.repute_count('useful')
+
+    %span{style: 'width:11px;display:inline-block'}
+
+    =link_to reputed_experience_path(repute_type: 'useless'), remote: true, method: :post do
+      %span.alert.alert-info
+        没用
+    %span.useless-count
+      =@experience.repute_count('useless')
+
+  %div.pull-right
+    -if operable(@experience)
+      = link_to '编辑', edit_experience_path(@experience)
+      \|
+    = link_to '返回', @knowledge
+  %br
+  %hr
+
+%div
+  =render 'comments/index', commentable: @experience
+
+%div
+  =render 'comments/new', commentable: @experience

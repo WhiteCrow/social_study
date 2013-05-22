@@ -7,6 +7,7 @@ class KnowledgesController < ApplicationController
     @newest_knowledges = Knowledge.order_by(created_at: :desc)
     @hottest_knowledges = Knowledge.order_by(created_at: :desc)
     @notes = Note.top(4)
+    @experiences = Experience.top(4)
   end
 
   def notes
@@ -14,15 +15,16 @@ class KnowledgesController < ApplicationController
     @notes = @knowledge.notes.top
   end
 
-  def reviews
+  def experiences
     @knowledge = Knowledge.find(params[:knowledge_id])
-    @reviews = @knowledge.reviews.top
+    @experiences = @knowledge.experiences.top
   end
 
 
   def show
     @knowledge = Knowledge.find(params[:id])
     @notes = @knowledge.notes.top(4)
+    @experiences = Experience.top(4)
   end
 
   def new
@@ -54,15 +56,6 @@ class KnowledgesController < ApplicationController
       else
         format.html { render action: "edit" }
       end
-    end
-  end
-
-  def destroy
-    @knowledge = Knowledge.find(params[:id])
-    @knowledge.destroy
-
-    respond_to do |format|
-      format.html { redirect_to knowledges_url }
     end
   end
 

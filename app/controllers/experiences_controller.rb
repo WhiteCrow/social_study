@@ -1,83 +1,76 @@
 class ExperiencesController < ApplicationController
-  # GET /experiences
-  # GET /experiences.json
+
+  before_filter :require_user, except: [:show, :index]
+  layout 'main', except: [:index]
+
   def index
     @experiences = Experience.all
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @experiences }
     end
   end
 
-  # GET /experiences/1
-  # GET /experiences/1.json
   def show
     @experience = Experience.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @experience }
-    end
+    @knowledge = @experience.knowledge
   end
 
-  # GET /experiences/new
-  # GET /experiences/new.json
   def new
-    @experience = Experience.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @experience }
-    end
+    @experience = current_user.experiences.build(knowledge_id: params[:knowledge_id])
+    @knowledge = Knowledge.find(params[:knowledge_id])
   end
 
-  # GET /experiences/1/edit
   def edit
     @experience = Experience.find(params[:id])
+    @knowledge = @experience.knowledge
   end
 
-  # POST /experiences
-  # POST /experiences.json
   def create
-    @experience = Experience.new(params[:experience])
+    @experience = current_user.experiences.build(params[:experience])
 
     respond_to do |format|
       if @experience.save
-        format.html { redirect_to @experience, notice: 'Experience was successfully created.' }
-        format.json { render json: @experience, status: :created, location: @experience }
+        format.html { redirect_to @experience, notice: 'experience was successfully created.' }
       else
         format.html { render action: "new" }
-        format.json { render json: @experience.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PUT /experiences/1
-  # PUT /experiences/1.json
   def update
     @experience = Experience.find(params[:id])
 
     respond_to do |format|
       if @experience.update_attributes(params[:experience])
-        format.html { redirect_to @experience, notice: 'Experience was successfully updated.' }
-        format.json { head :no_content }
+        format.html { redirect_to @experience, notice: 'experience was successfully updated.' }
       else
         format.html { render action: "edit" }
-        format.json { render json: @experience.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # DELETE /experiences/1
-  # DELETE /experiences/1.json
   def destroy
     @experience = Experience.find(params[:id])
     @experience.destroy
 
     respond_to do |format|
       format.html { redirect_to experiences_url }
-      format.json { head :no_content }
+    end
+  end
+
+  def reputed
+    @experience = Experience.find(params[:id])
+    if reputation = current_user.reputations.select{|r| r.reputable == @experience }.first
+      #delete duplicated or conflict reputation or exisit reputation
+      @pre_reputed_type = reputation.type
+      reputation.destroy
+    end
+    if params[:repute_type] != @pre_reputed_type
+      @reputation = @experience.reputations.create!({user: current_user, type: params[:repute_type]})
+    end
+    respond_to do |format|
+      format.js
     end
   end
 end

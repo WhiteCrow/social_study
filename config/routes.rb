@@ -1,11 +1,14 @@
 SocialStudy::Application.routes.draw do
 
-
-  resources :experiences
-
   resources :comments, only: [:create, :destroy]
 
   resources :notes do
+    member do
+      post :reputed
+    end
+  end
+
+  resources :experiences do
     member do
       post :reputed
     end
