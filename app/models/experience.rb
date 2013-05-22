@@ -24,4 +24,8 @@ class Experience
     self.reputations.where(type: type).count
   end
 
+  def short_content
+    self.content.first(1000)
+  end
+
 end

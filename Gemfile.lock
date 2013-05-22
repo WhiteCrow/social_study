@@ -94,6 +94,9 @@ GEM
       factory_girl (~> 4.2.0)
       railties (>= 3.0.0)
     ffi (1.2.0)
+    font-awesome-sass-rails (3.0.2.2)
+      railties (>= 3.1.1)
+      sass-rails (>= 3.1.1)
     gherkin (2.11.5)
       json (>= 1.4.6)
     haml (3.1.7)
@@ -265,6 +268,7 @@ DEPENDENCIES
   devise (>= 2.2.3)
   email_spec (>= 1.2.1)
   factory_girl_rails (>= 4.2.0)
+  font-awesome-sass-rails
   haml-rails
   jquery-rails
   launchy (>= 2.1.2)

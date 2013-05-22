@@ -23,4 +23,13 @@ module ApplicationHelper
     item.user == current_user and current_user.present?
   end
 
+  def short_content(item)
+    content = strip_tags(item.content)
+    if content.length < 400
+      content
+    else
+      content.first(400) + '......'
+    end
+  end
+
 end

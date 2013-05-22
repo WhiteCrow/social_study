@@ -1,13 +1,14 @@
-- commentable.comments.each do |comment|
-  %div
+%div#comments
+  - commentable.comments.each do |comment|
     %div
-      = link_to comment.user, class: 'user-face' do
-        = image_tag comment.user.image(:small)
-    %div.pull-left.span10
-      %small
-        =comment.created_at.getlocal
-        =link_to comment.user do
-          = comment.user.name
-      %p.text.box
-        =comment.content
-  %hr.clear
+      %div
+        = link_to comment.user, class: 'user-face' do
+          = image_tag comment.user.image(:small)
+      %div.pull-left.span10
+        %small
+          =comment.created_at.getlocal
+          =link_to comment.user do
+            = comment.user.name
+        %p.text.box
+          =comment.content
+    %hr.clear

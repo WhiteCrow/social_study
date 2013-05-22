@@ -10,12 +10,19 @@
       %h4.big
         =link_to experience do
           = experience.title
+        =link_to '#', class: 'toggle-content' do
+          %span.pull-right.icon-caret-down
       =link_to experience.user do
         = experience.user.name
       %br.big
       %div.text
-        = experience.content
+        .short-content
+          = short_content(experience)
+        .whole-content.hidden
+          = experience.content
       %br.big
       %small
-        ="#{experience.reputations.useful.count}有用 #{experience.created_at.getlocal.to_date}"
+        ="#{experience.reputations.useful.count}有用 #{experience.created_at.getlocal.to_date} "
+        =link_to experience_path(experience, anchor: "comments") do
+          ="（#{experience.comments.count}评论）"
   %hr.clear

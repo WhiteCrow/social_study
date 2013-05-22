@@ -13,6 +13,7 @@ end
 gem "haml-rails"
 gem 'jquery-rails'
 gem 'bootstrap-sass'#, '~> 2.2.2.0'
+gem 'font-awesome-sass-rails'
 
 gem "cells", "3.8.8"
 
