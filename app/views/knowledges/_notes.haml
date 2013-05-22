@@ -7,15 +7,12 @@
       =link_to note.user do
         = image_tag note.user.image(:small), class: 'user-face'
     %div.pull-left
-      =link_to note.user do
-        = note.user.name
-      %br.big
-      的
-      =link_to note.knowledge.title, note.knowledge
-      笔记
-      %br.big
-      =link_to note do
-        = note.title
-      %br.big
+      %span
+        =link_to note.user.name, note.user
+        的
+        =link_to note.knowledge.title, note.knowledge
+        笔记
+      %h4.big
+        =link_to note.title, note
       %small
         ="#{note.reputations.useful.count}有用 #{note.created_at.getlocal.to_date}"
