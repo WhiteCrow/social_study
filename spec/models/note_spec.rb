@@ -15,7 +15,13 @@ describe Note do
 
     it 'top' do
       note; note_hotter; note_useless; reputation_1; reputation_2; reputation_3
+
+      note.reputations.count.should eq 1
+      note_hotter.reputations.count.should eq 2
+      note_useless.reputations.count.should eq 0
+
       top_notes = Note.top
+
       top_notes[0].reputations.count.should eq 2
       top_notes[1].reputations.count.should eq 1
       top_notes[2].reputations.count.should eq 0

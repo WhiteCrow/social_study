@@ -16,6 +16,7 @@ class Note
 
   field :title, type: String
   field :content, type: String
+  field :reputations_count, type: Integer, default: 0
 
   scope :top, ->(num=nil){ desc(:reputations_count).limit(num) }
 
