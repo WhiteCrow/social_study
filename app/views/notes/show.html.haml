@@ -2,14 +2,32 @@
   %h4.pull-left
     = "#{@note.knowledge.title} 的笔记 - #{@note.title}"
 
+  %div.pull-right
+    %div.reputations
+      =link_to reputed_note_path(repute_type: 'useful'), remote: true, method: :post do
+        %i.icon-thumbs-up
+      %span.useful-count
+        =@note.repute_count('useful')
+
+      %span{style: 'width:5px;display:inline-block'}
+
+      =link_to reputed_note_path(repute_type: 'useless'), remote: true, method: :post do
+        %i.icon-thumbs-down
+      %span.useless-count
+        =@note.repute_count('useless')
+
+    %div
+      -if operable(@note)
+        = link_to edit_note_path(@note) do
+          %i.icon-edit
+      = link_to @knowledge do
+        %i.icon-circle-arrow-left
+    %br
+
   %br.big
   = link_to @note.user.name, @note.user
   在学
   = link_to @knowledge.title, @knowledge
-
-  %br.big
-  %small
-    = @note.updated_at.getlocal
 
   -if operable(@note)
     = link_to new_note_path(knowledge_id: @knowledge.id), class: 'pull-right' do
@@ -22,28 +40,6 @@
 %br.big
 %br.big
 
-%div
-  %div.reputations.pull-left
-    =link_to reputed_note_path(repute_type: 'useful'), remote: true, method: :post do
-      %span.alert.alert-warning
-        有用
-    %span.useful-count
-      =@note.repute_count('useful')
-
-    %span{style: 'width:11px;display:inline-block'}
-
-    =link_to reputed_note_path(repute_type: 'useless'), remote: true, method: :post do
-      %span.alert.alert-info
-        没用
-    %span.useless-count
-      =@note.repute_count('useless')
-
-  %div.pull-right
-    -if operable(@note)
-      = link_to '编辑', edit_note_path(@note)
-      \|
-    = link_to '返回', @knowledge
-  %br
   %hr
 
 %div
