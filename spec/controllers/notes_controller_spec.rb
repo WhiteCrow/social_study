@@ -117,9 +117,9 @@ describe NotesController do
       end
 
       it "redirects to the notes list" do
-        note
+        knowledge = note.knowledge
         delete :destroy, {:id => note.to_param}
-        response.should redirect_to(notes_url)
+        response.should redirect_to(knowledge)
       end
     end
 

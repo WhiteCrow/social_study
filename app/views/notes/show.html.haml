@@ -20,7 +20,10 @@
       -if operable(@note)
         = link_to edit_note_path(@note) do
           %i.icon-edit
-      %span.w5
+        %span.w5
+        = link_to @note, method: :delete, confirm: '你确定要删除这条笔记？'  do
+          %i.icon-trash
+        %span.w5
       = link_to @knowledge do
         %i.icon-circle-arrow-left
 
