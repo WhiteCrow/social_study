@@ -46,8 +46,5 @@ SocialStudy::Application.routes.draw do
     collection do
       get :notes
     end
-  end
-  resources :references
-
-  root :to => "home#index"
+  end  root :to => "home#index"
 end
