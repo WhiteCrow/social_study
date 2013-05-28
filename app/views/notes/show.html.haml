@@ -10,11 +10,14 @@
         =@note.repute_count('useful')
 
       %span.w5
-
       =link_to reputed_note_path(repute_type: 'useless'), remote: true, method: :post do
         %i.icon-thumbs-down
       %span.useless-count
         =@note.repute_count('useless')
+      %span.w5
+
+      = link_to @knowledge do
+        %i.icon-circle-arrow-left
       %span.w5
 
       -if operable(@note)
@@ -23,9 +26,6 @@
         %span.w5
         = link_to @note, method: :delete, confirm: '你确定要删除这条笔记？'  do
           %i.icon-trash
-        %span.w5
-      = link_to @knowledge do
-        %i.icon-circle-arrow-left
 
   %br
   %br
