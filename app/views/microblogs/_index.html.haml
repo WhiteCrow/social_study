@@ -1,0 +1,13 @@
+- @microblogs.each do |microblog|
+  %div
+    = link_to microblog.user, class: 'pull-left' do
+      = image_tag microblog.user.image(:small)
+    %div.pull-left.span10
+      =link_to microblog.user do
+        = microblog.user.name
+      %small.pull-right
+        =microblog.created_at.time_ago
+      %p.text
+        =microblog.content
+      %br
+    %hr.clear

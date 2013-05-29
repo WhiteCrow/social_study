@@ -6,9 +6,9 @@
           = image_tag comment.user.image(:small)
       %div.pull-left.span10
         %small
-          =comment.created_at.getlocal
           =link_to comment.user do
             = comment.user.name
+          =comment.created_at.time_ago
         %p.text.box
           =comment.content
     %hr.clear

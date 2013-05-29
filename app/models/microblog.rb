@@ -8,4 +8,5 @@ class Microblog
 
   field :content, type: String
   index :user_id => 1
+
 end

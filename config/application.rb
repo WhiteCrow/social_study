@@ -18,7 +18,7 @@ end
 module SocialStudy
   class Application < Rails::Application
 
-    #config.autoload_paths += %W(#{config.root}/lib)
+    config.autoload_paths += %W(#{config.root}/lib)
 
     config.generators do |g|
       g.view_specs false
@@ -33,7 +33,7 @@ module SocialStudy
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
 
-    config.time_zone = 'Beijing'
+    #config.time_zone = 'Beijing'
 
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.
