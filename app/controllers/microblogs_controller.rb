@@ -10,8 +10,6 @@ class MicroblogsController < ApplicationController
     end
   end
 
-  # GET /microblogs/1
-  # GET /microblogs/1.json
   def show
     @microblog = Microblog.find(params[:id])
 
@@ -21,8 +19,6 @@ class MicroblogsController < ApplicationController
     end
   end
 
-  # GET /microblogs/new
-  # GET /microblogs/new.json
   def new
     @microblog = Microblog.new
 
@@ -70,15 +66,12 @@ class MicroblogsController < ApplicationController
     end
   end
 
-  # DELETE /microblogs/1
-  # DELETE /microblogs/1.json
   def destroy
     @microblog = Microblog.find(params[:id])
     @microblog.destroy
 
     respond_to do |format|
-      format.html { redirect_to microblogs_url }
-      format.json { head :no_content }
+      format.js
     end
   end
 end
