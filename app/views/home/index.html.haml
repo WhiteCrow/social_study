@@ -1,15 +1,17 @@
 - if current_user
-  %div.span8
+  %div.span7
     %div.row.well
       %h4有什么想告诉大家：
       %br
       =render 'microblogs/form'
-    %div#microblogs
-      =render 'microblogs/index'
+      %br.clear
+      %hr
+      %div#microblogs
+        =render 'microblogs/index'
 
   %div.span4
-    %div.well
-      test
+    %div.row.ml10
+      = render 'users/rmod_info', user: current_user
 
 - else
   %div#intro-page

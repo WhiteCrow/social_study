@@ -58,6 +58,8 @@ ul{
 .pl0{
   padding-left: 0px;
 }
+.pl10{padding-left: 10px;}
+.ml10{margin-left:10px;}
 //
 #content{
   position:relative;
@@ -86,6 +88,10 @@ ul{
 .left-line{
   border-left:1px solid #ddd;
   padding-left:30px;
+}
+.right-line{
+ border-right:1px solid #ddd;
+ padding: 0 10px;
 }
 .clear{
   clear:both;

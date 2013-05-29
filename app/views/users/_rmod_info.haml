@@ -1,0 +1,19 @@
+.span6
+  =link_to user, class:'user-face' do
+    =image_tag user.image
+%h4.span6.text
+  = user.name
+%br.clear
+%br
+.right-line.pull-left
+  关注
+  %br
+  ="#{user.following.count} 人"
+.right-line.pull-left
+  粉丝
+  %br
+  ="#{user.followers.count} 人"
+.pl10.pull-left
+  广播
+  %br
+  ="#{user.microblogs.count} 条"
