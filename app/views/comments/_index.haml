@@ -1,5 +1,5 @@
 %div#comments
-  - commentable.comments.each do |comment|
+  - (comments = commentable.comments.page(params[:page]||1).per(20)).each do |comment|
     %div
       %div
         = link_to comment.user, class: 'user-face' do
@@ -12,6 +12,6 @@
         %p.text.box
           =comment.content
     %hr.clear
- 
+
 .pull-right
   = paginate comments, remote: true
