@@ -38,9 +38,8 @@ small {
   color:#888;
 }
 body{}
-.big{
-  line-height:2;
-}
+br.big{line-height:2;}
+hr.low{margin: 8px 0;}
 textarea{
   min-width:500px;
   max-height:250px;
@@ -55,9 +54,8 @@ ul{
   width:5px;
   display:inline-block;
 }
-.pl0{
-  padding-left: 0px;
-}
+.pl0{padding-left: 0px;}
+.pl5{padding-left: 5px;}
 .pl10{padding-left: 10px;}
 .ml10{margin-left:10px;}
 //
@@ -81,9 +79,16 @@ ul{
 .alert{padding:5px 8px;}
 .reputations .alert{margin-right:8px;}
 .box{padding: 5px; padding-top:10px;}
+.small-box{padding: 5px}
 .user-face{
   float: left;
   margin-right: 15px;
+}
+a.gray-link{
+  color: #ccc;
+  &:hover{
+    color: $linkColorHover;
+  }
 }
 .left-line{
   border-left:1px solid #ddd;

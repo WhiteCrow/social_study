@@ -1,5 +1,5 @@
 - @microblogs.each do |microblog|
-  %div
+  %div.microblog
     = link_to microblog.user, class: 'pull-left' do
       = image_tag microblog.user.image(:small)
     %div.pull-left.span10
@@ -7,9 +7,13 @@
         = microblog.user.name
       %small.pull-right
         =microblog.created_at.time_ago
-      %p.text.box
+      .text.box
         =microblog.content
-    %hr.clear
+      .small-box.oprate-mic
+        =link_to '展开', '#', class: 'gray-link'
+        =link_to '回复', '#', class: 'pl5 hide'
+        =link_to '转播', '#', class: 'pl5 hide'
+      %hr.low
 
 .pull-right
   = paginate @microblogs, remote: true
