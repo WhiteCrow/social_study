@@ -1,8 +1,12 @@
 class HomeController < ApplicationController
   def index
-    @microblog = Microblog.new
     if current_user
-      @microblogs = Microblog.in(user: current_user.following + [current_user]).desc('created_at')
+      @microblog = Microblog.new
+      @microblogs = Microblog.in(user: current_user.following + [current_user]).desc('created_at').page(params[:page]||1).per(20)
+      respond_to do |format|
+        format.html
+        format.js
+      end
     end
   end
 end

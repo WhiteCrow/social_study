@@ -55,6 +55,9 @@ ul{
   width:5px;
   display:inline-block;
 }
+.pl0{
+  padding-left: 0px;
+}
 //
 #content{
   position:relative;
@@ -75,7 +78,7 @@ ul{
 }
 .alert{padding:5px 8px;}
 .reputations .alert{margin-right:8px;}
-.box{padding: 10px;}
+.box{padding: 5px; padding-top:10px;}
 .user-face{
   float: left;
   margin-right: 15px;

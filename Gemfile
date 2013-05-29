@@ -17,6 +17,8 @@ gem 'font-awesome-sass-rails'
 
 gem "cells", "3.8.8"
 
+gem "kaminari" #pagnation
+
 # Mongoid plugins
 gem "mongoid", ">= 3.1.1"
 gem 'mongoid_auto_increment_id', "0.6.0"

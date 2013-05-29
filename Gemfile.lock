@@ -271,6 +271,7 @@ DEPENDENCIES
   font-awesome-sass-rails
   haml-rails
   jquery-rails
+  kaminari
   launchy (>= 2.1.2)
   mongoid (>= 3.1.1)
   mongoid_auto_increment_id (= 0.6.0)

@@ -7,7 +7,9 @@
         = microblog.user.name
       %small.pull-right
         =microblog.created_at.time_ago
-      %p.text
+      %p.text.box
         =microblog.content
-      %br
     %hr.clear
+
+.pull-right
+  = paginate @microblogs, remote: true
