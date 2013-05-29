@@ -16,4 +16,5 @@
 .pl10.pull-left
   广播
   %br
-  ="#{user.microblogs.count} 条"
+  =link_to user.microblogs.count, microblogs_user_path(user)
+  条

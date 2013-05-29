@@ -21,4 +21,13 @@ class UsersController < ApplicationController
     end
   end
 
+  def microblogs
+    @user = User.find(params[:id])
+    @microblogs = Microblog.where(user: @user).desc('created_at').page(params[:page]||1).per(20)
+    respond_to do |format|
+      format.html
+      format.js { render 'microblogs/paginate' }
+    end
+  end
+
 end

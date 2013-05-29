@@ -35,6 +35,7 @@ SocialStudy::Application.routes.draw do
       get :followers
       get :repute
       get :unrepute
+      get :microblogs
     end
   end
   resources :knowledges do
