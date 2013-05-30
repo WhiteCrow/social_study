@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_up_path_for(user)
-    redirect_to root_path
+    request.referrer
   end
 
   def after_sign_out_path_for(user)

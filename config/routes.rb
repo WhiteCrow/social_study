@@ -1,6 +1,10 @@
 SocialStudy::Application.routes.draw do
 
-  resources :comments, only: [:create, :destroy]
+  resources :comments, only: [:create, :destroy] do
+    collection do
+      get :paginate
+    end
+  end
 
   resources :notes do
     member do

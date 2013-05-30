@@ -1,17 +1,17 @@
-%div#comments
-  - (comments = commentable.comments.page(params[:page]||1).per(20)).each do |comment|
+- commentable ||= @commentable
+- (comments = commentable.comments.page(params[:page]||1).per(20)).each do |comment|
+  %div
     %div
-      %div
-        = link_to comment.user, class: 'user-face' do
-          = image_tag comment.user.image(:small)
-      %div.pull-left.span10
-        %small
-          =link_to comment.user do
-            = comment.user.name
-          =comment.created_at.time_ago
-        %p.text.box
-          =comment.content
-    %hr.clear
+      = link_to comment.user, class: 'user-face' do
+        = image_tag comment.user.image(:small)
+    %div.pull-left.span10
+      %small
+        =link_to comment.user do
+          = comment.user.name
+        =comment.created_at.time_ago
+      %p.text.box
+        =comment.content
+  %hr.clear
 
 .pull-right
-  = paginate comments, remote: true
+  = paginate comments, remote: true, params: {controller: :comments, action: :paginate, commentable_type: commentable.class.name, commentable_id: commentable.id }
