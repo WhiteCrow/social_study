@@ -31,10 +31,6 @@ describe CommentsController do
         assigns(:comment).should be_persisted
       end
 
-      it "redirects to the created comment" do
-        post :create, {:comment => valid_attributes}
-        response.should redirect_to(Comment.last.commentable)
-      end
     end
   end
 

@@ -1,6 +1,7 @@
 class Experience
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Mongoid::Post
 
   has_many :reputations, as: :reputable, dependent: :destroy
   has_many :comments, as: :commentable, dependent: :destroy

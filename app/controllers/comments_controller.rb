@@ -2,14 +2,18 @@ class CommentsController < ApplicationController
 
   def create
     commentable = params[:comment][:commentable_type].constantize.find(params[:comment][:commentable_id])
+    last_page = commentable.last_page_with_per_page(20)
     @comment = commentable.comments.build(params[:comment])
     @comment.user = current_user
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to request.referrer, notice: 'Comment was successfully created.' }
+        format.html { redirect_to controller: params[:comment][:commentable_type].tableize,
+                                  action: 'show',
+                                  id: params[:comment][:commentable_id],
+                                  page: last_page}
       else
-        format.html { redirect_to request.referrer, notice: 'Comment create fail.' }
+        format.html { redirect_to commentable, notice: 'Comment create fail.' }
       end
     end
   end
