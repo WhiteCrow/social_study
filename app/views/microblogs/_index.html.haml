@@ -1,21 +1,23 @@
-- @microblogs.each do |microblog|
-  %div.microblog{id: "microblog-#{microblog.id}"}
-    = link_to microblog.user, class: 'pull-left' do
-      = image_tag microblog.user.image(:small)
-    %div.pull-left.span10
-      =link_to microblog.user do
-        = microblog.user.name
-      %small.pull-right
-        =microblog.created_at.time_ago
-      .text.box
-        =microblog.content
-      .small-box.oprate-mic
-        =link_to '展开', '#', class: 'gray-link'
-        =link_to '回复', '#', class: 'pl5 hide'
-        =link_to '转播', '#', class: 'pl5 hide'
-        - if microblog.user == current_user
-          = link_to '删除', microblog, class: 'pl5 hide', method: :delete, remote: true, confirm: '你确定要删除这条广播吗？'
-      %hr.low
+%div#microblogs
+  - @microblogs.each do |microblog|
+    %div.microblog{id: "microblog-#{microblog.id}"}
+      = link_to microblog.user, class: 'pull-left' do
+        = image_tag microblog.user.image(:small)
+      %div.pull-left.span10
+        =link_to microblog.user do
+          = microblog.user.name
+        %small.pull-right
+          =microblog.created_at.time_ago
+        .text.box
+          =microblog.content
+        .small-box.oprate-mic
+          =link_to '展开', '#', class: 'gray-link'
+          =link_to '回复', '#', class: 'pl5 hide'
+          - if microblog.user == current_user
+            = link_to '删除', microblog, class: 'pl5 hide', method: :delete, remote: true, confirm: '你确定要删除这条广播吗？'
+          - else
+            =link_to '转播', '#', class: 'pl5 hide'
+        %hr.low
 
-.pull-right
-  = paginate @microblogs, remote: true
+  .pull-right
+    = paginate @microblogs, remote: true
