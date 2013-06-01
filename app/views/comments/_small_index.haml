@@ -1,11 +1,10 @@
-%div
-- commentable.comments.limit(18).each do |comment|
-  %div.span12
-    %p.text
-      =comment.content
-      &nbsp;-&nbsp;
-      =link_to comment.user do
-        = comment.user.name
-  %br
-%p.pl10
-  = link_to '查看更多回复', commentable, target: '_blanak'
+- max_show_num = 18
+- commentable.comments.limit(max_show_num).each do |comment|
+  %p.text
+    =comment.content
+    &nbsp;-&nbsp;
+    =link_to comment.user do
+      = comment.user.name
+- if commentable.comments.count > max_show_num
+  %p.pl10
+    = link_to '查看更多回复', commentable, target: '_blanak'
