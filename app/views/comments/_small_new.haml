@@ -1,0 +1,7 @@
+.field
+  = form_for current_user.comments.build, remote: true do |f|
+    = f.text_area :content, rows: 1, class: 'span10 pull-left'
+    = f.hidden_field :commentable_type, value: commentable.class.name
+    = f.hidden_field :commentable_id, value: commentable.id
+    %span.actions
+      = f.submit '评论', :class=>'btn btn-success pull-right'

@@ -1,6 +1,7 @@
 class Microblog
   include Mongoid::Document
   include Mongoid::Timestamps::Created
+  include Mongoid::Post
 
   has_many :comments, as: :commentable, dependent: :destroy
   belongs_to :user

@@ -17,6 +17,9 @@
             = link_to '删除', microblog, class: 'pl5 hide', method: :delete, remote: true, confirm: '你确定要删除这条广播吗？'
           - else
             =link_to '转播', '#', class: 'pl5 hide'
+        .row-fluid
+          =render 'comments/small_index', commentable: microblog
+          =render 'comments/small_new', commentable: microblog
         %hr.low
 
   .pull-right
