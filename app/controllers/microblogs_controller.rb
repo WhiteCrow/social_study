@@ -1,6 +1,8 @@
 class MicroblogsController < ApplicationController
-  # GET /microblogs
-  # GET /microblogs.json
+
+  before_filter :require_user, except: [:show, :index]
+  layout 'main', except: [:index]
+
   def index
     @microblogs = Microblog.all
 

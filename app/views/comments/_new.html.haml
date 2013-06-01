@@ -7,8 +7,9 @@
 - else
   .field
     = form_for current_user.comments.build do |f|
-      = f.text_area :content, rows: 2, class: 'span12'
+      = f.text_area :content, rows: 3, class: 'span12'
       = f.hidden_field :commentable_type, value: commentable.class.name
       = f.hidden_field :commentable_id, value: commentable.id
       .actions
         = f.submit '评论', :class=>'btn btn-success pull-right'
+%br.big
