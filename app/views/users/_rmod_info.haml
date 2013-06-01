@@ -8,15 +8,15 @@
 .right-line.pull-left
   关注
   %br
-  =link_to user.following.count, following_user_path(user)
+  =link_to user.following.count, following_user_path(user), target: '_blank'
   人
 .right-line.pull-left
   粉丝
   %br
-  =link_to user.followers.count, followers_user_path(user)
+  =link_to user.followers.count, followers_user_path(user), target: '_blank'
   人
 .pl10.pull-left
   广播
   %br
-  =link_to user.microblogs.count, microblogs_user_path(user)
+  =link_to user.microblogs.count, microblogs_user_path(user), target: '_blank'
   条
