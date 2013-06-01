@@ -1,6 +1,8 @@
-%p.text
+%p.text{id: "comment-#{comment.id}"}
   =comment.content
   &nbsp;-&nbsp;
   =link_to comment.user do
     = comment.user.name
+  -if comment.user == current_user
+    = link_to '删除', comment, class: 'gray-link pull-right', method: :delete, remote: true, confirm: '你确定要删除这条回复吗？'
 

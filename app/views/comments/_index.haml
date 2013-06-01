@@ -10,8 +10,10 @@
           =link_to comment.user do
             = comment.user.name
           =comment.created_at.time_ago
-        %p.text.box
+        %p.text
           =comment.content
+        -if comment.user == current_user
+          = link_to '删除', comment, class: 'gray-link pull-right', method: :delete, confirm: '你确定要删除这条回复吗？'
     %hr.clear
 
   .pull-right

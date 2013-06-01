@@ -21,11 +21,11 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment = Comment.find(params[:id])
-    commentable = @comment.commentable
     @comment.destroy
 
     respond_to do |format|
-      format.html { redirect_to commentable }
+      format.html { redirect_to request.referrer }
+      format.js
     end
   end
 
