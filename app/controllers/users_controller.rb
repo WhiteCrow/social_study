@@ -1,3 +1,4 @@
+# coding: utf-8
 class UsersController < ApplicationController
   before_filter :authenticate_user!
 
@@ -6,13 +7,19 @@ class UsersController < ApplicationController
   end
 
   def following
-    @user = User.find(params[:id])
-    @users = @user.following.page(params[:page]||1).per(20)
+    user = User.find(params[:id])
+    @users = user.following.page(params[:page]||1).per(20)
+    respond_to do |format|
+      format.html{render 'index', locals: {title: "#{user.name}关注的人："}}
+    end
   end
 
   def followers
-    @user = User.find(params[:id])
-    @users = @user.followers.page(params[:page]||1).per(20)
+    user = User.find(params[:id])
+    @users = user.followers.page(params[:page]||1).per(20)
+    respond_to do |format|
+      format.html{render 'index', locals: {title: "关注#{user.name}的人："}}
+    end
   end
 
   def follow
