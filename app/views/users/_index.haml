@@ -1,0 +1,8 @@
+- @users.each do |user|
+  = link_to user, class: 'pull-left' do
+    = image_tag user.image(:small) 
+  %div.pull-left.span10
+    =link_to user.name, user
+  %hr.low
+.pull-right
+  = paginate @users, remote: true

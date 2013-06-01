@@ -5,6 +5,16 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def following
+    @user = User.find(params[:id])
+    @users = @user.following.page(params[:page]||1).per(20)
+  end
+
+  def followers
+    @user = User.find(params[:id])
+    @users = @user.followers.page(params[:page]||1).per(20)
+  end
+
   def follow
     @user = User.find(params[:id])
     current_user.follow @user

@@ -8,11 +8,13 @@
 .right-line.pull-left
   关注
   %br
-  ="#{user.following.count} 人"
+  =link_to user.following.count, following_user_path(user)
+  人
 .right-line.pull-left
   粉丝
   %br
-  ="#{user.followers.count} 人"
+  =link_to user.followers.count, followers_user_path(user)
+  人
 .pl10.pull-left
   广播
   %br
