@@ -38,13 +38,6 @@ describe CommentsController do
         delete :destroy, {:id => comment.to_param}
       }.to change(Comment, :count).by(-1)
     end
-
-    it "redirects to the comments list" do
-      comment = user.comments.create!(valid_attributes)
-      commentable = comment.commentable
-      delete :destroy, {:id => comment.to_param}
-      response.should redirect_to(commentable)
-    end
   end
 
 end
