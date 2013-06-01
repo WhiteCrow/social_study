@@ -4,6 +4,6 @@ module MicroblogsHelper
     link_to("#{microblog.comments.count}回复",
             comment_microblog_path(microblog),
             remote: true,
-            class: 'gray-link coment-link')
+            class: 'gray-link comment-link')
   end
 end
