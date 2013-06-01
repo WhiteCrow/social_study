@@ -17,7 +17,7 @@ class MicroblogsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @microblog }
+      format.js
     end
   end
 
@@ -72,10 +72,4 @@ class MicroblogsController < ApplicationController
     end
   end
 
-  def comment
-    @microblog = Microblog.find(params[:id])
-    respond_to do |format|
-      format.js
-    end
-  end
 end
