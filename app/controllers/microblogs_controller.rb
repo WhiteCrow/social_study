@@ -30,13 +30,10 @@ class MicroblogsController < ApplicationController
     end
   end
 
-  # GET /microblogs/1/edit
   def edit
     @microblog = Microblog.find(params[:id])
   end
 
-  # POST /microblogs
-  # POST /microblogs.json
   def create
     @microblog = Microblog.new(params[:microblog])
     @microblog.user = current_user
@@ -52,8 +49,6 @@ class MicroblogsController < ApplicationController
     end
   end
 
-  # PUT /microblogs/1
-  # PUT /microblogs/1.json
   def update
     @microblog = Microblog.find(params[:id])
 
@@ -72,6 +67,13 @@ class MicroblogsController < ApplicationController
     @microblog = Microblog.find(params[:id])
     @microblog.destroy
 
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def comment
+    @microblog = Microblog.find(params[:id])
     respond_to do |format|
       format.js
     end

@@ -11,15 +11,13 @@
         .text.box
           =microblog.content
         .small-box.oprate-mic
-          =link_to '展开', '#', class: 'gray-link'
-          =link_to '回复', '#', class: 'pl5 hide'
+          = microblog_comments_link(microblog)
           - if microblog.user == current_user
             = link_to '删除', microblog, class: 'pl5 hide', method: :delete, remote: true, confirm: '你确定要删除这条广播吗？'
           - else
             =link_to '转播', '#', class: 'pl5 hide'
           %br.clear.big
-          =render 'comments/small_index', commentable: microblog
-          =render 'comments/small_new', commentable: microblog
+          %div.mb-comments.hide
         %hr.low
 
   .pull-right

@@ -1,10 +1,6 @@
 - max_show_num = 18
 - commentable.comments.limit(max_show_num).each do |comment|
-  %p.text
-    =comment.content
-    &nbsp;-&nbsp;
-    =link_to comment.user do
-      = comment.user.name
-- if commentable.comments.count > max_show_num
-  %p
+  = render 'comments/small_show', comment: comment
+%p.more-comments
+  - if commentable.comments.count > max_show_num
     = link_to '查看更多回复', commentable, target: '_blanak'

@@ -1,0 +1,2 @@
+var commentable = $('<%= "##{commentable.class.name.underscore}-#{commentable.id}"%>')
+commentable.find('.more-comments').before('<%= j render 'comments/small_show', comment: @comment %>')

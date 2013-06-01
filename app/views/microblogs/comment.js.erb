@@ -1,0 +1,16 @@
+var mb = $('<%="#microblog-#{@microblog.id}"%>')
+var mbComments = mb.find('.mb-comments') 
+var commentLink = mb.find('.comment-link') 
+
+if (!mbComments.is(':parent')){
+  mbComments.append('<%= j render('comments/small_index', commentable: @microblog)%>')
+            .append('<%= j render('comments/small_new', commentable: @microblog)%>')
+}
+
+if (mbComments.is(':hidden')){
+  commentLink.html('隐藏回复')
+  mbComments.show()
+}else{
+  commentLink.html('<%= "#{@microblog.comments.count}回复" %>')
+  mbComments.hide()
+}
