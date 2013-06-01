@@ -1,12 +1,15 @@
-.span8.well
+.span7.well
   %h4
     =title
-  %hr
+  %br
   - @users.each do |user|
-    = link_to user, class: 'pull-left' do
-      = image_tag user.image(:small) 
-    %div.pull-left.span10
-      =link_to user.name, user
-    %hr.low
+    %div.pull-left.span2
+      = link_to user do
+        = image_tag user.image(:small)
+        %br.lh3
+        .text
+          =user.name
+      %br
+
   .pull-right
     = paginate @users, remote: true

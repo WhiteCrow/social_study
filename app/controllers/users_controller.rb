@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
   def following
     user = User.find(params[:id])
-    @users = user.following.page(params[:page]||1).per(20)
+    @users = user.following.page(params[:page]||1).per(48)
     respond_to do |format|
       format.html{render 'index', locals: {title: "#{user.name}关注的人："}}
     end
@@ -16,7 +16,7 @@ class UsersController < ApplicationController
 
   def followers
     user = User.find(params[:id])
-    @users = user.followers.page(params[:page]||1).per(20)
+    @users = user.followers.page(params[:page]||1).per(48)
     respond_to do |format|
       format.html{render 'index', locals: {title: "关注#{user.name}的人："}}
     end
