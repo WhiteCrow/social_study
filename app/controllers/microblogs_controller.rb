@@ -72,4 +72,17 @@ class MicroblogsController < ApplicationController
     end
   end
 
+  def relay
+    @microblog = Microblog.find(params[:id])
+    if @microblog.relay_by?(current_user)
+      @microblog.reputations.where({user: current_user, type: 'relay'}).first.destroy
+    else
+      current_user.repute(@microblog, 'relay')
+    end
+    respond_to do |format|
+      format.html{ render action: :show }
+      format.js
+    end
+  end
+
 end

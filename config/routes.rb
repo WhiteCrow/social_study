@@ -18,7 +18,11 @@ SocialStudy::Application.routes.draw do
     end
   end
 
-  resources :microblogs
+  resources :microblogs do
+    member do
+      post :relay
+    end
+  end
 
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 

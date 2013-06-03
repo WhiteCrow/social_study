@@ -11,11 +11,11 @@
         .text.box
           =microblog.content
         .small-box.oprate-mic
-          = remote_show_comments_link(microblog)
+          = show_comments_link(microblog)
           - if microblog.user == current_user
             = link_to '删除', microblog, class: 'pl5 hide', method: :delete, remote: true, confirm: '你确定要删除这条广播吗？'
           - else
-            =link_to '转播', '#', class: 'pl5 hide'
+            = relay_link(microblog)
           %br.clear.big
           %div.mb-comments.hide
         %hr.low
