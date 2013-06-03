@@ -3,8 +3,8 @@ class HomeController < ApplicationController
     if current_user
       @microblog = Microblog.new
       @microblogs = Microblog.
-                      in(user: current_user.following + [current_user]).
-                      union.
+                      any_of({:user_id.in => current_user.id = current_user.following_ids},
+                             { :relayer_ids.in => current_user.following_ids }).
                       desc('created_at').
                       page(params[:page]||1).per(20)
       respond_to do |format|

@@ -59,8 +59,14 @@ class User
     })
   end
 
-  def following_relay_ms
-    Reputation.in(user: self.following + []).where(type: 'relay').where(reputable_type: 'Microblog').map(&:reputable)
+  def relay(relayable)
+    relayable.push(:relayer_ids, self.id)
+    relayable.inc(:relay_count, 1)
+  end
+
+  def unrelay(relayable)
+    relayable.pull(:relayer_ids, self.id)
+    relayable.inc(:relay_count, -1)
   end
 
   ## Database authenticatable
