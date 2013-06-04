@@ -18,7 +18,8 @@ SocialStudy::Application.routes.draw do
     end
   end
 
-  resources :microblogs do
+  resources :relay_microblogs, controller: 'microblogs'
+  resources :origin_microblogs, controller: 'microblogs' do
     member do
       post :relay
     end

@@ -2,16 +2,16 @@ class Microblog
   include Mongoid::Document
   include Mongoid::Timestamps::Created
   include Mongoid::Post
-  include Mongoid::Relayable
 
   has_many :comments, as: :commentable, dependent: :destroy
   belongs_to :user
 
-  attr_accessible :content, :user_id, :user
-  validates_presence_of :content, :user_id
-  validates_length_of :content, maximum: 140
+  attr_accessible :user_id, :user
+  validates_presence_of :user_id, :content
 
-  field :content, type: String
   index :user_id => 1
+
+  scope :no_origin_user, ->(user){ not_in(origin_id: user.origin_microblog_ids) }
+  # not display the following relay microblog if it write by user himself
 
 end

@@ -4,11 +4,11 @@
 window.Microblog =
   hover: ->
     $('.microblog').on 'mouseover', ()->
-      $(this).find('.oprate-mic').children('a.hide').show()
-      $(this).find('.oprate-mic').children('a.gray-link').css('color','#08c')
+      $(this).find('.oprate-mic').children('.hide').show()
+      $(this).find('.oprate-mic').children('.gray-link').css('color','#08c')
     $('.microblog').on 'mouseout', ()->
-      $(this).find('.oprate-mic').children('a.hide').hide()
-      $(this).find('.oprate-mic').children('a.gray-link').css('color','#ccc')
+      $(this).find('.oprate-mic').children('.hide').hide()
+      $(this).find('.oprate-mic').children('.gray-link').css('color','#ccc')
 
 $ ->
   window.Microblog.hover(true)

@@ -21,6 +21,8 @@ gem "kaminari" #pagnation
 
 # Mongoid plugins
 gem "mongoid", ">= 3.1.1"
+gem 'bson'
+gem 'bson_ext'
 gem 'mongoid_auto_increment_id', "0.6.0"
 gem "mongoid_colored_logger", "0.2.2", :group => :development
 

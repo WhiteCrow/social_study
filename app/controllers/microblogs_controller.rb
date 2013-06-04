@@ -13,7 +13,7 @@ class MicroblogsController < ApplicationController
   end
 
   def show
-    @microblog = Microblog.find(params[:id])
+    @microblog = Microblog.find(params[:id]).origin
 
     respond_to do |format|
       format.html # show.html.erb
@@ -21,21 +21,8 @@ class MicroblogsController < ApplicationController
     end
   end
 
-  def new
-    @microblog = Microblog.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @microblog }
-    end
-  end
-
-  def edit
-    @microblog = Microblog.find(params[:id])
-  end
-
   def create
-    @microblog = Microblog.new(params[:microblog])
+    @microblog = OriginMicroblog.new(params[:origin_microblog])
     @microblog.user = current_user
 
     respond_to do |format|
@@ -43,28 +30,14 @@ class MicroblogsController < ApplicationController
         format.html { redirect_to root_path, notice: 'Microblog was successfully created.' }
         format.json { render json: @microblog, status: :created, location: @microblog }
       else
-        format.html { render action: "new" }
-        format.json { render json: @microblog.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  def update
-    @microblog = Microblog.find(params[:id])
-
-    respond_to do |format|
-      if @microblog.update_attributes(params[:microblog])
-        format.html { redirect_to @microblog, notice: 'Microblog was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
+        format.html { redirect_to root_path }
         format.json { render json: @microblog.errors, status: :unprocessable_entity }
       end
     end
   end
 
   def destroy
-    @microblog = Microblog.find(params[:id])
+    @microblog = OriginMicroblog.find(params[:id])
     @microblog.destroy
 
     respond_to do |format|
@@ -73,11 +46,12 @@ class MicroblogsController < ApplicationController
   end
 
   def relay
-    @microblog = Microblog.find(params[:id])
+    @microblog = OriginMicroblog.find(params[:id])
     if @microblog.relay_by?(current_user)
-      @microblog.relayer_ids.delete(current_user.id)
+      @microblog.relay_microblogs.where(user_id: current_user.id).first.delete
     else
-      @microblog.relayer_ids.push(current_user.id)
+      relay_mb = @microblog.relay_microblogs.new(user_id: current_user.id)
+      relay_mb.save!
     end
     respond_to do |format|
       format.html{ render action: :show }

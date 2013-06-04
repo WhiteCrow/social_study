@@ -8,10 +8,12 @@ class User
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   has_many :microblogs
+  has_many :relay_microblogs
+  has_many :origin_microblogs
   has_many :notes
   has_many :experiences
   has_many :comments
-  #has_many :reputations
+  has_many :reputations
   has_and_belongs_to_many :following, :class_name => 'User', :inverse_of => :followers
   has_and_belongs_to_many :followers, :class_name => 'User', :inverse_of => :following
 
