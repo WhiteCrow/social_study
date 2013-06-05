@@ -38,12 +38,30 @@ class UsersController < ApplicationController
     end
   end
 
-  def microblogs
+  def states
     @user = User.find(params[:id])
-    @microblogs = Microblog.where(user: @user).desc('created_at').page(params[:page]||1).per(20)
+    @states = Audit.state.desc('created_at').page(params[:page]||1).per(20)
     respond_to do |format|
       format.html
-      format.js { render 'microblogs/paginate' }
+      format.js { render 'states/paginate' }
+    end
+  end
+
+  def relay
+    relayable_class = params[:relay][:relayable_type].constantize
+    relayable_id = params[:relay][:relayable_id]
+    relayable = relayable_class.find(relayable_id)
+
+    if relayable.user != current_user
+      if current_user.relay?(relayable)
+        current_user.unrelay(relayable)
+      else
+        current_user.relay(relayable)
+      end
+      respond_to do |format|
+        format.html{ render action: :show }
+        format.js
+      end
     end
   end
 

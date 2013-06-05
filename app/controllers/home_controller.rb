@@ -2,6 +2,7 @@ class HomeController < ApplicationController
   def index
     if current_user
       @microblog = Microblog.new
+      @states = Audit.state
       @microblogs = Microblog.
                       in(user_id: [current_user.id] + current_user.following_ids).
                       desc('created_at').

@@ -12,11 +12,11 @@ module ApplicationHelper
   end
 
   def follow_btn
-    link_to('follow', follow_user_path(@user), remote: true, class: 'btn btn-primary')
+    link_to('follow', follow_user_path(@user), remote: true, method: :post, class: 'btn btn-primary')
   end
 
   def unfollow_btn
-    link_to('unfollow', unfollow_user_path(@user), remote: true, class: 'btn btn-danger')
+    link_to('unfollow', unfollow_user_path(@user), remote: true, method: :post, class: 'btn btn-danger')
   end
 
   def operable(item)

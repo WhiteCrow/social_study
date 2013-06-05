@@ -18,11 +18,8 @@ SocialStudy::Application.routes.draw do
     end
   end
 
-  resources :microblogs do
-    member do
-      post :relay
-    end
-  end
+  resources :microblogs
+  resources :states, only: [:show]
 
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
@@ -37,13 +34,14 @@ SocialStudy::Application.routes.draw do
   resources :comments
   resources :users, :only => [:show] do
     member do
-      get :follow
-      get :unfollow
+      post :follow
+      post :unfollow
       get :following
       get :followers
-      get :repute
-      get :unrepute
-      get :microblogs
+      post :repute
+      post :unrepute
+      get :states
+      post :relay
     end
   end
   resources :knowledges do
