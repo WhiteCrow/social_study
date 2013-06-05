@@ -1,5 +1,23 @@
 require 'spec_helper'
 
 describe Microblog do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let(:user) { create :user }
+  let(:microblog) { create :microblog }
+  let(:relay) { create :relay, relayable: microblog, user: user }
+
+  context 'relay methods' do
+    it 'relay by user' do
+      lambda do
+        user.relay(microblog)
+      end.should change(microblog.relays, :size).by(1)
+    end
+
+    it 'unrelay by user' do
+      microblog
+      relay
+      lambda do
+        user.unrelay(microblog)
+      end.should change(microblog.relays, :size).by(-1)
+    end
+  end
 end

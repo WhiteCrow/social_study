@@ -1,0 +1,2 @@
+class Relay < ApplicationController
+end

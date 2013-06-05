@@ -3,6 +3,7 @@ require 'spec_helper'
 describe MicroblogsController do
   let(:user) { create :user }
   let(:microblog) { create :microblog }
+  let(:relay) { create :relay, relayable: microblog, user: user }
 
   def valid_attributes
     {
@@ -36,20 +37,65 @@ describe MicroblogsController do
     end
 
     describe "POST relay" do
-      it "creates a new relay" do
-        microblog
-        expect {
-          post :relay, {id: microblog.id}
-        }.to change(Relay, :count).by(1)
+      context "relay" do
+        it "creates a microblog's relay" do
+          microblog
+          expect {
+            post :relay, {id: microblog.to_param}
+          }.to change(Relay, :count).by(1)
+        end
+
+        it "creates a relay's audit" do
+          microblog
+          expect {
+            post :relay, {id: microblog.to_param}
+          }.to change(Audit, :count).by(1)
+        end
       end
 
-      it "creates a new audit" do
-        microblog
-        expect {
-          post :relay, {id: microblog.id}
-        }.to change(Audit, :count).by(1)
+      context "unrelay" do
+        it "destroy microblog's relay" do
+          microblog
+          relay
+          expect {
+            post :relay, {id: microblog.to_param}
+          }.to change(Relay, :count).by(-1)
+        end
+
+        it "destroy relay's audit" do
+          microblog
+          relay
+          expect {
+            post :relay, {id: microblog.to_param}
+          }.to change(Audit, :count).by(-1)
+        end
       end
     end
+
+    describe "Delete Destroy" do
+      it "destroys the microblog" do
+        microblog
+        expect {
+          delete :destroy, {:id => microblog.to_param}
+        }.to change(Microblog, :count).by(-1)
+      end
+
+      it "destroys the microblog's audits" do
+        microblog
+        expect {
+          delete :destroy, {:id => microblog.to_param}
+        }.to change(Audit, :count).by(-1)
+      end
+
+      it "destroys the microblog's relays" do
+        microblog
+        relay
+        expect {
+          delete :destroy, {:id => microblog.to_param}
+        }.to change(Relay, :count).by(-1)
+      end
+    end
+
   end
 
 end

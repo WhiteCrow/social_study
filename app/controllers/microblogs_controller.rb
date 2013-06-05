@@ -47,17 +47,16 @@ class MicroblogsController < ApplicationController
 
   def relay
     @microblog = Microblog.find(params[:id])
-    if @microblog.relay_by?(current_user)
-      #unrelay microblog
-      @microblog.relays.where(user_id: current_user.id).first.delete
-    else
-      #relay microblog
-      relay_mb = @microblog.relays.new(user_id: current_user.id)
-      relay_mb.save!
-    end
-    respond_to do |format|
-      format.html{ render action: :show }
-      format.js
+    if @microblog.user != current_user
+      if current_user.relay?(@microblog)
+        current_user.unrelay(@microblog)
+      else
+        current_user.relay(@microblog)
+      end
+      respond_to do |format|
+        format.html{ render action: :show }
+        format.js
+      end
     end
   end
 

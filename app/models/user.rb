@@ -60,14 +60,23 @@ class User
     })
   end
 
+  def relay?(relayable)
+    return false if self.relays.blank?
+    self.relays.map(&:relayable).include? relayable
+  end
+
   def relay(relayable)
-    relayable.push(:relayer_ids, self.id)
-    relayable.inc(:relay_count, 1)
+    if relayable.user != self
+      relay = relayable.relays.new(user_id: self.id)
+      relay.save!
+    else
+      return false
+    end
   end
 
   def unrelay(relayable)
-    relayable.pull(:relayer_ids, self.id)
-    relayable.inc(:relay_count, -1)
+    relay = Relay.where(relayable: relayable, user_id: self.id).first
+    relay.destroy
   end
 
   ## Database authenticatable

@@ -12,4 +12,10 @@ class Audit
     end
   end
 
+  def auditable
+    obj_class = self.association_chain.first["name"].constantize
+    obj_id = self.association_chain.first["id"]
+    obj_class.find(obj_id)
+  end
+
 end

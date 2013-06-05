@@ -2,10 +2,10 @@ class Relay
   include Mongoid::Document
   include Mongoid::Timestamps::Created
   include Mongoid::History::Trackable
+  include Mongoid::ClearHistoryTracks
   belongs_to :user
   belongs_to :relayable,
              polymorphic: true,
-             dependent: :destroy,
              inverse_of: :relayable
 
   index user_id: 1
@@ -18,6 +18,7 @@ class Relay
 
   track_history on: [:relay, :user_id],
                 track_create:  true,
-                track_destroy: true
+                track_destroy: false,
+                track_update: false
 
 end

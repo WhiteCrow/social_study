@@ -5,7 +5,7 @@ class Reputation
   include Mongoid::CounterCache
 
   belongs_to :user
-  belongs_to :reputable, polymorphic: true, inverse_of: :reputable, dependent: :destroy
+  belongs_to :reputable, polymorphic: true, inverse_of: :reputable
 
   field :type, type: String
   field :user_id, type: Integer
