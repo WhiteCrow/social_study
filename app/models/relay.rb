@@ -1,7 +1,7 @@
 class Relay
   include Mongoid::Document
   include Mongoid::Timestamps::Created
-  include Mongoid::Audit::Trackable
+  include Mongoid::History::Trackable
   belongs_to :user
   belongs_to :relayable,
              polymorphic: true,

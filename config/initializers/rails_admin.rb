@@ -3,7 +3,7 @@
 
 RailsAdmin.config do |config|
   config.authorize_with :cancan
-  config.audit_with :mongoid_audit, 'Audit'
+  #config.audit_with :mongoid_audit, 'Audit'
   # If your default_local is different from :en, uncomment the following 2 lines and set your default locale here:
   # require 'i18n'
   # I18n.default_locale = :de

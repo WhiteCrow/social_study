@@ -2,7 +2,7 @@ class Microblog
   include Mongoid::Document
   include Mongoid::Timestamps::Created
   include Mongoid::Post
-  include Mongoid::Audit::Trackable
+  include Mongoid::History::Trackable
 
   has_many :comments, as: :commentable, dependent: :destroy
   has_many :relays, as: :relayable
