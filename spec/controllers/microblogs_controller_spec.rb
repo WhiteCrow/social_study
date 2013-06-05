@@ -72,7 +72,7 @@ describe MicroblogsController do
       end
     end
 
-    describe "Delete Destroy" do
+    describe "Delete destroy" do
       it "destroys the microblog" do
         microblog
         expect {
@@ -93,6 +93,14 @@ describe MicroblogsController do
         expect {
           delete :destroy, {:id => microblog.to_param}
         }.to change(Relay, :count).by(-1)
+      end
+
+      it "destroys the microblog and it's relays' audits" do
+        microblog
+        relay
+        expect {
+          delete :destroy, {:id => microblog.to_param}
+        }.to change(Audit, :count).by(-2)
       end
     end
 
