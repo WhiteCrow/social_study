@@ -25,6 +25,7 @@ gem 'bson'
 gem 'bson_ext'
 gem 'mongoid_auto_increment_id', "0.6.0"
 gem "mongoid_colored_logger", "0.2.2", :group => :development
+gem "mongoid-audit"
 
 # debug
 gem 'pry-rails', '0.2.2'

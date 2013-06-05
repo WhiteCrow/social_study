@@ -1,25 +1,24 @@
 %div#microblogs
   - @microblogs.each do |microblog|
     %div.microblog{id: "microblog-#{microblog.id}"}
-      = link_to microblog.origin.user, class: 'pull-left' do
+      = link_to microblog.user, class: 'pull-left' do
         = image_tag microblog.user.image(:small)
       %div.pull-left.span10
-        =link_to microblog.origin.user do
-          = microblog.origin.user.name
+        =link_to microblog.user do
+          = microblog.user.name
         %small.pull-right
           =microblog.created_at.time_ago
         .text.box
           =microblog.content
         .small-box.oprate-mic
-          = show_comments_link(microblog.origin)
-          - if microblog.origin.user == current_user
-            = link_to '删除', microblog.origin, class: 'pl5 hide', method: :delete, remote: true, confirm: '你确定要删除这条广播吗？'
+          = show_comments_link(microblog)
+          - if microblog.user == current_user
+            = link_to '删除', microblog, class: 'pl5 hide', method: :delete, remote: true, confirm: '你确定要删除这条广播吗？'
           - else
-            = relay_link(microblog.origin)
-            -if microblog.is_a? RelayMicroblog
-              %small.hide.pl5
+            = relay_link(microblog)
+             /%small.hide.pl5
                 (由
-                = relayer_link(microblog)
+                /= relayer_link(microblog)
                 转播)
           %br.clear.big
           %div.mb-comments.hide

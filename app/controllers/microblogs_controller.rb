@@ -13,7 +13,7 @@ class MicroblogsController < ApplicationController
   end
 
   def show
-    @microblog = Microblog.find(params[:id]).origin
+    @microblog = Microblog.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -22,7 +22,7 @@ class MicroblogsController < ApplicationController
   end
 
   def create
-    @microblog = OriginMicroblog.new(params[:origin_microblog])
+    @microblog = Microblog.new(params[:microblog])
     @microblog.user = current_user
 
     respond_to do |format|
@@ -37,7 +37,7 @@ class MicroblogsController < ApplicationController
   end
 
   def destroy
-    @microblog = OriginMicroblog.find(params[:id])
+    @microblog = Microblog.find(params[:id])
     @microblog.destroy
 
     respond_to do |format|
@@ -46,11 +46,13 @@ class MicroblogsController < ApplicationController
   end
 
   def relay
-    @microblog = OriginMicroblog.find(params[:id])
+    @microblog = Microblog.find(params[:id])
     if @microblog.relay_by?(current_user)
-      @microblog.relay_microblogs.where(user_id: current_user.id).first.delete
+      #unrelay microblog
+      @microblog.relays.where(user_id: current_user.id).first.delete
     else
-      relay_mb = @microblog.relay_microblogs.new(user_id: current_user.id)
+      #relay microblog
+      relay_mb = @microblog.relays.new(user_id: current_user.id)
       relay_mb.save!
     end
     respond_to do |format|

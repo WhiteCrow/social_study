@@ -8,8 +8,7 @@ class User
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   has_many :microblogs
-  has_many :relay_microblogs
-  has_many :origin_microblogs
+  has_many :relays
   has_many :notes
   has_many :experiences
   has_many :comments
