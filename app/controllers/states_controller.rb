@@ -1,4 +1,7 @@
 class StatesController < ApplicationController
+  before_filter :require_user, except: [:show]
+  layout 'main', except: [:index]
+
   def show
     @state = Audit.find(params[:id])
     @statable = @state.statable
@@ -25,6 +28,13 @@ class StatesController < ApplicationController
     end
   end
 
+  def destroy
+    @auditable = Audit.find(params[:id]).auditable
+    @auditable.destroy
 
+    respond_to do |format|
+      format.js
+    end
+  end
 
 end
