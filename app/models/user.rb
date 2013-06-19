@@ -60,8 +60,7 @@ class User
     })
   end
 
-  def relay?(state)
-    relayable = state.statable
+  def relay?(relayable)
     return false if relayable.relays.blank?
     relayable.relays.map(&:relayable).include? relayable
   end

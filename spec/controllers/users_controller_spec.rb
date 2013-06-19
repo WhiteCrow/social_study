@@ -2,11 +2,9 @@ require 'spec_helper'
 
 describe UsersController do
 
-#  describe "GET 'show'" do
-#    it "returns http success" do
-#      get 'show'
-#      response.should be_success
-#    end
-#  end
+  let(:user) { create :user }
 
+  describe "authenticated" do
+    before(:each) { sign_in user }
+  end
 end

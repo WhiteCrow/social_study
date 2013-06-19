@@ -3,7 +3,6 @@ require 'spec_helper'
 describe Microblog do
   let(:user) { create :user }
   let(:microblog) { create :microblog }
-  let(:relay) { create :relay, relayable: microblog, user: user }
 
   context 'relay methods' do
     it 'relay by user' do
