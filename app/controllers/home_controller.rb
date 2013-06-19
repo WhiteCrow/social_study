@@ -2,9 +2,8 @@ class HomeController < ApplicationController
   def index
     if current_user
       @microblog = Microblog.new
-      @states = Audit.state
-      @microblogs = Microblog.
-                      in(user_id: [current_user.id] + current_user.following_ids).
+      @states = Audit.states.
+                      in(:modifier => [current_user] + current_user.following).
                       desc('created_at').
                       page(params[:page]||1).per(20)
       respond_to do |format|

@@ -19,7 +19,11 @@ SocialStudy::Application.routes.draw do
   end
 
   resources :microblogs
-  resources :states, only: [:show]
+  resources :states, only: [:show, :destroy] do
+    member do
+      post :relay
+    end
+  end
 
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
@@ -31,7 +35,6 @@ SocialStudy::Application.routes.draw do
     get "account/update_private_token" => "account#update_private_token", :as => :update_private_token_account
   end
 
-  resources :comments
   resources :users, :only => [:show] do
     member do
       post :follow
@@ -41,7 +44,6 @@ SocialStudy::Application.routes.draw do
       post :repute
       post :unrepute
       get :states
-      post :relay
     end
   end
   resources :knowledges do

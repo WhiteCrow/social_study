@@ -3,12 +3,12 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 window.Microblog =
   hover: ->
-    $('.microblog').on 'mouseover', ()->
+    $('.state').on 'mouseover', ()->
       $(this).find('.oprate-mic').children('.hide').show()
-      $(this).find('.oprate-mic').children('.gray-link').css('color','#08c')
-    $('.microblog').on 'mouseout', ()->
+      $(this).find('.oprate-mic').find('.gray-link').css('color','#08c')
+    $('.state').on 'mouseout', ()->
       $(this).find('.oprate-mic').children('.hide').hide()
-      $(this).find('.oprate-mic').children('.gray-link').css('color','#ccc')
+      $(this).find('.oprate-mic').find('.gray-link').css('color','#888')
 
 $ ->
   window.Microblog.hover(true)

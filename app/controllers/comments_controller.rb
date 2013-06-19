@@ -12,6 +12,7 @@ class CommentsController < ApplicationController
                                   action: 'show',
                                   id: params[:comment][:commentable_id],
                                   page: last_page}
+        #used to states comments that in home page
         format.js{ render locals: {commentable: commentable} }
       else
         format.html { redirect_to commentable, notice: 'Comment create fail.' }

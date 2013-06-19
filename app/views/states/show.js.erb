@@ -1,0 +1,16 @@
+var st = $('<%="##{@statable.class.name.underscore}-#{@statable.id}"%>')
+var stComments = st.find('.st-comments') 
+var commentLink = st.find('.comment-link') 
+
+if (!stComments.is(':parent')){
+  stComments.append('<%= j render('comments/small_index', commentable: @statable)%>')
+            .append('<%= j render('comments/small_new', commentable: @statable)%>')
+}
+
+if (stComments.is(':hidden')){
+  commentLink.html('隐藏回复')
+  stComments.show()
+}else{
+  commentLink.html('<%= "#{@statable.comments.count}回复" %>')
+  stComments.hide()
+}

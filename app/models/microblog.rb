@@ -22,7 +22,9 @@ class Microblog
   track_history on: [:content, :user_id],
                 track_create:  true,
                 track_update:  false,
-                track_destroy: false
+                track_destroy: false,
+                :modifier_field => :modifier,
+                :modifier_field_inverse_of => :user
 
   index :user_id => 1
   field :content, type: String

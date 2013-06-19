@@ -1,32 +1,32 @@
 # coding: utf-8
 module MicroblogsHelper
-  def relay_link(microblog)
-    if microblog.relay_by?(current_user)
-      relayed_link(microblog)
+  def relay_link(state)
+    if current_user.relay? state
+      relayed_link(state)
     else
-      unrelay_link(microblog)
+      unrelay_link(state)
     end
   end
 
-  def unrelay_link(microblog)
+  def unrelay_link(state)
     link_to '转播',
-            relay_microblog_path(microblog),
+            relay_state_path(state),
             remote: true,
             method: :post,
             class: 'pl5 hide unrelay-link'
   end
 
-  def relayed_link(microblog)
+  def relayed_link(state)
     link_to '已转播',
-            relay_microblog_path(microblog),
+            relay_state_path(state),
             remote: true,
             method: :post,
             class: 'pl5 hide relayed-link'
   end
 
-  #def relayer_link(microblog)
-  #  if microblog.is_a? RelayMicroblog
-  #    link_to microblog.user.name, microblog.user
-  #  end
-  #end
+  def relayer_link(state)
+    if (relayable = state.auditable).is_a? Relay
+      link_to relayable.user.name, relayable.user, class: 'gray-link'
+    end
+  end
 end

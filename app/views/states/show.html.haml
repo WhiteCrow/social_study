@@ -1,2 +1,16 @@
-%h1 States#show
-%p Find me in app/views/states/show.html.haml
+%p#notice=notice
+%div.statable
+  = link_to @statable.user, class: 'pull-left' do
+    = image_tag @statable.user.image(:small)
+  %div.pull-left.span10
+    =link_to @statable.user do
+      = @statable.user.name
+    %small.pull-right
+      = @statable.created_at.time_ago
+    .text.box
+      = @statable.content
+%br.clear
+%hr.big
+%div.offset1
+  = render 'comments/index', commentable: @statable
+  = render 'comments/new', commentable: @statable
