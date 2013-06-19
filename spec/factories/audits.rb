@@ -2,5 +2,6 @@
 
 FactoryGirl.define do
   factory :audit do
+    action "create"
   end
 end
