@@ -40,7 +40,7 @@ class UsersController < ApplicationController
 
   def states
     @user = User.find(params[:id])
-    @states = Audit.state.desc('created_at').page(params[:page]||1).per(20)
+    @states = Audit.states.in(modifier: current_user).desc('created_at').page(params[:page]||1).per(20)
     respond_to do |format|
       format.html
       format.js { render 'states/paginate' }
