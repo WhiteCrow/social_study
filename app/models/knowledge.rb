@@ -11,7 +11,7 @@ class Knowledge
   field :title, type: String
   field :second_title, type: String
   field :description, type: String
-  field :knowledge_association_id, type: Integer
+  #field :knowledge_association_id, type: String
   field :publish, :type => Boolean, :default => false
 
   def image

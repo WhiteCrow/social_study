@@ -8,8 +8,7 @@ class Reputation
   belongs_to :reputable, polymorphic: true, inverse_of: :reputable
 
   field :type, type: String
-  field :user_id, type: Integer
-  index user_id: 1
+  field :user_id, type: String
 
   counter_cache :name => :reputable, :inverse_of => :reputations
 
