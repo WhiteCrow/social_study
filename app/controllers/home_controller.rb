@@ -8,7 +8,7 @@ class HomeController < ApplicationController
                       page(params[:page]||1).per(20)
       respond_to do |format|
         format.html
-        format.js { render 'microblogs/paginate' }
+        format.js { render 'states/paginate' }
       end
     end
   end
