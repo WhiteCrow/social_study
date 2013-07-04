@@ -7,6 +7,8 @@ class User
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
+  ROLES = %w(admin user)
+
   has_many :microblogs
   has_many :relays
   has_many :notes
@@ -20,8 +22,7 @@ class User
 
   validates_presence_of :name, :encrypted_password, :role
   validates_uniqueness_of :name, :email, :case_sensitive => false
-
-  ROLES = %w[admin normal banned]
+  validates_inclusion_of :role, in: ROLES
 
   def role?(target_role)
     self.role == target_role.to_sym||target_role.to_s
