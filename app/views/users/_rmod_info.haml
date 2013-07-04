@@ -2,7 +2,7 @@
   =link_to user, class:'user-face' do
     =image_tag user.image
 %h4.span6.text
-  = user.name
+  = link_to user.name, user
 %br.clear
 %br
 .right-line.pull-left
