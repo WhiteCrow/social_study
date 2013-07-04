@@ -1,7 +1,15 @@
 class KnowledgesController < ApplicationController
 
- layout 'main', only: [:new, :edit]
- layout 'sidebar', only: [:index, :show, :notes]
+  layout :choose_layout
+
+  def choose_layout
+    action = params[:action]
+    if ["edit", "new"].include? action
+      return 'main'
+    elsif ["index", "show", "notes"].include? action
+      return 'sidebar'
+    end
+  end
 
   def index
     @newest_knowledges = Knowledge.order_by(created_at: :desc)
