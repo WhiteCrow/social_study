@@ -1,11 +1,11 @@
-var statable = $('<%= "##{@statable.class.name.underscore}-#{@statable.id}"%>')
-var urelayLink = statable.find('.unrelay-link')
-var relayedLink = statable.find('.relayed-link')
+var auditable = $('<%= "##{@auditable.class.name.underscore}-#{@auditable.id}"%>')
+var urelayLink = auditable.find('.unrelay-link')
+var relayedLink = auditable.find('.relayed-link')
 
 if (urelayLink.length > 0){
-  statable.find('.unrelay-link').replaceWith('<%= relayed_link(@statable) %>')
+  auditable.find('.unrelay-link').replaceWith('<%= relayed_link(@statable) %>')
 }else if(relayedLink.length > 0){
-  statable.find('.relayed-link').replaceWith('<%= unrelay_link(@statable) %>')
+  auditable.find('.relayed-link').replaceWith('<%= unrelay_link(@statable) %>')
 }
 
-$(statable).find('.oprate-mic').children('.hide').show()
+$(auditable).find('.oprate-mic').children('.hide').show()

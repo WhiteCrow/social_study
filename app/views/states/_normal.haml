@@ -7,4 +7,6 @@
 .small-box.oprate-mic
   = state_comments_link(state)
   = link_to '删除', state_path(state), class: 'pl5 hide', method: :delete, remote: true, confirm: '你确定要删除这条广播吗？'
+  - if statable.user != current_user
+    = relay_link(state)
 .st-comments.hide

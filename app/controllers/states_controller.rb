@@ -14,6 +14,7 @@ class StatesController < ApplicationController
 
   def relay
     @statable = Audit.find(params[:id]).statable
+    @auditable = Audit.find(params[:id]).auditable
     if @statable.user != current_user
       #user only can relay other users' statable
       if current_user.relay?(@statable)

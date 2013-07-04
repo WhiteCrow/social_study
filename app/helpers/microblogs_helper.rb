@@ -1,7 +1,7 @@
 # coding: utf-8
 module MicroblogsHelper
   def relay_link(state)
-    if current_user.relay? state
+    if current_user.relay? state.statable
       relayed_link(state)
     else
       unrelay_link(state)
