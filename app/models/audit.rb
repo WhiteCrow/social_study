@@ -5,12 +5,18 @@ class Audit
   StateScope = ["microblog", "relay"]
   scope :states, where(action: 'create').in(scope: StateScope)
 
+  before_create :set_modifier
+
   def user
     if (user_id = self.modified["user_id"])
       User.find(user_id)
     elsif
       self.modifier
     end
+  end
+
+  def set_modifier
+    self.modifier_id = self.modified["user_id"] if self.modifier_id.nil?
   end
 
   def auditable
