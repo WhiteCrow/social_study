@@ -1,3 +1,4 @@
+%br
 = form_for @knowledge do |f|
   - if @knowledge.errors.any?
     #error_explanation
@@ -14,7 +15,7 @@
     = f.text_field :second_title
   .field
     = f.label :description, '内容'
-    = f.text_area :description
+    = f.text_area :description, class: 'span12'
   .actions
     = f.submit '提交', class: 'btn btn-primary'
     = link_to '返回', :back, class: 'btn'
