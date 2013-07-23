@@ -1,3 +1,4 @@
+%br
 = form_for @resource do |f|
   - if @resource.errors.any?
     #error_explanation
@@ -6,5 +7,15 @@
         - @resource.errors.full_messages.each do |msg|
           %li= msg
 
+  .field
+    = f.label :title, '标题'
+    = f.text_field :title
+  .field
+    = f.label :url, '参考网址'
+    = f.text_field :url
+  .field
+    = f.label :description, '描述'
+    = f.text_area :description, class: 'span12'
   .actions
-    = f.submit 'Save'
+    = f.submit '提交', class: 'btn btn-primary'
+    = link_to '返回', :back, class: 'btn'

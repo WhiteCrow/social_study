@@ -1,17 +1,21 @@
 class ResourcesController < ApplicationController
-  # GET /resources
-  # GET /resources.json
-  def index
-    @resources = Resource.all
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @resources }
+  layout :choose_layout
+
+  def choose_layout
+    action = params[:action]
+    if ["edit", "new"].include? action
+      return 'main'
+    elsif ["index", "show", "notes"].include? action
+      return 'sidebar'
     end
   end
 
-  # GET /resources/1
-  # GET /resources/1.json
+  def index
+    @newest_resources = Resource.order_by(created_at: :desc)
+    @hottest_resources = Resource.order_by(created_at: :desc)
+  end
+
   def show
     @resource = Resource.find(params[:id])
 
