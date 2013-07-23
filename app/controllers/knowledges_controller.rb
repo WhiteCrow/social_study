@@ -5,9 +5,9 @@ class KnowledgesController < ApplicationController
   def choose_layout
     action = params[:action]
     if ["edit", "new"].include? action
-      return 'main'
+      'main'
     elsif ["index", "show", "notes"].include? action
-      return 'sidebar'
+      'sidebar'
     end
   end
 
