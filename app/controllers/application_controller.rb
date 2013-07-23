@@ -27,4 +27,14 @@ class ApplicationController < ActionController::Base
     end
   end
 
+
+  def choose_layout
+    action = params[:action]
+    if ["edit", "new"].include? action
+      'main'
+    elsif ["index", "show", "notes"].include? action
+      'sidebar'
+    end
+  end
+
 end

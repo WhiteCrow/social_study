@@ -2,15 +2,6 @@ class ResourcesController < ApplicationController
 
   layout :choose_layout
 
-  def choose_layout
-    action = params[:action]
-    if ["edit", "new"].include? action
-      return 'main'
-    elsif ["index", "show", "notes"].include? action
-      return 'sidebar'
-    end
-  end
-
   def index
     @newest_resources = Resource.order_by(created_at: :desc)
     @hottest_resources = Resource.order_by(created_at: :desc)
