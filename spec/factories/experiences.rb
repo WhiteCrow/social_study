@@ -3,6 +3,6 @@ FactoryGirl.define do
     sequence(:title){|n| "title #{n}" }
     content "MyText"
     association :user
-    association :knowledge
+    association :experienceable, factory: :knowledge
   end
 end
