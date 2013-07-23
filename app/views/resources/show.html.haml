@@ -1,6 +1,19 @@
-%p#notice= notice
+%div.profile
+  = image_tag @resource.image, class: 'normal pull-left'
+  %div.info
+    %h3
+      = @resource.title
+    %p
+      = @resource.description
+  %br.clear
 
-
-= link_to 'Edit', edit_resource_path(@resource)
-\|
-= link_to 'Back', resources_path
+  %div
+    %hr
+    =link_to new_review_path(resource_id: @resource) do
+      %li.icon-pencil
+      写评论
+    &nbsp;
+    =link_to new_experience_path(experienceable_id: @resource, experienceable_type: @resource.class.name) do
+      %li.icon-file
+      写使用心得
+    %hr

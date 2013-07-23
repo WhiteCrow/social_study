@@ -1,5 +1,8 @@
 SocialStudy::Application.routes.draw do
 
+  resources :reviews
+
+
   resources :comments, only: [:create, :destroy] do
     collection do
       get :paginate
@@ -17,6 +20,13 @@ SocialStudy::Application.routes.draw do
       post :reputed
     end
   end
+
+  resources :experiences do
+    member do
+      post :reputed
+    end
+  end
+
 
   resources :microblogs
   resources :states, only: [:show, :destroy] do

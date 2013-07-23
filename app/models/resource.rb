@@ -2,6 +2,9 @@ class Resource
   include Mongoid::Document
   include Mongoid::Timestamps
 
+  has_many :reviews
+  has_many :experiences, as: :experienceable
+
   validates_presence_of :title, :description
   validates_uniqueness_of :title
 

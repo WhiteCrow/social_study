@@ -1,11 +1,11 @@
 %div
   %h4.pull-left
-    = "#{@experience.knowledge.title} 的心得 - #{@experience.title}"
+    = "#{@experience.experienceable.title} 的心得 - #{@experience.title}"
 
   %br.big
   = link_to @experience.user.name, @experience.user
   在学
-  = link_to @knowledge.title, @knowledge
+  = link_to @experienceable.title, @experienceable
 
   %br.big
   %small
@@ -39,7 +39,7 @@
     -if operable(@experience)
       = link_to '编辑', edit_experience_path(@experience)
       \|
-    = link_to '返回', @knowledge
+    = link_to '返回', @experienceable
   %br
   %hr
 

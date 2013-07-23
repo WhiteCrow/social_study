@@ -1,7 +1,12 @@
 class ExperiencesController < ApplicationController
 
   before_filter :require_user, except: [:show, :index]
+  before_filter :get_experienceable, only: [:new, :edit]
   layout 'main', except: [:index]
+
+  def get_experienceable
+    @experienceable = params[:experienceable_type].constantize.find(params[:experienceable_id])
+  end
 
   def index
     @experiences = Experience.all
@@ -13,21 +18,21 @@ class ExperiencesController < ApplicationController
 
   def show
     @experience = Experience.find(params[:id])
-    @knowledge = @experience.knowledge
+    @experienceable = @experience.experienceable
   end
 
   def new
-    @experience = current_user.experiences.build(knowledge_id: params[:knowledge_id])
-    @knowledge = Knowledge.find(params[:knowledge_id])
+    @experience = @experienceable.experiences.new(user_id: current_user.id)
   end
 
   def edit
     @experience = Experience.find(params[:id])
-    @knowledge = @experience.knowledge
   end
 
   def create
-    @experience = current_user.experiences.build(params[:experience])
+    @experienceable = params[:experience][:experienceable_type].constantize.find(params[:experience][:experienceable_id])
+    @experience = @experienceable.experiences.build(params[:experience])
+    @experience.user = current_user
 
     respond_to do |format|
       if @experience.save

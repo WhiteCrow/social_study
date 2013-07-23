@@ -13,7 +13,7 @@
       %li.icon-pencil
       写笔记
     &nbsp;
-    =link_to new_experience_path(knowledge_id: @knowledge) do
+    =link_to new_experience_path(experienceable_id: @knowledge.id, experienceable_type: @knowledge.class.name) do
       %li.icon-file
       写学习心得
     %hr

@@ -3,7 +3,7 @@ class Knowledge
   include Mongoid::Timestamps
 
   has_many :notes
-  has_many :experiences
+  has_many :experiences, as: :experienceable
 
   validates_presence_of :title, :description
   validates_uniqueness_of :title

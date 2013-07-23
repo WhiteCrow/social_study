@@ -11,11 +11,12 @@
     = f.text_field :title
 
     = f.label :内容
-    = f.text_area :content
+    = f.text_area :content, class: 'span12'
 
-    = f.hidden_field :knowledge_id, valuse: params[:knowledge_id]
+    = f.hidden_field :experienceable_type, value: @experienceable.class.name
+    = f.hidden_field :experienceable_id, value: @experienceable.id
 
   .form-actions
     = f.submit '提交', class: 'btn btn-success'
     &nbsp;
-    = link_to '返回', (@experience.new_record? ? @knowledge : @experience), class: 'btn'
+    = link_to '返回', (@experience.new_record? ? @experienceable : @experience), class: 'btn'

@@ -32,6 +32,11 @@ GEM
     arel (3.0.2)
     bbenezech-nested_form (0.0.6)
     bcrypt-ruby (3.0.1)
+    better_errors (0.9.0)
+      coderay (>= 1.0.0)
+      erubis (>= 2.6.6)
+    binding_of_caller (0.7.2)
+      debug_inspector (>= 0.0.1)
     bootstrap-sass (2.3.1.0)
       sass (~> 3.2)
     bson (1.8.5)
@@ -77,6 +82,7 @@ GEM
       nokogiri (>= 1.5.0)
     daemons (1.1.9)
     database_cleaner (0.9.1)
+    debug_inspector (0.0.2)
     devise (2.2.3)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
@@ -261,6 +267,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  better_errors
+  binding_of_caller
   bootstrap-sass
   bson
   bson_ext

@@ -23,7 +23,6 @@ gem "kaminari" #pagnation
 gem "mongoid", ">= 3.1.1"
 gem 'bson'
 gem 'bson_ext'
-gem "mongoid_colored_logger", "0.2.2", :group => :development
 gem 'mongoid-history'
 
 # debug
@@ -42,6 +41,12 @@ gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
 
 #backend
 gem 'rails_admin'
+
+group :development do
+  gem "mongoid_colored_logger", "0.2.2"
+  gem 'better_errors'
+  gem "binding_of_caller"
+end
 
 group :development, :test do
   gem 'thin'
