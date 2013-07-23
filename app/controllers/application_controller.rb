@@ -32,8 +32,16 @@ class ApplicationController < ActionController::Base
     action = params[:action]
     if ["edit", "new"].include? action
       'main'
-    elsif ["index", "show", "notes"].include? action
+    elsif ["index", "show"].include? action
       'sidebar'
+    end
+  end
+
+  def choose_post_layout
+    if "index" == params[:action]
+      'sidebar'
+    else
+      'main'
     end
   end
 

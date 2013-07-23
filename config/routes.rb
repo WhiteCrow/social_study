@@ -51,8 +51,7 @@ SocialStudy::Application.routes.draw do
       post :unfollow
       get :following
       get :followers
-      post :repute
-      post :unrepute
+      post :vote
       get :states
     end
   end

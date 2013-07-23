@@ -17,7 +17,8 @@ class Reputation
   scope :useless, where(type: 'useless')
 
   validates_inclusion_of :type, in: VoteTypes,
-                                if: Proc.new{|r| ["Note", "Experience"].include? r.reputable_type}
+                                if: Proc.new{|r| ["Note", "Experience", "Review"].include? r.reputable_type}
   validates_presence_of :type, :user_id
   validates_uniqueness_of :type, scope: [:user_id, :reputable]
+  #TODO add custom validation that is user can't vote same reputalbe both useful and useless
 end

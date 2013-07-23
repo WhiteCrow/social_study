@@ -2,7 +2,7 @@ class ExperiencesController < ApplicationController
 
   before_filter :require_user, except: [:show, :index]
   before_filter :get_experienceable, only: [:new, :edit]
-  layout 'main', except: [:index]
+  layout :choose_post_layout
 
   def get_experienceable
     @experienceable = params[:experienceable_type].constantize.find(params[:experienceable_id])
@@ -61,21 +61,6 @@ class ExperiencesController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to experiences_url }
-    end
-  end
-
-  def reputed
-    @experience = Experience.find(params[:id])
-    if reputation = current_user.reputations.select{|r| r.reputable == @experience }.first
-      #delete duplicated or conflict reputation or exisit reputation
-      @pre_reputed_type = reputation.type
-      reputation.destroy
-    end
-    if params[:repute_type] != @pre_reputed_type
-      @reputation = @experience.reputations.create!({user: current_user, type: params[:repute_type]})
-    end
-    respond_to do |format|
-      format.js
     end
   end
 

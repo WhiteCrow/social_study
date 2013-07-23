@@ -1,7 +1,7 @@
 class ReviewsController < ApplicationController
 
   before_filter :require_user, except: [:show, :index]
-  layout :choose_layout
+  layout :choose_post_layout
 
   def index
     @reviews = Review.all
@@ -56,21 +56,6 @@ class ReviewsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to @review.resource }
-    end
-  end
-
-  def reputed
-    @review = Review.find(params[:id])
-    if reputation = current_user.reputations.select{|r| r.reputable == @review }.first
-      #delete duplicated or conflict reputation or exisit reputation
-      @pre_reputed_type = reputation.type
-      reputation.destroy
-    end
-    if params[:repute_type] != @pre_reputed_type
-      @reputation = @review.reputations.create!({user: current_user, type: params[:repute_type]})
-    end
-    respond_to do |format|
-      format.js
     end
   end
 end
