@@ -6,7 +6,7 @@ class KnowledgesController < ApplicationController
     @newest_knowledges = Knowledge.order_by(created_at: :desc)
     @hottest_knowledges = Knowledge.order_by(created_at: :desc)
     @notes = Note.top(4)
-    @experiences = Experience.top(4)
+    @experiences = Experience.where(experienceable_type: 'Knowledge').top(4)
   end
 
   def notes

@@ -1,0 +1,18 @@
+%h3
+  %small 热门评论
+%br
+- @reviews.each do |review|
+  %div.span5{style: 'padding-bottom: 15px;'}
+    %div
+      =link_to review.user do
+        = image_tag review.user.image(:small), class: 'user-face'
+    %div.pull-left
+      %span
+        =link_to review.user.name, review.user
+        的
+        =link_to review.resource.title, review.resource
+        笔记
+      %h4.big
+        =link_to review.title, review
+      %small
+        ="#{review.reputations.useful.count}有用 #{review.created_at.getlocal.to_date}"
