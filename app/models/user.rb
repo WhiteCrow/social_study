@@ -13,6 +13,7 @@ class User
   has_many :relays
   has_many :notes
   has_many :experiences
+  has_many :reviews
   has_many :comments
   has_many :reputations
   has_and_belongs_to_many :following, :class_name => 'User', :inverse_of => :followers

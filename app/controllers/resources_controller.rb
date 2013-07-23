@@ -1,5 +1,6 @@
 class ResourcesController < ApplicationController
 
+  before_filter :require_user, except: [:show, :index]
   layout :choose_layout
 
   def index
