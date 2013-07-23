@@ -7,7 +7,7 @@ class ResourcesController < ApplicationController
     @newest_resources = Resource.order_by(created_at: :desc)
     @hottest_resources = Resource.order_by(created_at: :desc)
     @reviews = Review.top(4)
-    @experiences = Experience.where(experienceable_type: 'Review').top(4)
+    @experiences = Experience.where(experienceable_type: 'Resource').top(4)
   end
 
   def show

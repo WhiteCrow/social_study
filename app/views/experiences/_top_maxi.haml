@@ -25,4 +25,5 @@
         ="#{experience.reputations.useful.count}有用 #{experience.created_at.getlocal.to_date} "
         =link_to experience_path(experience, anchor: "comments") do
           ="（#{experience.comments.count}评论）"
-  %hr.clear
+  %br.clear
+  %hr
