@@ -1,12 +1,51 @@
-%p#notice= notice
+%div.post
+  %h4.pull-left
+    = "#{@review.resource.title} 的心得 - #{@review.title}"
 
-%p
-  %b Title:
-  = @review.title
-%p
-  %b Content:
+  %div.pull-right
+    %div.reputations
+      = link_to @review do
+        %i.icon-circle-arrow-left
+      %span.w5
+
+      -if operable(@review)
+        = link_to edit_review_path(@review) do
+          %i.icon-edit
+        %span.w5
+        = link_to @review, method: :delete, confirm: '你确定要删除这条评论吗？'  do
+          %i.icon-trash
+
+  %br
+  = link_to @review.user.name, @review.user
+  在学
+  = link_to @resource.title, @resource
+
+  %br
+  %small
+    = @review.updated_at.local
+
+  %hr.clear
+
+%div.text
   = @review.content
 
-= link_to 'Edit', edit_review_path(@review)
-\|
-= link_to 'Back', reviews_path
+%br.big
+
+%br.big
+.pull-right
+  =link_to vote_path(@review, 'useful'), remote: true, method: :post do
+    %i.icon-thumbs-up
+  %span.useful-count
+    =@review.repute_count('useful')
+
+  %span.w5
+  =link_to vote_path(@review, 'useless'), remote: true, method: :post do
+    %i.icon-thumbs-down
+  %span.useless-count
+    =@review.repute_count('useless')
+%br
+
+%hr
+
+=render 'comments/index', commentable: @review
+=render 'comments/new', commentable: @review

@@ -10,7 +10,7 @@ class Review
 
   attr_accessible :user_id, :resource_id, :title, :content
 
-  validates_presence_of :user_id, :knowledge_id, :title, :content
+  validates_presence_of :user_id, :resource_id, :title, :content
 
   index :user_id => 1
   index :resource_id => 1

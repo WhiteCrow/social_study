@@ -1,21 +1,9 @@
-%div
+%div.post
   %h4.pull-left
     = "#{@note.knowledge.title} 的笔记 - #{@note.title}"
 
   %div.pull-right
     %div.reputations
-      =link_to vote_path(@note, 'useful'), remote: true, method: :post do
-        %i.icon-thumbs-up
-      %span.useful-count
-        =@note.repute_count('useful')
-
-      %span.w5
-      =link_to vote_path(@note, 'useless'), remote: true, method: :post do
-        %i.icon-thumbs-down
-      %span.useless-count
-        =@note.repute_count('useless')
-      %span.w5
-
       = link_to @knowledge do
         %i.icon-circle-arrow-left
       %span.w5
@@ -42,6 +30,19 @@
   = @note.content
 
 %br.big
+.pull-right
+  =link_to vote_path(@note, 'useful'), remote: true, method: :post do
+    %i.icon-thumbs-up
+  %span.useful-count
+    =@note.repute_count('useful')
+
+  %span.w5
+  =link_to vote_path(@note, 'useless'), remote: true, method: :post do
+    %i.icon-thumbs-down
+  %span.useless-count
+    =@note.repute_count('useless')
+%br
+
 %hr
 
 %div

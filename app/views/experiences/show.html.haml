@@ -1,13 +1,26 @@
-%div
+%div.post
   %h4.pull-left
     = "#{@experience.experienceable.title} 的心得 - #{@experience.title}"
 
-  %br.big
+  %div.pull-right
+    %div.reputations
+      = link_to @experience do
+        %i.icon-circle-arrow-left
+      %span.w5
+
+      -if operable(@experience)
+        = link_to edit_experience_path(@experience) do
+          %i.icon-edit
+        %span.w5
+        = link_to @experience, method: :delete, confirm: '你确定要删除这条心得吗？'  do
+          %i.icon-trash
+
+  %br
   = link_to @experience.user.name, @experience.user
   在学
   = link_to @experienceable.title, @experienceable
 
-  %br.big
+  %br
   %small
     = @experience.updated_at.local
 
@@ -17,31 +30,22 @@
   = @experience.content
 
 %br.big
+
 %br.big
+.pull-right
+  =link_to vote_path(@experience, 'useful'), remote: true, method: :post do
+    %i.icon-thumbs-up
+  %span.useful-count
+    =@experience.repute_count('useful')
 
-%div
-  %div.reputations.pull-left
-    =link_to vote_path(@experience, 'useful'), remote: true, method: :post do
-      %span.alert.alert-warning
-        有用
-    %span.useful-count
-      =@experience.repute_count('useful')
+  %span.w5
+  =link_to vote_path(@experience, 'useless'), remote: true, method: :post do
+    %i.icon-thumbs-down
+  %span.useless-count
+    =@experience.repute_count('useless')
+%br
 
-    %span{style: 'width:11px;display:inline-block'}
-
-    =link_to vote_path(@experience, 'useless'), remote: true, method: :post do
-      %span.alert.alert-info
-        没用
-    %span.useless-count
-      =@experience.repute_count('useless')
-
-  %div.pull-right
-    -if operable(@experience)
-      = link_to '编辑', edit_experience_path(@experience)
-      \|
-    = link_to '返回', @experienceable
-  %br
-  %hr
+%hr
 
 =render 'comments/index', commentable: @experience
 =render 'comments/new', commentable: @experience
