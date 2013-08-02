@@ -67,6 +67,7 @@ class UsersController < ApplicationController
     end
   end
 
+  protected
   def get_reputable
     @reputable = params[:reputable_type].constantize.find(params[:reputable_id])
   end

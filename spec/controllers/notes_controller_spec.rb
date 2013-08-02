@@ -122,30 +122,5 @@ describe NotesController do
         response.should redirect_to(knowledge)
       end
     end
-
-    describe 'reputed' do
-      before(:each) { sign_in admin }
-      it 'useful' do
-        note
-        expect {
-              post :reputed, {id: note.to_param, repute_type: 'useful' }
-            }.to change(admin.reputations.useful, :count).by(1)
-        #cancel useful
-        expect {
-              post :reputed, {id: note.to_param, repute_type: 'useful' }
-            }.to change(admin.reputations.useful, :count).by(-1)
-      end
-
-      it 'useless' do
-        note
-        expect {
-              post :reputed, {id: note.to_param, repute_type: 'useless' }
-            }.to change(admin.reputations.useless, :count).by(1)
-        #cancel useful
-        expect {
-              post :reputed, {id: note.to_param, repute_type: 'useless' }
-            }.to change(admin.reputations.useless, :count).by(-1)
-      end
-    end
   end
 end
