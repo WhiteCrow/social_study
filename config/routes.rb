@@ -2,7 +2,6 @@ SocialStudy::Application.routes.draw do
 
   resources :reviews
 
-
   resources :comments, only: [:create, :destroy] do
     collection do
       get :paginate
