@@ -1,4 +1,8 @@
 window.App = App =
   init: ->
-    App.Experiences.init()
-    App.State.init()
+    @Experiences.init()
+    @State.init()
+    @initNotice()
+
+  initNotice: ->
+    $("#message_container").slideDown().delay(5000).slideUp()
