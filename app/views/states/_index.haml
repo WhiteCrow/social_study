@@ -7,11 +7,15 @@
         = link_to statable.user, class: 'pull-left' do
           = image_tag statable.user.image(:small)
         %div.pull-left.span10
+          %small.pull-right
+            =link_to statable.created_at.time_ago, state_path(state), class: 'gray-link'
           = render 'states/normal', state: state, statable: statable
       - else
         = link_to auditable.user, class: 'pull-left' do
           = image_tag auditable.user.image(:small)
         .pull-left.span10
+          %small.pull-right
+            =link_to auditable.created_at.time_ago, state_path(state), class: 'gray-link'
           =link_to auditable.user do
             = auditable.user.name
           转播：
