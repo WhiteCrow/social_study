@@ -3,6 +3,7 @@ class Audit
   include State
   include Remind
 
+  delegate :comments, to: :auditable
   before_create :set_modifier
 
   def user
@@ -22,4 +23,5 @@ class Audit
     obj_id = self.association_chain.first["id"]
     obj_class.find(obj_id)
   end
+
 end

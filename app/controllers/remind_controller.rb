@@ -1,0 +1,2 @@
+class RemindController < ApplicationController
+end
