@@ -19,7 +19,7 @@ module Remind
   end
 
   def is_remind?
-    RemindScope.include? self.scope
+    RemindScope.include?(self.scope) and self.receiver_id != nil
   end
 
   def commentable
