@@ -15,6 +15,10 @@ class Microblog
   validates_presence_of :user_id, :content
   validates_length_of :content, maximum: 140
 
+  def state
+    self.history_tracks.first
+  end
+
   def destroy_relays
     self.relays.destroy_all
   end

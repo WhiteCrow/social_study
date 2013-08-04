@@ -3,8 +3,6 @@
 <hr>
 <p>忘记密码？输入你的注册邮箱地址，我们会发给你重置密码的链接</p>
 <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
-  <%= devise_error_messages! %>
-
   <div>
     <%= f.label '请输入您的注册邮箱：' %>
     <%= f.email_field :email %>

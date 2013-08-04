@@ -1,5 +1,10 @@
 class MicroblogsController < ApplicationController
 
+  def show
+    microblog = Microblog.find(params[:id])
+    redirect_to state_path(microblog.state.id)
+  end
+
   def create
     @microblog = Microblog.new(params[:microblog])
     @microblog.user = current_user

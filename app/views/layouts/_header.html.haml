@@ -26,8 +26,9 @@
           %li.dropdown
           - if current_user
             %li
-              %a#user_notifications_count{:href=>"notifications"}
-                .badge 0
+              = link_to reminds_path do
+                .badge{style: remind_count_bgcolor}
+                  = unread_remind_count
             %li.dropdown#user_menu
               =link_to '#user_menu', :class=>'dropdown-toggle', "data-toggle"=>"dropdown" do
                 =current_user.name

@@ -2,6 +2,12 @@ SocialStudy::Application.routes.draw do
 
   resources :reviews
 
+  resources :reminds, only: [:index] do
+    collection do
+      get :short_index
+    end
+  end
+
   resources :comments, only: [:create, :destroy] do
     collection do
       get :paginate

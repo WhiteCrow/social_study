@@ -4,7 +4,10 @@ module Remind
     RemindScope = ["comment"]
     belongs_to :receiver, class_name: 'User'
     before_create :set_receiver
-    scope :remind, where(action: 'create').in(scope: RemindScope).ne(receiver_id: nil)
+    scope :remind, where(action: 'create').
+                   in(scope: RemindScope).
+                   ne(receiver_id: nil).
+                   desc('created_at')
     validates_presence_of :unread
     #TODO will add the validation
     #validates_presence_of :receiver_id,
@@ -18,6 +21,21 @@ module Remind
     if self.is_remind?
       self.receiver_id = self.commentable.user_id
     end
+  end
+
+  def kind
+    case self.modified['commentable_type']
+    when 'Microblog'; '微博'
+    when 'Note'; '笔记'
+    when 'Experience'; '心得'
+    when 'Review'; '评论'
+    else; nil
+    end
+  end
+
+  def commentable_short_content
+    content = self.commentable.content
+    content.length > 30 ? (content.first(30) + '..') : content
   end
 
   def is_remind?
