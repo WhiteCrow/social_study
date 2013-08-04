@@ -1,25 +1,27 @@
 module Remind
   extend ActiveSupport::Concern
   included do
-    belongs_to :receiver, class_name: 'User'
-    after_create :set_receiver
     RemindScope = ["comment"]
-    field :unread, type: Boolean, default: true
+    belongs_to :receiver, class_name: 'User'
+    before_create :set_receiver
     scope :remind, where(action: 'create').in(scope: RemindScope).ne(receiver_id: nil)
+    validates_presence_of :unread
+    #TODO will add the validation
+    #validates_presence_of :receiver_id,
+    #                      if: Proc.new{|r| r.remind?},
+    #                      on: :create
+
+    field :unread, type: Boolean, default: true
   end
 
   def set_receiver
     if self.is_remind?
-      receiver_id = self.commentable.user_id
-
-      if self.modifier_id != receiver_id
-        self.update_attributes(receiver_id: receiver_id)
-      end
+      self.receiver_id = self.commentable.user_id
     end
   end
 
   def is_remind?
-    RemindScope.include?(self.scope) and self.receiver_id != nil
+    RemindScope.include?(self.scope) and modifier_id != self.commentable.user_id
   end
 
   def commentable
