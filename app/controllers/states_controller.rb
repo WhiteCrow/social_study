@@ -5,6 +5,7 @@ class StatesController < ApplicationController
   def show
     @state = Audit.find(params[:id])
     @statable = @state.statable
+    @auditable = @state.auditable
 
     respond_to do |format|
       format.html # show.html.erb

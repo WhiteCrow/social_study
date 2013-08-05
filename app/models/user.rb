@@ -16,6 +16,7 @@ class User
   has_many :reviews
   has_many :comments
   has_many :reputations
+  has_many :reminds, class_name: 'Audit', inverse_of: :receiver
   has_and_belongs_to_many :following, :class_name => 'User', :inverse_of => :followers
   has_and_belongs_to_many :followers, :class_name => 'User', :inverse_of => :following
 
@@ -80,6 +81,10 @@ class User
   def unrelay(relayable)
     relay = Relay.where(relayable: relayable, user_id: self.id).first
     relay.destroy
+  end
+
+  def unread_reminds
+    self.reminds.where(unread: true)
   end
 
   ## Database authenticatable

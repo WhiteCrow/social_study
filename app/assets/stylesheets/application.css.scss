@@ -8,6 +8,7 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
+ *= require normalize
  *= require_self
  *= require_tree .
  */
@@ -15,11 +16,6 @@
 @import 'font-awesome';
 @import 'font-awesome-ie7.min';
 
-*{
-  border:0;
-  padding:0;
-  margin:0;
-}
 h1,h2,h3,h4,h5,h6{
   margin:0px;
 }

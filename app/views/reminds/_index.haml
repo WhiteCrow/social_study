@@ -1,0 +1,9 @@
+#reminds
+  -@reminds.each do |remind|
+    .remind
+      = remind.kind
+      = link_to remind.commentable_short_content, remind.commentable
+      有了新回复
+      %hr
+  .pull-right
+    = paginate @reminds, remote: true

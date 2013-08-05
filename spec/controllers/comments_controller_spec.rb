@@ -2,7 +2,8 @@ require 'spec_helper'
 describe CommentsController do
 
   let(:user) { create :user }
-  let(:note) { create :note }
+  let(:admin) { create :admin }
+  let(:note) { create :note, user_id: user.id }
 
   def valid_attributes
     {
@@ -21,6 +22,40 @@ describe CommentsController do
           post :create, {comment: valid_attributes}
         }.to change(Comment, :count).by(1)
       end
+
+      it "not creates a new remind" do
+        expect {
+          post :create, {comment: valid_attributes}
+        }.to change(Audit.remind, :count).by(0)
+      end
+
+      it "creates a new remind" do
+        sign_in(admin)
+        expect {
+          post :create, {comment: valid_attributes}
+        }.to change(Audit.remind, :count).by(1)
+      end
+
+      it "comment self's commetable" do
+        expect {
+          post :create, {comment: valid_attributes}
+        }.to change(user.reminds, :count).by(0)
+      end
+
+      it "comment other user's commetable" do
+        sign_in(admin)
+        expect {
+          post :create, {comment: valid_attributes}
+        }.to change(user.reminds, :count).by(1)
+      end
+
+      it "comment other user's commetable" do
+        sign_in(admin)
+        expect {
+          post :create, {comment: valid_attributes}
+        }.to change(user.unread_reminds, :count).by(1)
+      end
+
 
       it "assigns a newly created comment as @comment" do
         post :create, {comment: valid_attributes}

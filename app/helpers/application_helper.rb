@@ -32,4 +32,12 @@ module ApplicationHelper
     end
   end
 
+  def unread_remind_count
+    current_user.unread_reminds.count
+  end
+
+  def remind_count_bgcolor
+    "background-color:#bd362f;" if unread_remind_count > 0
+  end
+
 end
