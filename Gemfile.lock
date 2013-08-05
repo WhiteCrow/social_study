@@ -102,6 +102,8 @@ GEM
     factory_girl_rails (4.2.1)
       factory_girl (~> 4.2.0)
       railties (>= 3.0.0)
+    faye-websocket (0.4.7)
+      eventmachine (>= 0.12.0)
     ffi (1.2.0)
     font-awesome-sass-rails (3.0.2.2)
       railties (>= 3.1.1)
@@ -117,6 +119,7 @@ GEM
     hashie (1.2.0)
     hike (1.2.2)
     hpricot (0.8.6)
+    http_parser.rb (0.5.3)
     i18n (0.6.1)
     journey (1.0.4)
     jquery-rails (2.2.1)
@@ -166,6 +169,10 @@ GEM
       rack
     origin (1.1.0)
     orm_adapter (0.4.0)
+    poltergeist (1.1.2)
+      capybara (~> 2.0.1)
+      faye-websocket (~> 0.4.4)
+      http_parser.rb (~> 0.5.3)
     polyglot (0.3.3)
     pry (0.9.10)
       coderay (~> 1.0.5)
@@ -292,6 +299,7 @@ DEPENDENCIES
   mongoid-history
   mongoid_colored_logger (= 0.2.2)
   omniauth (~> 1.0.1)
+  poltergeist
   pry-rails (= 0.2.2)
   rails (= 3.2.13)
   rails_admin

@@ -2,17 +2,17 @@
 module Login
   def self.included(spec)
     spec.class_eval do
-      describe 'login' do
-        let(:user) {Factory :user}
+      let(:user) {create :user}
 
-        before :each do
-          user
-          visit root_path
-          fill_in '#user_email', with: 'user@example.com'
-          fill_in '#user_password', with: 'password'
+      before :each do
+        user
+        visit '/'
+        within '#sign_in' do
+          fill_in 'user_email', with: user.email
+          fill_in 'user_password', with: 'password'
           click_button '登录'
-          page.should have_content user.name
         end
+        page.should have_content user.name
       end
     end
   end

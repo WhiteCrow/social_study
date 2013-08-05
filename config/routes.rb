@@ -2,7 +2,6 @@ SocialStudy::Application.routes.draw do
 
   resources :reviews
 
-
   resources :comments, only: [:create, :destroy] do
     collection do
       get :paginate
@@ -35,7 +34,6 @@ SocialStudy::Application.routes.draw do
     end
   end
 
-  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
   devise_for :users, :path => "account", :controllers => {
     :registrations => :account,
@@ -67,4 +65,6 @@ SocialStudy::Application.routes.draw do
   end
   resources :resources
   root :to => "home#index"
+
+  #mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 end
