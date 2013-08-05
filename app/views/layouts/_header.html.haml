@@ -25,11 +25,13 @@
                     搜索
           %li.dropdown
           - if current_user
-            %li
-              = link_to reminds_path do
+            %li.dropdown#remind-menu
+              = link_to short_index_reminds_path, class: 'dropdown-toggle', "data-toggle"=>"dropdown", remote: true do
                 .badge{style: remind_count_bgcolor}
                   = unread_remind_count
-            %li.dropdown#user_menu
+              %ul.dropdown-menu
+
+            %li.dropdown#user-menu
               =link_to '#user_menu', :class=>'dropdown-toggle', "data-toggle"=>"dropdown" do
                 =current_user.name
                 %b.caret
