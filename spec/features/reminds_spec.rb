@@ -21,5 +21,9 @@ describe "reminds", type: :feature do
     end
     current_path.should eq '/reminds'
     page.should have_content "微博 #{microblog.content} 有了新回复"
+
+    within '#remind-menu' do
+      page.should have_content '0'
+    end
   end
 end

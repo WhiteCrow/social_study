@@ -87,6 +87,12 @@ class User
     self.reminds.where(unread: true)
   end
 
+  def read_all_reminds
+    self.unread_reminds.each do |remind|
+      remind.update_attributes(unread: false)
+    end
+  end
+
   ## Database authenticatable
   field :name,               :type => String
   field :email,              :type => String, :default => ""

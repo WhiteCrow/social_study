@@ -12,6 +12,7 @@ class RemindsController < ApplicationController
 
   def short_index
     @reminds = current_user.reminds.limit(5)
+    current_user.read_all_reminds
     respond_to do |format|
       format.html {render :index}
       format.js
