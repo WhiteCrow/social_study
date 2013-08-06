@@ -3,10 +3,14 @@ class KnowledgesController < ApplicationController
   layout :choose_layout
 
   def index
-    @newest_knowledges = Knowledge.order_by(created_at: :desc)
-    @hottest_knowledges = Knowledge.order_by(created_at: :desc)
+    @newest_knowledges = Knowledge.newest
+    @hottest_knowledges = Knowledge.hottest
     @notes = Note.top(4)
     @experiences = Experience.where(experienceable_type: 'Knowledge').top(4)
+  end
+
+  def top
+    @hottest_knowledges = Knowledge.hottest(40)
   end
 
   def notes

@@ -66,6 +66,7 @@ SocialStudy::Application.routes.draw do
       get :my
     end
     collection do
+      get :top
       get :notes
     end
   end
