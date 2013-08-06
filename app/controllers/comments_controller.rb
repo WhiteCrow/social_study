@@ -2,7 +2,9 @@ class CommentsController < ApplicationController
 
   def create
     commentable = params[:comment][:commentable_type].constantize.find(params[:comment][:commentable_id])
-    auditable = params[:comment][:auditable_type].constantize.find(params[:comment][:auditable_id])
+    if params[:comment][:auditable_type]
+      auditable = params[:comment][:auditable_type].constantize.find(params[:comment][:auditable_id])
+    end
     last_page = commentable.last_page_with_per_page(20)
     @comment = commentable.comments.build(params[:comment])
     @comment.user = current_user
