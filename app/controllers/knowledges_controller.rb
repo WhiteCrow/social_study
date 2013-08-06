@@ -10,7 +10,11 @@ class KnowledgesController < ApplicationController
   end
 
   def top
-    @hottest_knowledges = Knowledge.hottest(40)
+    @knowledges = Knowledge.hottest(40).page(params[:page]||1).per(10)
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def notes
