@@ -36,16 +36,12 @@
                 =current_user.name
                 %b.caret
               %ul.dropdown-menu
-                %br
                 %li
                   =link_to "我的主页", current_user
-                  %br
                 %li
                   =link_to "帐号设置", '#'
-                  %br
                 %li
                   =link_to "退出", destroy_user_session_path, :method => :delete
-                  %br
           - else
             %li
               =link_to "注册", new_user_registration_path
