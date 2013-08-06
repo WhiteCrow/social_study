@@ -1,3 +1,3 @@
-var commentable = $('<%= "##{commentable.class.name.underscore}-#{commentable.id}"%>')
-commentable.find('.more-comments').before('<%= j render 'comments/small_show', comment: @comment %>')
-commentable.find('.new_comment #comment_content').val('')
+var auditable = $('<%= "##{auditable.class.name.underscore}-#{auditable.id}"%>')
+auditable.find('.more-comments').before('<%= j render 'comments/small_show', comment: @comment %>')
+auditable.find('.new_comment #comment_content').val('')

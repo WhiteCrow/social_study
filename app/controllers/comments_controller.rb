@@ -2,6 +2,7 @@ class CommentsController < ApplicationController
 
   def create
     commentable = params[:comment][:commentable_type].constantize.find(params[:comment][:commentable_id])
+    auditable = params[:comment][:auditable_type].constantize.find(params[:comment][:auditable_id])
     last_page = commentable.last_page_with_per_page(20)
     @comment = commentable.comments.build(params[:comment])
     @comment.user = current_user
@@ -13,7 +14,7 @@ class CommentsController < ApplicationController
                                   id: params[:comment][:commentable_id],
                                   page: last_page}
         #used to states comments that in home page
-        format.js{ render locals: {commentable: commentable} }
+        format.js{ render locals: {auditable: auditable} }
       else
         format.html { redirect_to commentable, notice: 'Comment create fail.' }
       end

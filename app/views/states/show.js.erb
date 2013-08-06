@@ -4,7 +4,7 @@ var commentLink = st.find('.comment-link')
 
 if (!stComments.is(':parent')){
   stComments.append('<%= j render('comments/small_index', commentable: @statable)%>')
-            .append('<%= j render('comments/small_new', commentable: @statable)%>')
+  .append('<%= j render(partial: 'comments/small_new', locals: {commentable: @statable, auditable: @auditable})%>')
 }
 
 if (stComments.is(':hidden')){
