@@ -1,9 +1,15 @@
 %div.span8
 %div.span4
-  %div.well
+  %div.well.user-profile
     =image_tag @user.image, class: 'user-face'
-    %br
-    %br
+    %hr.clear
+      %small
+        =raw (@user.description || "请编辑个人简介")
+        %br
+        %br
+      - if operable(@user)
+        =link_to "(编辑)", describe_user_path(@user)
+    %hr
     - if current_user.blank? or current_user != @user
       - if current_user.can_follow?(@user)
         %span.follow-btn
@@ -11,6 +17,6 @@
       - elsif current_user.followed?(@user)
         %span.follow-btn
           = unfollow_btn
-    %h4 我的关注
-    %h4 #{@user.name} 关注 #{@user.following_ids.count} 人
-    %h4 #{@user.name} 被 #{@user.follower_ids.count} 人关注
+    %h4 #{@user.name} 关注 #{link_to @user.following_ids.count, following_user_path(@user)} 人
+    %h4 #{@user.name} 被 #{link_to @user.follower_ids.count, followers_user_path(@user)} 人关注
+    

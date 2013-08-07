@@ -20,7 +20,7 @@ module ApplicationHelper
   end
 
   def operable(item)
-    item.user == current_user and current_user.present?
+    (item == current_user or item.user == current_user) and current_user.present?
   end
 
   def short_content(item)
