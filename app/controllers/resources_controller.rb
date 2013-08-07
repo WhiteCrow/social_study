@@ -12,7 +12,7 @@ class ResourcesController < ApplicationController
 
   def top
     @nodes = Resource.hottest(40).page(params[:page]).per(10)
-    @title = '更多知识'
+    @title = '更多资源'
     respond_to do |format|
       format.html {render 'common/top_nodes'}
     end
