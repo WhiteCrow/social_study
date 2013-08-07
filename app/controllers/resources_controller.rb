@@ -4,10 +4,18 @@ class ResourcesController < ApplicationController
   layout :choose_layout
 
   def index
-    @newest_resources = Resource.order_by(created_at: :desc)
-    @hottest_resources = Resource.order_by(created_at: :desc)
+    @newest_resources = Resource.hottest
+    @hottest_resources = Resource.newest
     @reviews = Review.top(4)
     @experiences = Experience.where(experienceable_type: 'Resource').top(4)
+  end
+
+  def top
+    @nodes = Resource.hottest(40).page(params[:page]).per(10)
+    @title = '更多知识'
+    respond_to do |format|
+      format.html {render 'common/top_nodes'}
+    end
   end
 
   def top_experiences

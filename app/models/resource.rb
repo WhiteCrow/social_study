@@ -5,6 +5,9 @@ class Resource
   has_many :reviews
   has_many :experiences, as: :experienceable
 
+  scope :hottest, ->(num=16){desc('created_at').limit(num)}
+  scope :newest, ->(num=16){desc('created_at').limit(num)}
+
   validates_presence_of :title, :description
   validates_uniqueness_of :title
 

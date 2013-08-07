@@ -1,0 +1,17 @@
+%h3
+  = @title
+%hr
+#top-nodes
+  - if @nodes.present?
+    - @nodes.each do |n|
+      .profile
+        = image_tag n.image, class: 'normal pull-left'
+        .short-info
+          %h3
+            = n.title
+          %br
+          %p
+            = n.description
+        %hr.clear
+    .pull-right
+      = paginate @nodes

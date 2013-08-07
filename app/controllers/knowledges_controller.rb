@@ -10,10 +10,10 @@ class KnowledgesController < ApplicationController
   end
 
   def top
-    @knowledges = Knowledge.hottest(40).page(params[:page]||1).per(10)
+    @nodes = Knowledge.hottest(40).page(params[:page]).per(10)
+    @title = '更多知识'
     respond_to do |format|
-      format.html
-      format.js
+      format.html {render 'common/top_nodes'}
     end
   end
 
