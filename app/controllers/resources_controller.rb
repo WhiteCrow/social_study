@@ -10,6 +10,20 @@ class ResourcesController < ApplicationController
     @experiences = Experience.where(experienceable_type: 'Resource').top(4)
   end
 
+  def top_experiences
+    experiences = Experience.resource.top(36).page(params[:page]||1).per(9)
+    respond_to do |format|
+      format.html {render 'common/top_index', locals: {items: experiences, title: '更多心得'}}
+    end
+  end
+
+  def top_reviews
+    reviews = Review.top(36).page(params[:page]||1).per(9)
+    respond_to do |format|
+      format.html {render 'common/top_index', locals: {items: reviews, title: '更多评论'}}
+    end
+  end
+
   def show
     @resource = Resource.find(params[:id])
 

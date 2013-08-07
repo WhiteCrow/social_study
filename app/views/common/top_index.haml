@@ -1,0 +1,26 @@
+%h3
+  =title
+%hr
+%ul#top-index
+  - if items.present?
+    - items.each do |item|
+      %li.inner
+        = link_to item, target: '_blank' do
+          %h4
+            = item.title
+
+        = link_to item.user, target: '_blank' do
+          %h5
+            = item.user.name
+
+        = link_to item, target: '_blank' do
+          %p.item-content
+            = item.content
+
+        %div
+          写于
+          = link_to item.itemable, target: '_blank' do
+            = item.itemable.title
+
+        %div
+          = item.created_at.time_ago

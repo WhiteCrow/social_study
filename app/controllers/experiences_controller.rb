@@ -1,7 +1,7 @@
 class ExperiencesController < ApplicationController
 
   before_filter :require_user, except: [:show, :index]
-  before_filter :get_experienceable, only: [:new, :edit]
+  before_filter :get_experienceable, only: [:new]
   layout :choose_post_layout
 
   def get_experienceable
@@ -27,6 +27,7 @@ class ExperiencesController < ApplicationController
 
   def edit
     @experience = Experience.find(params[:id])
+    @experienceable = @experience.experienceable
   end
 
   def create

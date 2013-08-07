@@ -4,10 +4,6 @@
 
   %div.pull-right
     %div.reputations
-      = link_to @review do
-        %i.icon-circle-arrow-left
-      %span.w5
-
       -if operable(@review)
         = link_to edit_review_path(@review) do
           %i.icon-edit

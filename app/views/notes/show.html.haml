@@ -4,10 +4,6 @@
 
   %div.pull-right
     %div.reputations
-      = link_to @knowledge do
-        %i.icon-circle-arrow-left
-      %span.w5
-
       -if operable(@note)
         = link_to edit_note_path(@note) do
           %i.icon-edit

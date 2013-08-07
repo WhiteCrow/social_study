@@ -4,10 +4,6 @@
 
   %div.pull-right
     %div.reputations
-      = link_to @experience do
-        %i.icon-circle-arrow-left
-      %span.w5
-
       -if operable(@experience)
         = link_to edit_experience_path(@experience) do
           %i.icon-edit

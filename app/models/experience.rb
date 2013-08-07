@@ -8,9 +8,12 @@ class Experience
   belongs_to :user
   belongs_to :experienceable, polymorphic: true, inverse_of: :experienceable
 
-  attr_accessible :user_id, :experienceable, :title, :content
+  attr_accessible :user_id, :user, :experienceable, :title, :content
 
   validates_presence_of :user_id, :experienceable, :title, :content
+
+  scope :knowledge, where(experienceable_type: 'Knowledge')
+  scope :resource, where(experienceable_type: 'Resource')
 
   index :user_id => 1
 
@@ -18,6 +21,7 @@ class Experience
   field :content, type: String
   field :reputations_count, type: Integer, default: 0
 
+  alias_method :itemable, :experienceable
   scope :top, ->(num=nil){ desc(:reputations_count).limit(num) }
 
   def repute_count(type)

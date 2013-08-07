@@ -1,29 +1,30 @@
-%h3
-  %small 热门心得
-%br
-- @experiences.each do |experience|
-  %div{style: 'padding-bottom: 15px;'}
-    %div
-      =link_to experience.user do
-        = image_tag experience.user.image(:small), class: 'user-face'
-    %div.pull-left.span10
-      %h4.big
-        =link_to experience do
-          = experience.title
-        =link_to '#', class: 'toggle-content' do
-          %span.pull-right.icon-caret-down
-      =link_to experience.user do
-        = experience.user.name
-      %br.big
-      %div.text
-        .short-content
-          = short_content(experience)
-        .whole-content.hidden
-          = experience.content
-      %br.big
-      %small
-        ="#{experience.reputations.useful.count}有用 #{experience.created_at.getlocal.to_date} "
-        =link_to experience_path(experience, anchor: "comments") do
-          ="（#{experience.comments.count}评论）"
-  %br.clear
-  %hr
+- if @experiences
+  %h3
+    %small 热门心得
+  %br
+  - @experiences.each do |experience|
+    %div{style: 'padding-bottom: 15px;'}
+      %div
+        =link_to experience.user do
+          = image_tag experience.user.image(:small), class: 'user-face'
+      %div.pull-left.span10
+        %h4.big
+          =link_to experience do
+            = experience.title
+          =link_to '#', class: 'toggle-content' do
+            %span.pull-right.icon-caret-down
+        =link_to experience.user do
+          = experience.user.name
+        %br.big
+        %div.text
+          .short-content
+            = short_content(experience)
+          .whole-content.hidden
+            = experience.content
+        %br.big
+        %small
+          ="#{experience.reputations.useful.count}有用 #{experience.created_at.getlocal.to_date} "
+          =link_to experience_path(experience, anchor: "comments") do
+            ="（#{experience.comments.count}评论）"
+    %br.clear
+    %hr

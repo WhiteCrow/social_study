@@ -8,9 +8,11 @@ class Note
   belongs_to :user
   belongs_to :knowledge
 
-  attr_accessible :user_id, :knowledge_id, :title, :content
+  attr_accessible :user_id, :knowledge_id, :title, :content, :knowledge
 
   validates_presence_of :user_id, :knowledge_id, :title, :content
+
+  alias_method :itemable, :knowledge
 
   index :user_id => 1
   index :knowledge_id => 1

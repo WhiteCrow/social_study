@@ -32,7 +32,7 @@ class ApplicationController < ActionController::Base
     action = params[:action]
     if ["edit", "new"].include? action
       'main'
-    elsif ["index", "show", "top"].include? action
+    elsif ["index", "show", "top", "top_notes", "top_experiences", "top_reviews"].include? action
       'sidebar'
     end
   end

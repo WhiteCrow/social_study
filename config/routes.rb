@@ -62,15 +62,24 @@ SocialStudy::Application.routes.draw do
   resources :knowledges do
     member do
       get :notes
-      get :reviews
+      get :experiences
       get :my
     end
     collection do
       get :top
-      get :notes
+      get :top_experiences
+      get :top_notes
     end
   end
-  resources :resources
+
+  resources :resources do
+    collection do
+      get :top
+      get :top_experiences
+      get :top_reviews
+    end
+  end
+
   root :to => "home#index"
 
   #mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
