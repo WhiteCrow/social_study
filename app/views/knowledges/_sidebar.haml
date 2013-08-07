@@ -1,12 +1,15 @@
 %div#sidebar
   %ul.nav.nav-pills.nav-stacked
-    %li.active
-      =link_to knowledges_path do
-        %strong 广场
-    %li
-      =link_to '更多知识', top_knowledges_path
+    = breadcrumb_li knowledges_path do
+      %strong 广场
+
+    = breadcrumb_li top_knowledges_path do
+      更多知识
+
     %div.h358
-    %li
-      =link_to '更多学习心得', '#'
-    %li
-      =link_to '更多笔记', '#'
+
+    = breadcrumb_li '#' do
+      更多学习心得
+
+    = breadcrumb_li '#' do
+      更多笔记

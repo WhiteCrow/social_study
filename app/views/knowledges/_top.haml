@@ -1,13 +1,14 @@
 #top-knowledges
-  - @knowledges.each do |k|
-    .profile
-      = image_tag k.image, class: 'normal pull-left'
-      .short-info
-        %h3
-          = k.title
-        %br
-        %p
-          = k.description
-      %hr.clear
-  .pull-right
-    = paginate @knowledges, remote: true
+  - if @knowledges.present?
+    - @knowledges.each do |k|
+      .profile
+        = image_tag k.image, class: 'normal pull-left'
+        .short-info
+          %h3
+            = k.title
+          %br
+          %p
+            = k.description
+        %hr.clear
+    .pull-right
+      = paginate @knowledges, remote: true
