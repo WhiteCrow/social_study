@@ -13,14 +13,14 @@ class ResourcesController < ApplicationController
   def top_experiences
     experiences = Experience.resource.top(36).page(params[:page]||1).per(9)
     respond_to do |format|
-      format.html {render 'common/top_index', locals: {items: experiences, title: '更多心得'}}
+      format.html {render 'common/top_leaves', locals: {items: experiences, title: '更多心得'}}
     end
   end
 
   def top_reviews
     reviews = Review.top(36).page(params[:page]||1).per(9)
     respond_to do |format|
-      format.html {render 'common/top_index', locals: {items: reviews, title: '更多评论'}}
+      format.html {render 'common/top_leaves', locals: {items: reviews, title: '更多评论'}}
     end
   end
 
