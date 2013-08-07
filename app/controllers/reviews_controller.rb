@@ -3,14 +3,6 @@ class ReviewsController < ApplicationController
   before_filter :require_user, except: [:show, :index]
   layout :choose_post_layout
 
-  def index
-    @reviews = Review.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-    end
-  end
-
   def show
     @review = Review.find(params[:id])
     @resource = @review.resource
