@@ -1,18 +1,19 @@
-%h3
-  %small 热门笔记
-%br
-- @notes.each do |note|
-  %div.span5{style: 'padding-bottom: 15px;'}
-    %div
-      =link_to note.user do
-        = image_tag note.user.image(:small), class: 'user-face'
-    %div.pull-left
-      %span
-        =link_to note.user.name, note.user
-        的
-        =link_to note.knowledge.title, note.knowledge
-        笔记
-      %h4.big
-        =link_to note.title, note
-      %small
-        ="#{note.reputations.useful.count}有用 #{note.created_at.getlocal.to_date}"
+- if @notes.present?
+  %h3
+    %small 热门笔记
+  %br
+  - @notes.each do |note|
+    %div.span5{style: 'padding-bottom: 15px;'}
+      %div
+        =link_to note.user do
+          = image_tag note.user.image(:small), class: 'user-face'
+      %div.pull-left
+        %span
+          =link_to note.user.name, note.user
+          的
+          =link_to note.knowledge.title, note.knowledge
+          笔记
+        %h4.big
+          =link_to note.title, note
+        %small
+          ="#{note.reputations.useful.count}有用 #{note.created_at.getlocal.to_date}"

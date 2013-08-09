@@ -40,7 +40,7 @@ class KnowledgesController < ApplicationController
   def show
     @knowledge = Knowledge.find(params[:id])
     @notes = @knowledge.notes.top(4)
-    @experiences = Experience.top(4)
+    @experiences = @knowledge.experiences.top(4)
   end
 
   def new

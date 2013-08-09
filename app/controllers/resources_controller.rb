@@ -34,6 +34,8 @@ class ResourcesController < ApplicationController
 
   def show
     @resource = Resource.find(params[:id])
+    @reviews = @resource.reviews.top(4)
+    @experiences = @resource.experiences.top(4)
 
     respond_to do |format|
       format.html # show.html.erb
