@@ -15,7 +15,7 @@
 
         = link_to item, target: '_blank' do
           %p.item-content
-            = item.content
+            = truncate(strip_tags(item.content), length: 250)
 
         %div
           写于
