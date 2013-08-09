@@ -40,13 +40,14 @@
                     %i.icon-user
                     我的主页
                 %li
-                  =link_to '#' do
+                  =link_to edit_user_path(current_user), data: {toggle: "dropdown", target: "#userEditModal", remote: true}, role: :button do
                     %i.icon-cogs
                     帐号设置
                 %li
                   =link_to destroy_user_session_path, :method => :delete do
                     %i.icon-signout
                     退出
+              #userEditModal.modal.hide.fade{tabindex: "-1", role: "dialog", "aria-labelledby"=>"myModalLabel", "aria-hidden"=>"true"}
           - else
             %li
               =link_to "注册", new_user_registration_path

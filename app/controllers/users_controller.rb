@@ -7,6 +7,13 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def edit
+    @user = User.find(params[:id])
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def following
     user = User.find(params[:id])
     @users = user.following.page(params[:page]||1).per(48)
