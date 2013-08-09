@@ -9,18 +9,21 @@
           margin-right: -15px
           margin-left: 5px
   .navbar-search
-    input
+    input, .add-on, button
       border: 0
-      color: #999
       background-color: #515151
-    .add-on, button
-      border: 0
-      color: #222
-      background-color: #515151
+      color: white
+      &:focus
+        color: #666
+        background-color: white
     button
-      width: 41px
+      color: #ccc
       height: 28px
       margin-top: -4px
+      .icon-search
+        margin-bottom: -1px
+        margin-right: -6px
+        font-size: 15px
   .title
     font-size: 16px
     font-weight: bold

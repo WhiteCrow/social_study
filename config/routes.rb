@@ -1,5 +1,7 @@
 SocialStudy::Application.routes.draw do
 
+  match "/search" => "search#index", :as => :search
+
   resources :reviews
 
   resources :reminds, only: [:index] do

@@ -16,13 +16,12 @@
 
         %ul.nav.pull-right#userbar
           %li
-          /
-            %form.navbar-search.pull-right{:action=>'/search', :method=>"get"}
+            %form.navbar-search.pull-right{action: "/search", method: 'get'}
               %div.input-append
-                %input.span3{:type=>"text", :name=>"q", :placeholder=>"知识、参考、成员、广播"}
+                %input.search-input.span3{:type=>"text", :name=>"q", :placeholder=>"知识、参考、成员、广播"}
                 %span.add-on
                   %button{:type=>"submit",:value=>'搜索'}
-                    搜索
+                    %i.icon-search
           %li.dropdown
           - if current_user
             %li.dropdown#remind-menu
