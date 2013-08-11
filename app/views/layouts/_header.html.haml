@@ -10,9 +10,6 @@
             =link_to '知识', knowledges_path
           %li
             =link_to '资源', resources_path
-        /
-          %li
-            %a{:href=>'#'}小组
 
         %ul.nav.pull-right#userbar
           %li
@@ -40,14 +37,13 @@
                     %i.icon-user
                     我的主页
                 %li
-                  =link_to edit_user_path(current_user), data: {toggle: "dropdown", target: "#userEditModal", remote: true}, role: :button do
+                  =link_to '/account/edit' do
                     %i.icon-cogs
-                    帐号设置
+                    帐户设置
                 %li
                   =link_to destroy_user_session_path, :method => :delete do
                     %i.icon-signout
                     退出
-              #userEditModal.modal.hide.fade{tabindex: "-1", role: "dialog", "aria-labelledby"=>"myModalLabel", "aria-hidden"=>"true"}
           - else
             %li
               =link_to "注册", new_user_registration_path

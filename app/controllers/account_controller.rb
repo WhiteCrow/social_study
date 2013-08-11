@@ -1,9 +1,10 @@
 # coding: utf-8
 class AccountController < Devise::RegistrationsController
+  layout 'main', only: [:edit]
   def edit
     @user = current_user
     # 首次生成用户 Token
-    @user.update_private_token if @user.private_token.blank?
+    #@user.update_private_token if @user.private_token.blank?
   end
 
   def update
