@@ -27,4 +27,34 @@ describe "Account management", type: :feature do
     end
   end
 
+  describe 'eidt' do
+    include Login
+
+    it 'edit user name and password' do
+      visit '/account/edit'
+      page.should have_content '账户设置'
+      within '#edit_user' do
+        fill_in 'user_name', with: 'Great user'
+        fill_in 'user_current_password', with: 'password'
+        fill_in 'user_password', with: 'greatpassword'
+        fill_in 'user_password_confirmation', with: 'greatpassword'
+        click_button '提交'
+      end
+
+      current_path.should eq '/'
+      user.reload.name.should eq 'Great user'
+    end
+
+    it 'only edit user name' do
+      visit '/account/edit'
+      within '#edit_user' do
+        fill_in 'user_name', with: 'Good user'
+        fill_in 'user_current_password', with: 'password'
+        click_button '提交'
+      end
+      current_path.should eq '/'
+      user.reload.name.should eq 'Good user'
+    end
+  end
+
 end

@@ -17,6 +17,7 @@
       - elsif current_user.followed?(@user)
         %span.follow-btn
           = unfollow_btn
-    %h4 #{@user.name} 关注 #{link_to @user.following_ids.count, following_user_path(@user)} 人
-    %h4 #{@user.name} 被 #{link_to @user.follower_ids.count, followers_user_path(@user)} 人关注
-    
+    %p
+      %b #{@user.name} 关注 #{link_to @user.following_ids.count, following_user_path(@user)} 人
+    %p
+      %b #{@user.name} 被 #{link_to @user.follower_ids.count, followers_user_path(@user)} 人关注

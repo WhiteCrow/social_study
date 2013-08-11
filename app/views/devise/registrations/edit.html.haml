@@ -6,18 +6,18 @@
     = f.text_field :name
 
   .field
-    %p
-      %b 更换密码
-    = f.label :current_password, '现在的密码'
-    = f.password_field :current_password
-
-  .field
-    = f.label :password, '想更换的密码'
+    = f.label :password, '更换密码'
     = f.password_field :password
 
   .field
     = f.label :password_confirmation, '密码确认'
     = f.password_field :password_confirmation
+
+  .field
+    %p
+      %b 请输入当前的密码以确认修改:
+    = f.label :current_password, '当前密码'
+    = f.password_field :current_password
 
   .form-actions
     = f.submit "提交", class: "btn btn-primary"

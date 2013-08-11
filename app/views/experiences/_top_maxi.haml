@@ -8,20 +8,19 @@
         =link_to experience.user do
           = image_tag experience.user.image(:small), class: 'user-face'
       %div.pull-left.span10
-        %h4.big
-          =link_to experience do
-            = experience.title
+        %h4
+          =link_to experience.title, experience
           =link_to '#', class: 'toggle-content' do
             %span.pull-right.icon-caret-down
-        =link_to experience.user do
-          = experience.user.name
+        %p
+        =link_to experience.user.name, experience.user
         %br.big
         %div.text
           .short-content
             = short_content(experience)
           .whole-content.hidden
             = experience.content
-        %br.big
+        %p
         %small
           ="#{experience.reputations.useful.count}有用 #{experience.created_at.getlocal.to_date} "
           =link_to experience_path(experience, anchor: "comments") do

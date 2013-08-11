@@ -1,6 +1,6 @@
 # coding: utf-8
 class AccountController < Devise::RegistrationsController
-  layout 'main', only: [:edit]
+  layout 'main', only: [:edit, :update]
   def edit
     @user = current_user
     # 首次生成用户 Token
@@ -22,9 +22,11 @@ class AccountController < Devise::RegistrationsController
         set_flash_message :notice, flash_key || :updated
       end
       sign_in resource_name, resource, :bypass => true
+      flash[:notice] = "账户更新成功"
       respond_with resource, :location => after_update_path_for(resource)
     else
       clean_up_passwords resource
+      flash[:error] = "请输入正确的密码"
       respond_with resource
     end
   end

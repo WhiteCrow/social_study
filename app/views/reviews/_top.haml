@@ -8,12 +8,13 @@
         =link_to review.user do
           = image_tag review.user.image(:small), class: 'user-face'
       %div.pull-left
-        %span
-          =link_to review.user.name, review.user
-          对
-          =link_to review.resource.title, review.resource
-          的评论
-        %h4.big
-          =link_to review.title, review
+        =link_to review.user.name, review.user
+        %br.big
+        对
+        =link_to review.resource.title, review.resource
+        的评论
+        %br.big
+        =link_to review.title, review
+        %br.big
         %small
           ="#{review.reputations.useful.count}有用 #{review.created_at.getlocal.to_date}"

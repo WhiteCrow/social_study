@@ -1,21 +1,20 @@
-%h3
-  %small 热门心得
-%br
-- @experiences.each do |experience|
-  %div.span5{style: 'padding-bottom: 15px;'}
-    %div
-      =link_to experience.user do
-        = image_tag experience.user.image(:small), class: 'user-face'
-    %div.pull-left
-      =link_to experience.user do
-        = experience.user.name
-      %br.big
-      的
-      =link_to experience.experienceable.title, experience.experienceable
-      心得
-      %br.big
-      =link_to experience do
-        = experience.title
-      %br.big
-      %small
-        ="#{experience.reputations.useful.count}有用 #{experience.created_at.getlocal.to_date}"
+- if @experiences.present?
+  %h3
+    %small 热门心得
+  %br
+  - @experiences.each do |experience|
+    %div.span5{style: 'padding-bottom: 15px;'}
+      %div
+        =link_to experience.user do
+          = image_tag experience.user.image(:small), class: 'user-face'
+      %div.pull-left
+        =link_to experience.user.name, experience.user
+        %br.big
+        的
+        =link_to experience.experienceable.title, experience.experienceable
+        心得
+        %br.big
+        =link_to experience.title, experience
+        %br.big
+        %small
+          ="#{experience.reputations.useful.count}有用 #{experience.created_at.getlocal.to_date}"
