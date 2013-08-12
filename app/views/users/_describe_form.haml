@@ -1,0 +1,5 @@
+= form_for @user, url: update_describe_user_path(@user), remote: true do |f|
+  .field
+    = f.text_area :description, class: 'span12'
+    = f.submit '提交', class: 'btn btn-success'
+    = link_to '取消', cancel_describe_user_path(@user), class: 'btn', remote: true

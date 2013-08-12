@@ -20,7 +20,7 @@ class User
   has_and_belongs_to_many :following, :class_name => 'User', :inverse_of => :followers
   has_and_belongs_to_many :followers, :class_name => 'User', :inverse_of => :following
 
-  attr_accessible :name, :email, :password, :password_confirmation, :remember_me
+  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :description
 
   validates_presence_of :name, :encrypted_password, :role
   validates_uniqueness_of :email, :case_sensitive => false

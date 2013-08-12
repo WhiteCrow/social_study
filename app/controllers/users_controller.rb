@@ -74,6 +74,31 @@ class UsersController < ApplicationController
     end
   end
 
+  def describe
+    @user = User.find(params[:id])
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def update_describe
+    @user = User.find(params[:id])
+    respond_to do |format|
+      if @user.update_attributes(params[:user])
+        format.js
+      else
+        format.js {'cancel_describe'}
+      end
+    end
+  end
+
+  def cancel_describe
+    @user = User.find(params[:id])
+    respond_to do |format|
+      format.js
+    end
+  end
+
   protected
   def get_reputable
     @reputable = params[:reputable_type].constantize.find(params[:reputable_id])

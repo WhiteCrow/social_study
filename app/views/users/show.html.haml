@@ -3,12 +3,8 @@
   %div.well.user-profile
     =image_tag @user.image, class: 'user-face'
     %hr.clear
-      %small
-        =raw (@user.description || "请编辑个人简介")
-        %br
-        %br
-      - if operable(@user)
-        =link_to "(编辑)", describe_user_path(@user)
+    #user-describe
+      = render 'description'
     %hr
     - if current_user.blank? or current_user != @user
       - if current_user.can_follow?(@user)

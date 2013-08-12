@@ -59,7 +59,9 @@ SocialStudy::Application.routes.draw do
       get :followers
       post :vote
       get :states
-      post :describe
+      get :describe
+      get :cancel_describe
+      put :update_describe
     end
   end
   resources :knowledges do
