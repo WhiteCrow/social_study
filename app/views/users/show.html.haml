@@ -1,5 +1,9 @@
-%div.span8
-%div.span4
+.span9
+  .span3.right-line
+    = Entry.menu
+  .span9
+    = Entry.default_entry
+.span3
   %div.well.user-profile
     =image_tag @user.image, class: 'user-face'
     %hr.clear

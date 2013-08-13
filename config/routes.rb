@@ -1,5 +1,7 @@
 SocialStudy::Application.routes.draw do
 
+  resources :entries, expect: :index
+
   match "/search" => "search#index", :as => :search
 
   resources :reviews
