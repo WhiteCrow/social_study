@@ -4,5 +4,6 @@ FactoryGirl.define do
   factory :entry do
     title "MyString"
     content "MyText[[node]]Yes"
+    association :user
   end
 end

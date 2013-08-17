@@ -10,6 +10,7 @@ class User
   ROLES = %w(admin user)
 
   has_many :microblogs
+  has_many :entries
   has_many :relays
   has_many :notes
   has_many :experiences
