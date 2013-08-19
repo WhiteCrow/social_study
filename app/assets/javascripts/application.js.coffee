@@ -1,9 +1,7 @@
 #= require jquery
 #= require jquery_ujs
 #= require bootstrap
-#= require app
-#= require experiences
+#= require_tree
 
 $ ->
   App.init()
-

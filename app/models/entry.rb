@@ -46,8 +46,8 @@ class Entry
     self.create!({
       user_id: user_id,
       type: 'default',
-      title: '默认词条',
-      content: '默认词条'
+      title: '默认节点',
+      content: '默认节点'
     })
   end
 

@@ -1,6 +1,5 @@
 class EntriesController < ApplicationController
-  # GET /entries
-  # GET /entries.json
+  before_filter :require_user, expect: [:show, :index]
   def index
     @entries = Entry.all
 
@@ -32,9 +31,11 @@ class EntriesController < ApplicationController
     end
   end
 
-  # GET /entries/1/edit
   def edit
     @entry = Entry.find(params[:id])
+    respond_to do |format|
+      format.js
+    end
   end
 
   # POST /entries

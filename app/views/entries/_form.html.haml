@@ -1,16 +1,9 @@
 = form_for @entry do |f|
-  - if @entry.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@entry.errors.count, "error")} prohibited this entry from being saved:"
-      %ul
-        - @entry.errors.full_messages.each do |msg|
-          %li= msg
-
   .field
-    = f.label :title
+    = f.label :title, "标题"
     = f.text_field :title
   .field
-    = f.label :content
-    = f.text_area :content
+    = f.label :content, "内容"
+    = f.text_area :content, class: 'span12'
   .actions
-    = f.submit 'Save'
+    = f.submit '提交', class: 'btn btn-success'

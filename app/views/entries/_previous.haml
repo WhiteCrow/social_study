@@ -1,0 +1,10 @@
+#entry-previous.pull-left
+  %ul.nav.nav-pills.alert.alert-info
+    - @user.entries.each do |entry|
+      %li
+        =link_to entry, remote: true do
+          = entry.title
+          %i.icon-remove
+    %li
+      =link_to '#' do
+        %i.icon-ban-circle

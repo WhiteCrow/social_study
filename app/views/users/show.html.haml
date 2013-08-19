@@ -1,8 +1,9 @@
 .span9
-  .span3.right-line
-    =render 'entry_menu'
-  .span9
-    =render 'entry_default'
+  .span2
+    =render 'entries/menu'
+  .span10.box.left-line
+    =render 'entries/previous'
+    =render 'entries/default'
 .span3
   %div.well.user-profile
     =image_tag @user.image, class: 'user-face'
