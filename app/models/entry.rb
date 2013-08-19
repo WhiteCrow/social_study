@@ -16,20 +16,23 @@ class Entry
   field :title, type: String
   field :type, type: String
   field :content, type: String
+  field :parsed_content, type: String
   index user_id: 1
 
   before_save :parse_content
 
   #remove all blank [[]] in string
   #replace all [[example]] to <a href="entry">example</a> in string
+  protected
+
   def parse_content
-    self.content = self.content.
+    self.parsed_content = self.content.
           gsub(/\[\[\]\]/, " ").
           #gsub(/\[\[(?<foo>[^\]\]])\]\]/, '<a class="entry-title">\k<foo></a>')
           gsub(/\[\[(?<foo>[^\]\]]+)\]\]/, '<a class="entry-title">\k<foo></a>')
   end
 
-  protected
+
   def self.create_menu_with(user_id)
     self.create!({
       user_id: user_id,
