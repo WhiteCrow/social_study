@@ -94,13 +94,12 @@ class User
     end
   end
 
-  def special_entry_content_by(type)
+  def special_entry_by(type)
     return nil if type.blank?
     begin
-      self.entries.find_by(type: type).content
+      self.entries.find_by(type: type)
     rescue
-      entry = Entry.send("create_#{type}_with", self.id)
-      entry.content
+      Entry.send("create_#{type}_with", self.id)
     end
   end
 

@@ -19,6 +19,9 @@
 h1,h2,h3,h4,h5,h6{
   margin:0px;
 }
+a{
+  cursor: pointer;
+}
 i{
   font-size: 22px;
 }
@@ -48,6 +51,25 @@ textarea{
 ul{
   margin: 0px;
   list-style:none;
+}
+a.gray-link{
+  color: #bbb;
+  &:hover{
+    color: $linkColorHover;
+    text-decoration: none;
+  }
+}
+.gray-link-parent{
+  &:hover{
+    .gray-link{
+      color: $linkColor;
+      display: inline;
+      visibility: visible;
+    }
+  }
+}
+.unvisible{
+  visibility: hidden;
 }
 //width and height
 .h358{height:358px;}
@@ -81,12 +103,7 @@ ul{
   float: left;
   margin-right: 15px;
 }
-a.gray-link{
-  color: #888;
-  &:hover{
-    color: $linkColorHover;
-  }
-}
+
 .left-line{
   border-left:1px solid #ddd;
   padding-left:30px;

@@ -1,1 +1,8 @@
-= simple_format @user.special_entry_content_by('default')
+- entry = @user.special_entry_by('default')
+.gray-link-parent
+  - if operable(entry)
+    .pull-right
+      = link_to edit_entry_path(entry), class: "gray-link", remote: true do
+        %i.icon-edit
+
+  = simple_format entry.parsed_content

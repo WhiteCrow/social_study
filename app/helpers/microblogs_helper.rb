@@ -13,7 +13,7 @@ module MicroblogsHelper
             relay_state_path(state),
             remote: true,
             method: :post,
-            class: 'pl5 hide unrelay-link'
+            class: 'pl5 unvisible gray-link unrelay-link'
   end
 
   def relayed_link(state)
@@ -21,7 +21,7 @@ module MicroblogsHelper
             relay_state_path(state),
             remote: true,
             method: :post,
-            class: 'pl5 hide relayed-link'
+            class: 'pl5 unvisible gray-link relayed-link'
   end
 
   def relayer_link(state)

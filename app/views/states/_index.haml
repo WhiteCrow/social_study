@@ -2,7 +2,7 @@
   - @states.each do |state|
     - statable = state.statable
     - auditable = state.auditable
-    .state{id: "#{auditable.class.name.underscore}-#{auditable.id}"}
+    .state.gray-link-parent{id: "#{auditable.class.name.underscore}-#{auditable.id}"}
       - unless auditable.is_a? Relay
         = link_to statable.user, class: 'pull-left' do
           = image_tag statable.user.image(:small)

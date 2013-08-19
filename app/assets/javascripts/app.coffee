@@ -1,7 +1,6 @@
 window.App = App =
   init: ->
     @Experiences.init()
-    @State.init()
     @initNotice()
 
   initNotice: ->
