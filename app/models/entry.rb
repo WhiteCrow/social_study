@@ -20,24 +20,6 @@ class Entry
 
   before_save :parse_content
 
-  def self.menu
-    self.special_content_by("菜单")
-  end
-
-  def self.default_content
-    self.special_content_by("默认词条")
-  end
-
-  def self.special_content_by(type)
-    return nil if type.blank?
-    begin
-      self.find_by(type: type).content
-    rescue
-      #self.send "create_#{type}"
-      nil
-    end
-  end
-
   #remove all blank [[]] in string
   #replace all [[example]] to <a href="entry">example</a> in string
   def parse_content
@@ -48,12 +30,22 @@ class Entry
   end
 
   protected
-  def self.create_menu
-    self.create({
+  def self.create_menu_with(user_id)
+    self.create!({
+      user_id: user_id,
+      type: 'menu',
       title: '菜单',
-      cotent: '[[菜单]]'
+      content: '[[菜单]]'
     })
   end
 
+  def self.create_default_with(user_id)
+    self.create!({
+      user_id: user_id,
+      type: 'default',
+      title: '默认词条',
+      content: '默认词条'
+    })
+  end
 
 end

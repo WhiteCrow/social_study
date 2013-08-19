@@ -1,8 +1,8 @@
 .span9
   .span3.right-line
-    /=simple_format @user.menu_entry
+    =render 'entry_menu'
   .span9
-    /=simple_format @user.default_entry
+    =render 'entry_default'
 .span3
   %div.well.user-profile
     =image_tag @user.image, class: 'user-face'

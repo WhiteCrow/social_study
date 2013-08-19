@@ -94,6 +94,16 @@ class User
     end
   end
 
+  def special_entry_content_by(type)
+    return nil if type.blank?
+    begin
+      self.entries.find_by(type: type).content
+    rescue
+      entry = Entry.send("create_#{type}_with", self.id)
+      entry.content
+    end
+  end
+
   ## Database authenticatable
   field :name,               :type => String
   field :email,              :type => String, :default => ""
