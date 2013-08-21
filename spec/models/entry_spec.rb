@@ -6,13 +6,13 @@ describe Entry do
 
   it 'parse entry content' do
     entry.update_attributes(content: "Good[[test]]Yes")
-    entry.parsed_content.should eq "Good<a class=\"entry-title\">test</a>Yes"
+    entry.parsed_content.should eq "Good<a href='/entries/next/test' class=\"entry-title\" data-remote=\"true\">test</a>Yes"
 
     entry_2 = Entry.create!({title: 'entry_2', content: 'Good[[]]Yes[[]]', user_id: user.id})
     entry_2.parsed_content.should eq "Good Yes "
 
     entry_3 = Entry.create!({title: 'entry_3', content: 'Good[[No]]Yes[[Great]]', user_id: user.id})
-    entry_3.parsed_content.should eq "Good<a class=\"entry-title\">No</a>Yes<a class=\"entry-title\">Great</a>"
+    entry_3.parsed_content.should eq "Good<a href='/entries/next/No' class=\"entry-title\" data-remote=\"true\">No</a>Yes<a href='/entries/next/Great' class=\"entry-title\" data-remote=\"true\">Great</a>"
   end
 
   it 'cannot create entry by title reserved if type is nil' do
