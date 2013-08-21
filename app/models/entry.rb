@@ -28,7 +28,6 @@ class Entry
   def parse_content
     self.parsed_content = self.content.
           gsub(/\[\[\]\]/, " ").
-          #gsub(/\[\[(?<foo>[^\]\]])\]\]/, '<a class="entry-title">\k<foo></a>')
           gsub(/\[\[(?<foo>[^\]\]]+)\]\]/, '<a href=\'/entries/next/\k<foo>\' class="entry-title" data-remote="true">\k<foo></a>')
   end
 
@@ -38,7 +37,7 @@ class Entry
       user_id: user_id,
       type: 'menu',
       title: '菜单',
-      content: '[[菜单]]'
+      content: '<ul><li>[[菜单]]</li><li>[[默认条目]]</li></ul>'
     })
   end
 
@@ -46,8 +45,8 @@ class Entry
     self.create!({
       user_id: user_id,
       type: 'default',
-      title: '默认节点',
-      content: '默认节点'
+      title: '默认条目',
+      content: '默认条目'
     })
   end
 

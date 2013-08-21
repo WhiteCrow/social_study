@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @entry = @user.special_entry_by('default')
-    @previous_entries = @entry.to_a
+    @previous_entries = @user.entries.to_a#@entry.to_a
   end
 
   def edit

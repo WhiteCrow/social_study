@@ -1,10 +1,11 @@
-.gray-link-parent
+.gray-link-parent.tab-pane.fade.in.active{id: "entry-#{@entry.id}"}
   - if operable(@entry)
     .pull-right
       = link_to edit_entry_path(@entry), class: "gray-link", remote: true do
         %i.icon-edit
       = link_to entry_path(@entry), method: 'delete', class: "gray-link", remote: true, confirm: '你确定要删除当前节点吗？' do
-        %i.icon-remove
-
-  .clear#current-entry-content
+        %i.icon-trash
+  %small
+    = @entry.created_at.time_ago
+  #current-entry-content.clear
     = simple_format @entry.parsed_content

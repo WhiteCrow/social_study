@@ -1,5 +1,5 @@
-#entry-previous.pull-left
-  %ul.nav.nav-pills.alert.alert-info
+#entry-previous
+  %ul.nav.nav-pills.nav-tabs
     - @previous_entries.each do |entry|
       = previous_entry_li(entry)
     %li#remove-unactive-li
