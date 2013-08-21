@@ -67,10 +67,10 @@ class EntriesController < ApplicationController
 
   def update
     @entry = Entry.find(params[:id])
-
-    if @entry.update_attributes(params[:entry])
-      render js: "App.Entry.currentContent().html('#{raw @entry.parsed_content}');
-                  $('#entry-title-#{@entry.id}').html('#{@entry.title}')"
+    respond_to do |format|
+      if @entry.update_attributes(params[:entry])
+        format.js
+      end
     end
   end
 
