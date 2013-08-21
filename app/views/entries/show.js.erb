@@ -3,4 +3,13 @@ if ($('#current-entry form').length > 0){
     return false
   }
 }
-$('#current-entry').html('<%= j render 'show' %>')
+if ($('#current-entry').find('<%= "#entry-#{@entry.id}" %>').length == 0){
+  active_entries = $('#current-entry .active')
+  setTimeout(function(){
+    setTimeout(function(){
+      active_entries.removeClass('active')
+    }, 200)
+    active_entries.removeClass('in')
+  }, 0);
+  $('#current-entry').append('<%= j render 'show' %>')
+}

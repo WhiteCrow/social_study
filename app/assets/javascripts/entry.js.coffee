@@ -1,6 +1,14 @@
 App.Entry =
   init: ->
     @menuItemToggle()
+    @tabChange()
+
+  tabChange: ->
+    $('.entry-tab a').on 'click', (e)->
+      e.preventDefault()
+      link = $(@).data('link')
+      $.get(link).error =>
+        alert('无法载入数据')
 
   menuItemToggle: ->
     $('#entry-menu .entry-title').on 'click', ->
