@@ -1,7 +1,7 @@
 class EntriesController < ApplicationController
-  include ActionView::Helpers::TextHelper
+  #include ActionView::Helpers::TextHelper
   #include ActionView::Helpers::UrlHelper
-  #include ActionView::Helpers::OutputSafetyHelper
+  include ActionView::Helpers::OutputSafetyHelper
   #include ActionView::Context
   #include EntriesHelper
 
@@ -69,7 +69,7 @@ class EntriesController < ApplicationController
     @entry = Entry.find(params[:id])
 
     if @entry.update_attributes(params[:entry])
-      render js: "$('#current-entry-content').html('#{simple_format @entry.parsed_content}');
+      render js: "App.Entry.currentContent().html('#{raw @entry.parsed_content}');
                   $('#entry-title-#{@entry.id}').html('#{@entry.title}')"
     end
   end

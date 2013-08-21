@@ -1,15 +1,11 @@
 if ($('#current-entry form').length > 0){
-  if(!confirm("确定取消编辑当前节点吗？")){
+  if(confirm("确定取消编辑当前节点吗？")){
+    App.Entry.currentContent().html('<%= j raw @entry.parsed_content %>');
+  }else{
     return false
   }
 }
 if ($('#current-entry').find('<%= "#entry-#{@entry.id}" %>').length == 0){
-  active_entries = $('#current-entry .active')
-  setTimeout(function(){
-    setTimeout(function(){
-      active_entries.removeClass('active')
-    }, 200)
-    active_entries.removeClass('in')
-  }, 0);
+  App.Entry.unActiveTabs()
   $('#current-entry').append('<%= j render 'show' %>')
 }

@@ -3,12 +3,24 @@ App.Entry =
     @menuItemToggle()
     @tabChange()
 
+  currentContent: ->
+    $('#current-entry .active .current-entry-content')
+
   tabChange: ->
     $('.entry-tab a').on 'click', (e)->
       e.preventDefault()
       link = $(@).data('link')
       $.get(link).error =>
         alert('无法载入数据')
+
+  unActiveTabs: ->
+    active_entries = $('#current-entry .active')
+    setTimeout(->
+      setTimeout(->
+        active_entries.removeClass('active')
+      , 200)
+      active_entries.removeClass('in')
+    ,0)
 
   menuItemToggle: ->
     $('#entry-menu .entry-title').on 'click', ->

@@ -7,5 +7,5 @@
         %i.icon-trash
   %small
     = @entry.created_at.time_ago
-  #current-entry-content.clear
-    = simple_format @entry.parsed_content
+  .current-entry-content.clear
+    =raw @entry.parsed_content
