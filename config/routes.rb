@@ -1,6 +1,10 @@
 SocialStudy::Application.routes.draw do
 
-  resources :entries, expect: :index
+  resources :entries, expect: :index do
+    collection do
+      get 'next/:title', action: 'next'
+    end
+  end
 
   match "/search" => "search#index", :as => :search
 

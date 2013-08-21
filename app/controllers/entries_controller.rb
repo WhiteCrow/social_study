@@ -1,12 +1,30 @@
 class EntriesController < ApplicationController
   include ActionView::Helpers::TextHelper
-  before_filter :require_user, expect: [:show, :index]
+  #include ActionView::Helpers::UrlHelper
+  #include ActionView::Helpers::OutputSafetyHelper
+  #include ActionView::Context
+  #include EntriesHelper
+
+  before_filter :require_user, expect: [:show, :add_to_previous]
+
   def index
     @entries = Entry.all
 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @entries }
+    end
+  end
+
+  def next
+    title = params[:title]
+    begin
+      @entry = current_user.entries.find_by(title: title)
+      respond_to do |format|
+        format.js
+      end
+    rescue Mongoid::Errors::DocumentNotFound
+      current_user.entries.new(title: title)
     end
   end
 

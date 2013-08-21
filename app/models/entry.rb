@@ -29,7 +29,7 @@ class Entry
     self.parsed_content = self.content.
           gsub(/\[\[\]\]/, " ").
           #gsub(/\[\[(?<foo>[^\]\]])\]\]/, '<a class="entry-title">\k<foo></a>')
-          gsub(/\[\[(?<foo>[^\]\]]+)\]\]/, '<a class="entry-title">\k<foo></a>')
+          gsub(/\[\[(?<foo>[^\]\]]+)\]\]/, '<a href=\'/entries/next/\k<foo>\' class="entry-title" data-remote="true">\k<foo></a>')
   end
 
 

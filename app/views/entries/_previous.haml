@@ -1,10 +1,7 @@
 #entry-previous.pull-left
   %ul.nav.nav-pills.alert.alert-info
     - @previous_entries.each do |entry|
-      %li{class: "#{'active'if @entry == entry}"}
-        =link_to entry, remote: true, id: "entry-title-#{entry.id}" do
-          = entry.title
-          %i.icon-remove
-    %li
+      = previous_entry_li(entry)
+    %li#remove-unactive-li
       =link_to '#' do
         %i.icon-ban-circle

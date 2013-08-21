@@ -1,1 +1,6 @@
+if ($('#current-entry form').length > 0){
+  if(!confirm("确定取消编辑当前节点吗？")){
+    return false
+  }
+}
 $('#current-entry').html('<%= j render 'show' %>')
