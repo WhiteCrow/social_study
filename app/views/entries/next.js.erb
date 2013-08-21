@@ -1,7 +1,5 @@
 var title = '<%= @entry.title %>'
-if (App.Entry.previousIsContain(title)){
-  App.Entry.activePrevious(title);
-}else{
-  $('#entry-previous .active').removeClass('active');
+if (!App.Entry.previousIsContain(title)){
   $('#entry-previous #remove-unactive-li').before('<%= j previous_entry_li(@entry).to_s %>');
 }
+$('<%= j "#entry-tab-#{@entry.id}"%>').click()
