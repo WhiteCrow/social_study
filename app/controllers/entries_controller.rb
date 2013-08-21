@@ -1,4 +1,5 @@
 class EntriesController < ApplicationController
+  include ActionView::Helpers::TextHelper
   before_filter :require_user, expect: [:show, :index]
   def index
     @entries = Entry.all
@@ -9,19 +10,13 @@ class EntriesController < ApplicationController
     end
   end
 
-  # GET /entries/1
-  # GET /entries/1.json
   def show
     @entry = Entry.find(params[:id])
-
     respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @entry }
+      format.js
     end
   end
 
-  # GET /entries/new
-  # GET /entries/new.json
   def new
     @entry = Entry.new
 
@@ -38,8 +33,6 @@ class EntriesController < ApplicationController
     end
   end
 
-  # POST /entries
-  # POST /entries.json
   def create
     @entry = Entry.new(params[:entry])
 
@@ -54,19 +47,12 @@ class EntriesController < ApplicationController
     end
   end
 
-  # PUT /entries/1
-  # PUT /entries/1.json
   def update
     @entry = Entry.find(params[:id])
 
-    respond_to do |format|
-      if @entry.update_attributes(params[:entry])
-        format.html { redirect_to @entry, notice: 'Entry was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @entry.errors, status: :unprocessable_entity }
-      end
+    if @entry.update_attributes(params[:entry])
+      render js: "$('#current-entry-content').html('#{simple_format @entry.parsed_content}');
+                  $('#entry-title-#{@entry.id}').html('#{@entry.title}')"
     end
   end
 

@@ -1,4 +1,10 @@
-.entry-title
-  = entry.title
-.entry-content
-  = raw entry.content
+.gray-link-parent
+  - if operable(@entry)
+    .pull-right
+      = link_to edit_entry_path(@entry), class: "gray-link", remote: true do
+        %i.icon-edit
+      = link_to entry_path(@entry), method: 'delete', class: "gray-link", remote: true, confirm: '你确定要删除当前节点吗？' do
+        %i.icon-remove
+
+  .clear#current-entry-content
+    = simple_format @entry.parsed_content

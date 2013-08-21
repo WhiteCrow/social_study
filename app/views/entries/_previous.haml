@@ -1,8 +1,8 @@
 #entry-previous.pull-left
   %ul.nav.nav-pills.alert.alert-info
-    - @user.entries.each do |entry|
-      %li
-        =link_to entry, remote: true do
+    - @previous_entries.each do |entry|
+      %li{class: "#{'active'if @entry == entry}"}
+        =link_to entry, remote: true, id: "entry-title-#{entry.id}" do
           = entry.title
           %i.icon-remove
     %li
