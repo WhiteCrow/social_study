@@ -1,11 +1,16 @@
-if ($('#current-entry form').length > 0){
-  if(confirm("确定取消编辑当前节点吗？")){
-    App.Entry.currentContent().html('<%= j raw @entry.parsed_content %>');
-  }else{
-    return false
-  }
+App.Entry.activeContent = function(){
+  var contentSelector = $('<%="#entry-#{@entry.id}"%>')
+  App.Entry.hideActiveContent(function(){
+    if (contentSelector.length == 0){
+      $('#entryContents').append('<%= j render 'show' %>')
+    }else{
+      contentSelector.addClass('in').addClass('active')
+    }
+  });
 }
-if ($('#current-entry').find('<%= "#entry-#{@entry.id}" %>').length == 0){
-  App.Entry.unActiveTabs()
-  $('#current-entry').append('<%= j render 'show' %>')
+
+if (App.Entry.isEditing() ){
+  $.get(App.Entry.cancelEditPath()).success(function(){App.Entry.activeContent()})
+}else{
+  App.Entry.activeContent()
 }

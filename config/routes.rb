@@ -4,6 +4,9 @@ SocialStudy::Application.routes.draw do
     collection do
       get 'next/:title', action: 'next'
     end
+    member do
+      get 'cancel_edit'
+    end
   end
 
   match "/search" => "search#index", :as => :search

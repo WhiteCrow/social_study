@@ -5,6 +5,8 @@ class Entry
 
   TYPES = ['default', 'menu']
   RESERVED_TITLES = ['默认条目', '菜单']
+  PLACEHODER_CONTENT = "该条目为空，请点击右上方的<i class='icon-edit'><li>编辑条目"
+
   belongs_to :user
 
   validates_presence_of :title, :content, :user_id

@@ -1,0 +1,5 @@
+if(confirm("确定取消编辑当前节点吗？")){
+  App.Entry.currentContent().html('<%= j render "show" %>')
+}else{
+  return false
+}

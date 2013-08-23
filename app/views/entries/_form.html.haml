@@ -7,4 +7,4 @@
     = f.text_area :content, class: 'span12'
   .actions
     = f.submit '提交', class: 'btn btn-success'
-    = link_to '取消', @entry, remote: true, class: 'btn'
+    = link_to '取消', cancel_edit_entry_path(@entry), remote: true, class: 'btn', id: 'cancel-edit-entry-link'

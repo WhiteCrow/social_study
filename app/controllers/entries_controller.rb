@@ -19,9 +19,9 @@ class EntriesController < ApplicationController
   def next
     title = params[:title]
     begin
-      @entry = current_user.entries.find_by(title: title)
+      @entry = @user.entries.find_by(title: title)
       respond_to do |format|
-        format.js
+        format.js {render 'show'}
       end
     rescue Mongoid::Errors::DocumentNotFound
       current_user.entries.new(title: title)
@@ -45,6 +45,13 @@ class EntriesController < ApplicationController
   end
 
   def edit
+    @entry = Entry.find(params[:id])
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def cancel_edit
     @entry = Entry.find(params[:id])
     respond_to do |format|
       format.js

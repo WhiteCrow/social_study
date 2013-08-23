@@ -3,9 +3,9 @@
     =render 'entries/menu'
   .span10.box.left-line
     =render 'entries/previous'
-    =render 'entries/current'
+    =render 'entries/contents'
 .span3
-  %div.well.user-profile
+  %div.well.user-profile{"data-user-id" => @user.id}
     =image_tag @user.image, class: 'user-face'
     %hr.clear
     #user-describe

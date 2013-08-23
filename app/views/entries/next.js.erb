@@ -1,5 +1,13 @@
-var title = '<%= @entry.title %>'
-if (!App.Entry.previousIsContain(title)){
-  $('#entry-previous #remove-unactive-li').before('<%= j previous_entry_li(@entry).to_s %>');
+$.get('<%= entry_path(@entry)%>').success(function(){
+  App.Entry.activeTab()
+})
+
+App.Entry.activeTab = function(){
+  App.Entry.unActiveTabs()
+  var title = '<%= @entry.title %>'
+  if (!App.Entry.previousIsContain(title)){
+    $('#entry-previous #remove-unactive-li').before('<%= j previous_entry_li(@entry).to_s %>');
+  }else{
+    $('#entry-previous <%= "#entry-tab-#{@entry.id}"%>').parent('.entry-tab').addClass('active')
+  }
 }
-$('<%= j "#entry-tab-#{@entry.id}"%>').click()

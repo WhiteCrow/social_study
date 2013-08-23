@@ -3,8 +3,17 @@ App.Entry =
     @menuItemToggle()
     @tabChange()
 
+  userId: ->
+    $('.user-profile').data("user-id")
+
+  cancelEditPath: ->
+    $('#cancel-edit-entry-link').attr('href')
+
+  isEditing: ->
+    $('#entryContents form').length > 0
+
   currentContent: ->
-    $('#current-entry .active .current-entry-content')
+    $('#entryContents .active')
 
   tabChange: ->
     $('.entry-tab a').on 'click', (e)->
@@ -13,14 +22,20 @@ App.Entry =
       $.get(link).error =>
         alert('无法载入数据')
 
-  unActiveTabs: ->
-    active_entries = $('#current-entry .active')
+  hideActiveContent: (func)->
+    active_entries = $('#entryContents .active')
     setTimeout(->
       setTimeout(->
+        setTimeout(->
+          func()
+        , 0)
         active_entries.removeClass('active')
       , 200)
       active_entries.removeClass('in')
     ,0)
+
+  unActiveTabs: ->
+    $("#entry-previous .entry-tab.active").removeClass('active')
 
   menuItemToggle: ->
     $('#entry-menu .entry-title').on 'click', ->

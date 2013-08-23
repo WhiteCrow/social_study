@@ -1,3 +1,3 @@
-App.Entry.currentContent().html('<%= j raw @entry.parsed_content %>');
+App.Entry.currentContent().html('<%= j render "show" %>');
 $('<%= "#entry-tab-#{@entry.id}" %>').html('<%= @entry.title %>');
 
