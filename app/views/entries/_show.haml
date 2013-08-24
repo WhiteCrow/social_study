@@ -8,4 +8,4 @@
   %small
     = @entry.created_at.time_ago
   .current-entry-content.clear
-    =raw @entry.parsed_content
+    %div{'ng-bind-html'=>'currentEntry.parsed_content'}
