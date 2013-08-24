@@ -1,7 +1,7 @@
 App.Entry =
   init: ->
-    @menuItemToggle()
-    @tabChange()
+    #@menuItemToggle()
+    #@tabChange()
 
   userId: ->
     $('.user-profile').data("user-id")

@@ -1,11 +1,13 @@
 'use strict'
 # Controllers
-user_id = App.Entry.userId()
-
 window.EntryList = ($scope, $http)->
-  $http.get("/entries.json?user_id=#{user_id}").success (data)->
+  $http.get("/entries.json?user_id=#{$scope.userId}").success (data)->
     $scope.entries = data
 
-window.EntryNext = ($scope, $http)->
-  $http.get("/entries/next/test.json?user_id=#{user_id}").success (data)->
-    $scope.entries += data
+  $scope.next = (title)->
+    $http.get("/entries/next/#{title}?user_id=#{$scope.userId}").success (data)->
+      if entry = $scope.entries.isIncludeAttr('title', data['title'])
+        $scope.currentEntry = entry
+      else
+        $scope.entries.push(data)
+        $scope.currentEntry = $scope.entries.last()

@@ -30,7 +30,8 @@ class Entry
   def parse_content
     self.parsed_content = self.content.
           gsub(/\[\[\]\]/, " ").
-          gsub(/\[\[(?<foo>[^\]\]]+)\]\]/, '<a href=\'/entries/next/\k<foo>\' class="entry-title" data-remote="true">\k<foo></a>')
+          #gsub(/\[\[(?<foo>[^\]\]]+)\]\]/, '<a href=\'/entries/next/\k<foo>\' class="entry-title" ng-click="next()">\k<foo></a>')
+          gsub(/\[\[(?<foo>[^\]\]]+)\]\]/, '<a class="entry-title" ng-click="next(\'\k<foo>\')">\k<foo></a>')
   end
 
 

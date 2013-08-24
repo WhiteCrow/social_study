@@ -23,7 +23,6 @@ class EntriesController < ApplicationController
     begin
       @entry = @user.entries.find_by(title: title)
       respond_to do |format|
-        #format.js {render 'show'}
         format.json { render json: @entry }
       end
     rescue Mongoid::Errors::DocumentNotFound
