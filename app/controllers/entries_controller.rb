@@ -8,23 +8,26 @@ class EntriesController < ApplicationController
   before_filter :require_user, expect: [:show, :add_to_previous]
 
   def index
-    @entries = Entry.all
+    @user = User.find(params[:user_id])
+    #@entries = @user.entries
+    @entries = @user.special_entry_by('default').to_a
 
     respond_to do |format|
-      format.html # index.html.erb
       format.json { render json: @entries }
     end
   end
 
   def next
     title = params[:title]
+    @user = User.find(params[:user_id])
     begin
       @entry = @user.entries.find_by(title: title)
       respond_to do |format|
-        format.js {render 'show'}
+        #format.js {render 'show'}
+        format.json { render json: @entry }
       end
     rescue Mongoid::Errors::DocumentNotFound
-      current_user.entries.new(title: title)
+      @user.entries.new(title: title)
     end
   end
 

@@ -6,6 +6,9 @@ App.Entry =
   userId: ->
     $('.user-profile').data("user-id")
 
+  userPath: ->
+    "/users/#{@userId()}"
+
   cancelEditPath: ->
     $('#cancel-edit-entry-link').attr('href')
 

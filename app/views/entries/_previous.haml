@@ -1,7 +1,9 @@
 #entry-previous
   %ul.nav.nav-pills.nav-tabs
-    - @previous_entries.each do |entry|
-      = previous_entry_li(entry)
+    %li.entry-tab{"ng-repeat"=>"entry in entries"}
+      =link_to "{{entry.title}}", "data-toggle" => "tab" do
+        {{entry.title}}
+        %i.icon-remove
     %li#remove-unactive-li
       =link_to '#' do
         %i.icon-ban-circle
