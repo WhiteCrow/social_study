@@ -1,7 +1,7 @@
 #entry-tabs
   %ul.nav.nav-pills.nav-tabs
-    %li.entry-tab{"ng-repeat"=>"entry in entries", "ng-click"=>"next(entry.title)"}
-      %a{ "data-toggle" => "tab"}
+    %li.entry-tab{"ng-repeat"=>"entry in entries", "ng-class"=>"{'active': entry.title == currentEntry.title}"}
+      %a{ "data-toggle" => "tab", "ng-click"=>"next(entry.title)"}
         {{entry.title}}
         %i.icon-remove
     %li#remove-unactive-li
