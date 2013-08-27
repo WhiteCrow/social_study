@@ -1,7 +1,7 @@
-#entry-previous
+#entry-tabs
   %ul.nav.nav-pills.nav-tabs
-    %li.entry-tab{"ng-repeat"=>"entry in entries"}
-      =link_to "{{entry.title}}", "data-toggle" => "tab" do
+    %li.entry-tab{"ng-repeat"=>"entry in entries", "ng-click"=>"next(entry.title)"}
+      %a{ "data-toggle" => "tab"}
         {{entry.title}}
         %i.icon-remove
     %li#remove-unactive-li

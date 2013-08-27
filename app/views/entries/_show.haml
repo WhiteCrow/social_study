@@ -1,4 +1,4 @@
-.gray-link-parent.tab-pane.fade.in.active{id: "entry-#{@entry.id}"}
+.gray-link-parent{id: "entry-#{@entry.id}"}
   - if operable(@entry)
     .pull-right
       = link_to edit_entry_path(@entry), class: "gray-link edit-entry", remote: true do
