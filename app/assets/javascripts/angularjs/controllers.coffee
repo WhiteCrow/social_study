@@ -13,3 +13,11 @@ window.EntryList = ($scope, $http)->
       if !!$scope.currentEntry is false
         $scope.entries.push(data)
         $scope.currentEntry = $scope.entries.last()
+
+  $scope.clear = ->
+    $scope.entries = [$scope.currentEntry]
+
+  $scope.remove= (entry)->
+    index = $scope.entries.indexOf(entry)
+    $scope.entries.splice(index, 1)
+

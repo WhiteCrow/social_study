@@ -3,7 +3,7 @@
     %li.entry-tab{"ng-repeat"=>"entry in entries", "ng-class"=>"{'active': entry.title == currentEntry.title}"}
       %a{ "data-toggle" => "tab", "ng-click"=>"next(entry.title)"}
         {{entry.title}}
-        %i.icon-remove
+        %i.icon-remove{"ng-click"=>"remove(entry)"}
     %li#remove-unactive-li
-      =link_to '#' do
+      %a{ "ng-click"=>"clear()"}
         %i.icon-ban-circle
