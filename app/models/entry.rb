@@ -9,7 +9,7 @@ class Entry
 
   belongs_to :user
 
-  validates_presence_of :title, :content, :user_id
+  validates_presence_of :title, :content, :user_id, :parsed_content
   validates_uniqueness_of :title, scope: :user_id
   validates_inclusion_of :type, in: TYPES, allow_nil: true
   validates_uniqueness_of :type, scope: :user_id, unless: Proc.new{|e| e.type.nil?}
@@ -21,7 +21,7 @@ class Entry
   field :parsed_content, type: String
   index user_id: 1
 
-  before_save :parse_content
+  before_validation :parse_content
 
   #remove all blank [[]] in string
   #replace all [[example]] to <a href="entry">example</a> in string

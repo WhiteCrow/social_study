@@ -1,9 +1,15 @@
 'use strict'
 # Controllers
+window.EntryParser = ($scope, $sce)->
+    html = currentEntry.parsed_content
+    $sce.trustAsHtml(html)
+
 window.EntryList = ($scope, $http)->
   $http.get("/entries.json?user_id=#{$scope.userId}").success (data)->
     $scope.entries = data
     $scope.currentEntry = _.last($scope.entries)
+    $scope.currentHtml = $scope.currentEntry.parsed_content
+    #$scope.currentEntryContent = $scope.trustAsHtml(html)
 
   # add or select entry to currentEntry
   $scope.next = (title)->
@@ -20,4 +26,3 @@ window.EntryList = ($scope, $http)->
   $scope.remove= (entry)->
     index = $scope.entries.indexOf(entry)
     $scope.entries.splice(index, 1)
-
