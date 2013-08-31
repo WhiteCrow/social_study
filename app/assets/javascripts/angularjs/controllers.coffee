@@ -20,6 +20,7 @@ myApp.controller "EntryList", ($scope, $http)->
       if !!$scope.currentEntry is false
         $scope.entries.push(data)
         $scope.currentEntry = $scope.entries.last()
+      $scope.currentHtml = $scope.currentEntry.parsed_content
 
   $scope.clear = ->
     $scope.entries = [$scope.currentEntry]
