@@ -22,6 +22,7 @@ class Entry
   index user_id: 1
 
   before_validation :parse_content
+  after_build :set_default_parsed_content
 
   #remove all blank [[]] in string
   #replace all [[example]] to <a href="entry">example</a> in string
@@ -34,6 +35,9 @@ class Entry
           gsub(/\[\[(?<foo>[^\]\]]+)\]\]/, '<a class="entry-title" ng-click="next(\'\k<foo>\')">\k<foo></a>')
   end
 
+  def set_default_parsed_content
+    self.parsed_content = "这是一个空条目，请点击右上角的 <i class='icon-edit'></i> 进行编辑"
+  end
 
   def self.create_menu_with(user_id)
     self.create!({

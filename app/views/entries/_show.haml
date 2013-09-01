@@ -1,4 +1,4 @@
-.gray-link-parent{id: "entry-#{@entry.id}"}
+.gray-link-parent
   - if operable(@entry)
     .pull-right
       = link_to edit_entry_path(@entry), class: "gray-link edit-entry", remote: true do
@@ -6,6 +6,6 @@
       = link_to entry_path(@entry), method: 'delete', class: "gray-link", remote: true, confirm: '你确定要删除当前节点吗？' do
         %i.icon-trash
   %small
-    = @entry.created_at.time_ago
+    {{currentEntry.created_at}}
   .current-entry-content.clear
     %div{compile: "currentHtml"}

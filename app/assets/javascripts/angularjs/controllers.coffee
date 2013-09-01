@@ -1,8 +1,8 @@
 'use strict'
 # Controllers
-myApp.EntryParser = ($scope, $sce)->
-    html = currentEntry.parsed_content
-    entryHtml = $sce.trustAsHtml(html)
+#myApp.EntryParser = ($scope, $sce)->
+#    html = currentEntry.parsed_content
+#    entryHtml = $sce.trustAsHtml(html)
 
 myApp.controller "EntryList", ($scope, $http)->
   $http.get("/entries.json?user_id=#{$scope.userId}").success (data)->

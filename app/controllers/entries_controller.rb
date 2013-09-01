@@ -1,17 +1,11 @@
 class EntriesController < ApplicationController
-  #include ActionView::Helpers::TextHelper
-  #include ActionView::Helpers::UrlHelper
   include ActionView::Helpers::OutputSafetyHelper
-  #include ActionView::Context
-  #include EntriesHelper
 
-  before_filter :require_user, expect: [:show, :add_to_previous]
+  before_filter :require_user, expect: [:show, :index, :next, :add_to_previous]
 
   def index
     @user = User.find(params[:user_id])
-    #@entries = @user.entries
     @entries = @user.special_entry_by('default').to_a
-
     respond_to do |format|
       format.json { render json: @entries }
     end
@@ -26,7 +20,10 @@ class EntriesController < ApplicationController
         format.json { render json: @entry }
       end
     rescue Mongoid::Errors::DocumentNotFound
-      @user.entries.new(title: title)
+      @entry = @user.entries.new(title: title)
+      respond_to do |format|
+        format.json { render json: @entry }
+      end
     end
   end
 
