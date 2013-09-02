@@ -33,10 +33,12 @@ myApp.controller "EntryList", ($scope, $http)->
       $http.delete("/entries/#{id}").success ->
         $scope.remove(entry)
 
-  $scope.create = (entry) ->
-    $http.post('/entries', {entry: entry}).success (data)->
-      $scope.currentEntry = data
-      $scope.currentHtml = data.parsed_content
+  $scope.update = (entry) ->
+    $http.put("/entries/#{entry._id}", {entry: entry}).success (data)->
+      $scope.entries.pop()
+      $scope.entries.push(data)
+      $scope.currentEntry = _.last($scope.entries)
+      $scope.currentHtml = $scope.currentEntry.parsed_content
 
   $scope.clear = ->
     $scope.entries = [$scope.currentEntry]

@@ -71,16 +71,16 @@ class EntriesController < ApplicationController
   end
 
   def update
-    @entry = Entry.find(params[:id])
-    if @entry.new_record
-      render action: :create
-    else
-      respond_to do |format|
-        if @entry.update_attributes(params[:entry])
-          format.json { head :no_content }
-        else
-          format.json { render json: @entry.errors, status: :unprocessable_entity }
-        end
+    begin
+      @entry = Entry.find(params[:id])
+    rescue Mongoid::Errors::DocumentNotFound
+      return create
+    end
+    respond_to do |format|
+      if @entry.update_attributes(params[:entry])
+        format.json { render json: @entry }
+      else
+        format.json { render json: @entry.errors, status: :unprocessable_entity }
       end
     end
   end

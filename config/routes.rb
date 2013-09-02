@@ -1,6 +1,6 @@
 SocialStudy::Application.routes.draw do
 
-  resources :entries do
+  resources :entries, except: [:show, :create] do
     collection do
       get 'next/:title', action: 'next'
     end

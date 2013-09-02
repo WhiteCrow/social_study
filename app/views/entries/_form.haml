@@ -6,5 +6,5 @@
     = f.label :content, "内容"
     = f.text_area :content, class: 'span12', "ng-model" => "currentEntry.content"
   .actions
-    %a.btn.btn-success{"ng-click"=>"create(currentEntry)"} 提交
+    %a.btn.btn-success{"ng-click"=>"update(currentEntry)"} 提交
     %a.btn{"ng-click"=>"next(currentEntry.title)"} 取消
