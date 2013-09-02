@@ -19,8 +19,19 @@ myApp.controller "EntryList", ($scope, $http)->
         entry.title == data.title
       if !!$scope.currentEntry is false
         $scope.entries.push(data)
-        $scope.currentEntry = $scope.entries.last()
+        $scope.currentEntry = _.last($scope.entries)
       $scope.currentHtml = $scope.currentEntry.parsed_content
+
+  $scope.edit = (entry)->
+    id = entry._id
+    $http.get("/entries/#{id}/edit").success (data)->
+      $scope.currentHtml = data
+
+  $scope.destroy = (entry)->
+    id = entry._id
+    if confirm('你确定要删除当前条目吗？')
+      $http.delete("/entries/#{id}").success ->
+        $scope.remove(entry)
 
   $scope.clear = ->
     $scope.entries = [$scope.currentEntry]
@@ -28,3 +39,5 @@ myApp.controller "EntryList", ($scope, $http)->
   $scope.remove= (entry)->
     index = $scope.entries.indexOf(entry)
     $scope.entries.splice(index, 1)
+    $scope.currentEntry = _.last($scope.entries)
+    $scope.currentHtml = $scope.currentEntry.parsed_content

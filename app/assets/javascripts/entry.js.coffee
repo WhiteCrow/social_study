@@ -16,7 +16,7 @@ App.Entry =
     $('#entryContents form').length > 0
 
   currentContent: ->
-    $('#entryContents .active')
+    $('#entry-content')
 
   tabChange: ->
     $('.entry-tab a').on 'click', (e)->

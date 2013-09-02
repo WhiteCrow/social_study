@@ -45,9 +45,7 @@ class EntriesController < ApplicationController
 
   def edit
     @entry = Entry.find(params[:id])
-    respond_to do |format|
-      format.js
-    end
+    render partial: 'entries/form'
   end
 
   def cancel_edit
@@ -80,14 +78,11 @@ class EntriesController < ApplicationController
     end
   end
 
-  # DELETE /entries/1
-  # DELETE /entries/1.json
   def destroy
     @entry = Entry.find(params[:id])
     @entry.destroy
 
     respond_to do |format|
-      format.html { redirect_to entries_url }
       format.json { head :no_content }
     end
   end
