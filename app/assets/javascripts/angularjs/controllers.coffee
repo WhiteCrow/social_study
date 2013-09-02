@@ -24,7 +24,7 @@ myApp.controller "EntryList", ($scope, $http)->
 
   $scope.edit = (entry)->
     id = entry._id
-    $http.get("/entries/#{id}/edit").success (data)->
+    $http.get("/entries/#{id}/edit?title=#{entry.title}").success (data)->
       $scope.currentHtml = data
 
   $scope.destroy = (entry)->
@@ -32,6 +32,11 @@ myApp.controller "EntryList", ($scope, $http)->
     if confirm('你确定要删除当前条目吗？')
       $http.delete("/entries/#{id}").success ->
         $scope.remove(entry)
+
+  $scope.create = (entry) ->
+    $http.post('/entries', {entry: entry}).success (data)->
+      $scope.currentEntry = data
+      $scope.currentHtml = data.parsed_content
 
   $scope.clear = ->
     $scope.entries = [$scope.currentEntry]

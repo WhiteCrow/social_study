@@ -44,7 +44,11 @@ class EntriesController < ApplicationController
   end
 
   def edit
-    @entry = Entry.find(params[:id])
+    begin
+      @entry = Entry.find(params[:id])
+    rescue Mongoid::Errors::DocumentNotFound
+      @entry = current_user.entries.new(title: params[:title])
+    end
     render partial: 'entries/form'
   end
 
@@ -56,14 +60,11 @@ class EntriesController < ApplicationController
   end
 
   def create
-    @entry = Entry.new(params[:entry])
-
+    @entry = current_user.entries.new(params[:entry])
     respond_to do |format|
       if @entry.save
-        format.html { redirect_to @entry, notice: 'Entry was successfully created.' }
         format.json { render json: @entry, status: :created, location: @entry }
       else
-        format.html { render action: "new" }
         format.json { render json: @entry.errors, status: :unprocessable_entity }
       end
     end
@@ -71,9 +72,15 @@ class EntriesController < ApplicationController
 
   def update
     @entry = Entry.find(params[:id])
-    respond_to do |format|
-      if @entry.update_attributes(params[:entry])
-        format.js
+    if @entry.new_record
+      render action: :create
+    else
+      respond_to do |format|
+        if @entry.update_attributes(params[:entry])
+          format.json { head :no_content }
+        else
+          format.json { render json: @entry.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
