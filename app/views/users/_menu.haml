@@ -1,15 +1,14 @@
-%div.navbar
-  %div.navbar-inner
-    %ul.nav
-      %li
-        = breadcrumb_li user_path(@user) do
-          = whos('维基')
-        = breadcrumb_li knowledges_user_path(@user) do
-          = whos('知识')
-        = breadcrumb_li notes_user_path(@user) do
-          = whos('笔记')
-        = breadcrumb_li reviews_user_path(@user) do
-          = whos('评论')
-        = breadcrumb_li experiences_user_path(@user) do
-          = whos('心得')
+%div
+  %ul.nav.nav-pills
+    %li
+      = breadcrumb_li user_path(@user) do
+        = whos('维基')
+      = breadcrumb_li knowledges_user_path(@user) do
+        = whos('知识')
+      = breadcrumb_li notes_user_path(@user) do
+        = whos('笔记')
+      = breadcrumb_li reviews_user_path(@user) do
+        = whos('评论')
+      = breadcrumb_li experiences_user_path(@user) do
+        = whos('心得')
 %hr.clear
