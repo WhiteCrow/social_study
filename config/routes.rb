@@ -8,8 +8,9 @@ SocialStudy::Application.routes.draw do
 
   match "/search" => "search#index", :as => :search
 
-  resources :reviews
-
+  resources :reviews, expect: [:index]
+  resources :notes, expect: [:index]
+  resources :experiences, expect: [:index]
   resources :reminds, only: [:index] do
     collection do
       get :short_index
@@ -19,24 +20,6 @@ SocialStudy::Application.routes.draw do
   resources :comments, only: [:create, :destroy] do
     collection do
       get :paginate
-    end
-  end
-
-  resources :notes do
-    member do
-      post :reputed
-    end
-  end
-
-  resources :experiences do
-    member do
-      post :reputed
-    end
-  end
-
-  resources :experiences do
-    member do
-      post :reputed
     end
   end
 
@@ -68,6 +51,11 @@ SocialStudy::Application.routes.draw do
       get :describe
       get :cancel_describe
       put :update_describe
+      get :knowledges
+      get :resources
+      get :reviews
+      get :notes
+      get :experiences
     end
   end
   resources :knowledges do
