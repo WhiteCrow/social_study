@@ -7,6 +7,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @entry = @user.special_entry_by('default')
     @previous_entries = @entry.to_a
+    @partial_path = 'entries/index'
   end
 
   def edit
@@ -100,6 +101,22 @@ class UsersController < ApplicationController
       format.js
     end
   end
+
+  ["notes", "experiences", "reviews"].each do |field|
+    define_method field do
+      @user = User.find(params[:id])
+      @items = @user.send(field)
+      @partial_path = 'common/top_leaves_content'
+      render template: 'users/show'
+    end
+  end
+
+  #def notes
+  #  @user = User.find(params[:id])
+  #  @items = @user.notes
+  #  @partial_path = 'common/top_leaves_content'
+  #  render template: 'users/show'
+  #end
 
   protected
   def get_reputable

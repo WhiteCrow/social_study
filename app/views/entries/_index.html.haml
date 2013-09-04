@@ -1,0 +1,7 @@
+%div{"ng-app"=>"myApp", "ng-init"=>"userId='#{@user.id}'"}
+  %div{"ng-controller"=>"EntryList"}
+    .span2
+      =render 'entries/menu'
+    .span10.box.left-line
+      =render 'entries/tabs'
+      =render 'entries/contents'

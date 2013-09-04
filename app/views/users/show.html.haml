@@ -1,11 +1,6 @@
-.span9{"ng-app"=>"myApp", "ng-init"=>"userId='#{@user.id}'"}
+.span9
   =render 'menu'
-  %div{"ng-controller"=>"EntryList"}
-    .span2
-      =render 'entries/menu'
-    .span10.box.left-line
-      =render 'entries/tabs'
-      =render 'entries/contents'
+  =render @partial_path
 .span3
   %div.well.user-profile{"data-user-id" => @user.id}
     =image_tag @user.image, class: 'user-face'
