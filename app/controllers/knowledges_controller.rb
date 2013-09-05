@@ -19,15 +19,19 @@ class KnowledgesController < ApplicationController
 
   def top_experiences
     experiences = Experience.knowledge.top(36).page(params[:page]||1).per(9)
+    @items = experiences
+    @title = '更多心得'
     respond_to do |format|
-      format.html {render 'common/top_leaves', locals: {items: experiences, title: '更多心得'}}
+      format.html {render 'common/_leaves'}
     end
   end
 
   def top_notes
     notes = Note.top(36).page(params[:page]||1).per(9)
+    @items = notes
+    @title = '更多笔记'
     respond_to do |format|
-      format.html {render 'common/top_leaves', locals: {items: notes, title: '更多笔记'}}
+      format.html {render 'common/_leaves'}
     end
   end
 

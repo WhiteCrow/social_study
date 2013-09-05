@@ -106,7 +106,7 @@ class UsersController < ApplicationController
     define_method field do
       @user = User.find(params[:id])
       @items = @user.send(field)
-      @partial_path = 'common/top_leaves_content'
+      @partial_path = 'common/leaves'
       render template: 'users/show'
     end
   end

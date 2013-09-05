@@ -1,9 +1,10 @@
-%h3
-  =title
-%hr
-%ul#top-leaves
-  - if items.present?
-    - items.each do |item|
+- if @title.present?
+  %h3
+    =@title
+  %hr
+- if @items.present?
+  %ul#top-leaves
+    - @items.each do |item|
       %li.inner
         = link_to item, target: '_blank' do
           %h4
