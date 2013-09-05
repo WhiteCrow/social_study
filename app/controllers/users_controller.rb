@@ -1,7 +1,7 @@
 # coding: utf-8
 class UsersController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :get_reputable, only: [:vote]
+  before_filter :get_reputable, only: [:vote, :study, :grade]
 
   def show
     @user = User.find(params[:id])
@@ -63,7 +63,7 @@ class UsersController < ApplicationController
      # cancel previous votes
     if (reputation = @reputable.reputations.
                                  where(user_id: current_user.id).
-                                 in(type: ['useful', 'useless']).first).present?
+                                 in(type: Reputation::VoteTypes).first).present?
       @pre_vote_type = reputation.type
       reputation.destroy
     end
@@ -71,6 +71,23 @@ class UsersController < ApplicationController
     # if previous vote type not equal current vote type, then vote
     if params[:vote_type] != @pre_vote_type
       @reputation = @reputable.reputations.create!({user: current_user, type: params[:vote_type]})
+    end
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def study
+    # cancel previous study
+    if (reputation = @reputable.reputations.
+                                 where(user_id: current_user.id).
+                                 in(type: Reputation::StudyTypes).first).present?
+      @pre_study_type = reputation.type
+      reputation.destroy
+    end
+    if params[:study_type] != @pre_study_type
+      @reputable.reputations.create!({user: current_user, type: params[:study_type]})
+      @study_state = params[:study_type]
     end
     respond_to do |format|
       format.js

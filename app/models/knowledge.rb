@@ -2,6 +2,7 @@ class Knowledge
   include Mongoid::Document
   include Mongoid::Timestamps
 
+  has_many :reputations, as: :reputable, dependent: :destroy
   has_many :notes
   has_many :experiences, as: :experienceable
 

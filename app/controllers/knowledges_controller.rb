@@ -13,7 +13,7 @@ class KnowledgesController < ApplicationController
     @nodes = Knowledge.hottest(40).page(params[:page]).per(10)
     @title = '更多知识'
     respond_to do |format|
-      format.html {render 'common/top_nodes'}
+      format.html {render 'common/_nodes'}
     end
   end
 
@@ -44,6 +44,7 @@ class KnowledgesController < ApplicationController
   def show
     @knowledge = Knowledge.find(params[:id])
     @notes = @knowledge.notes.top(4)
+    @study_state = current_user.reputation_with(@knowledge).try(:type)
     @experiences = @knowledge.experiences.top(4)
   end
 

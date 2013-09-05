@@ -65,6 +65,14 @@ class User
     })
   end
 
+  def reputation_with(item)
+    begin
+      Reputation.find_by(user_id: self.id, reputable: item)
+    rescue Mongoid::Errors::DocumentNotFound
+      nil
+    end
+  end
+
   def relay?(relayable)
     return false if self.relays.blank?
     self.relays.map(&:relayable).include? relayable

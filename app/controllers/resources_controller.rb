@@ -14,7 +14,7 @@ class ResourcesController < ApplicationController
     @nodes = Resource.hottest(40).page(params[:page]).per(10)
     @title = '更多资源'
     respond_to do |format|
-      format.html {render 'common/top_nodes'}
+      format.html {render 'common/_nodes'}
     end
   end
 

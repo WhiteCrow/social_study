@@ -2,6 +2,7 @@ class Resource
   include Mongoid::Document
   include Mongoid::Timestamps
 
+  has_many :reputations, as: :reputable, dependent: :destroy
   has_many :reviews
   has_many :experiences, as: :experienceable
 

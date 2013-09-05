@@ -1,8 +1,9 @@
-%h3
-  = @title
-%hr
-#top-nodes
-  - if @nodes.present?
+- if @title.present?
+  %h3
+    = @title
+  %hr
+- if @nodes.present?
+  #top-nodes
     - @nodes.each do |n|
       .profile
         = image_tag n.image, class: 'normal pull-left'
