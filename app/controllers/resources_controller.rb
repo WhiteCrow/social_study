@@ -44,7 +44,7 @@ class ResourcesController < ApplicationController
                    in(type: Reputation::GradeTypes).first.try(:type)
     @collect_state = current_user.
                      reputation_with(@resource).
-                     where(type: 'collect').first.try(:type)
+                     in(type: Reputation::CollectTypes).first.try(:type)
     @experiences = @resource.experiences.top(4)
 
     respond_to do |format|

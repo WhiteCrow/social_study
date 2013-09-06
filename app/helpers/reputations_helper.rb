@@ -13,6 +13,18 @@ module ReputationsHelper
     end
   end
 
+  def collect_link(reputable)
+    link_to collect_path(reputable, 'collect'), method: :post, remote: true,
+                                          class: "alert collect-link" do
+      span = content_tag :span do
+        @collect_state.present? ? '已收藏' : '收藏'
+      end
+      div = content_tag :div, '', class: 'icon-bookmark'
+      span.concat(raw '&nbsp;').concat(div)
+    end
+  end
+
+
   #def vote_path(reputable, vote_type)
   #  reputable_id = reputable.id
   #  reputable_type = reputable.class.name

@@ -27,12 +27,14 @@
 
 %br.big
 .pull-right
+  = collect_link(@note)
+  &nbsp;
   =link_to vote_path(@note, 'useful'), remote: true, method: :post do
     %i.icon-thumbs-up
   %span.useful-count
     =@note.repute_count('useful')
 
-  %span.w5
+  &nbsp;
   =link_to vote_path(@note, 'useless'), remote: true, method: :post do
     %i.icon-thumbs-down
   %span.useless-count

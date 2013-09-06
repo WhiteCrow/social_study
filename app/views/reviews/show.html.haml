@@ -1,6 +1,6 @@
 %div.post
   %h4.pull-left
-    = "#{@review.resource.title} 的心得 - #{@review.title}"
+    = "#{@review.resource.title} 的评论 - #{@review.title}"
 
   %div.pull-right
     %div.reputations
@@ -29,12 +29,14 @@
 
 %br.big
 .pull-right
+  = collect_link(@review)
+  &nbsp;
   =link_to vote_path(@review, 'useful'), remote: true, method: :post do
     %i.icon-thumbs-up
   %span.useful-count
     =@review.repute_count('useful')
 
-  %span.w5
+  &nbsp;
   =link_to vote_path(@review, 'useless'), remote: true, method: :post do
     %i.icon-thumbs-down
   %span.useless-count
