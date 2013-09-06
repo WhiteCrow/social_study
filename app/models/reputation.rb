@@ -25,7 +25,7 @@ class Reputation
                                 if: Proc.new{|r| ["Note", "Experience", "Review"].include? r.reputable_type}
   validates_inclusion_of :type, in: StudyTypes,
                                 if: Proc.new{|r| "Knowledge" ==  r.reputable_type}
-  validates_inclusion_of :type, in: GradeTypes + CollectTypes,
+  validates_inclusion_of :type, in: GradeTypes + ['collect'],
                                 if: Proc.new{|r| "Resource" ==  r.reputable_type}
   validates_presence_of :type, :user_id, :reputable_type, :reputable_id
   validates_uniqueness_of :type, scope: [:user_id, :reputable]
