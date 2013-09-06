@@ -94,6 +94,24 @@ class UsersController < ApplicationController
     end
   end
 
+  def grade
+    # cancel previous grade
+    if (reputation = @reputable.reputations.
+                                 where(user_id: current_user.id).
+                                 in(type: Reputation::GradeTypes).first).present?
+      @pre_grade_type = reputation.type
+      reputation.destroy
+    end
+    if params[:grade_type] != @pre_grade_type
+      @reputable.reputations.create!({user: current_user, type: params[:grade_type]})
+      @grade_state = params[:grade_type]
+    end
+    respond_to do |format|
+      format.js
+    end
+  end
+
+
   def describe
     @user = User.find(params[:id])
     respond_to do |format|

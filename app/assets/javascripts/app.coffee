@@ -2,6 +2,7 @@ window.App = App =
   init: ->
     @Experiences.init()
     @Entry.init()
+    @Reputation.init()
     @initNotice()
 
   initNotice: ->

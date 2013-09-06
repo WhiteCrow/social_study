@@ -39,6 +39,7 @@ class ResourcesController < ApplicationController
   def show
     @resource = Resource.find(params[:id])
     @reviews = @resource.reviews.top(4)
+    @grade_state = current_user.reputation_with(@resource).try(:type)
     @experiences = @resource.experiences.top(4)
 
     respond_to do |format|

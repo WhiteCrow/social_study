@@ -7,15 +7,21 @@
       = @resource.description
   %br.clear
 
-  %div
-    %hr
-    =link_to new_review_path(resource_id: @resource) do
-      %li.icon-pencil
-      写评论
-    &nbsp;
-    =link_to new_experience_path(experienceable_id: @resource, experienceable_type: @resource.class.name) do
-      %li.icon-file
-      写使用心得
-    %hr
-    =render 'experiences/top_maxi'
-    =render 'reviews/top'
+%div.operations
+  %hr
+  我的评价:
+  - Reputation::GradeTypes.each do |type|
+    = link_to '', grade_path(@resource, type), method: :post, remote: true,
+      class: "grade-#{type} grade-type #{type.to_i <= @grade_state.to_i ? 'hard-graded-type icon-star' : 'icon-star-empty'}"
+  %br
+  %br
+  =link_to new_review_path(resource_id: @resource) do
+    %li.icon-pencil
+    写评论
+  &nbsp;
+  =link_to new_experience_path(experienceable_id: @resource, experienceable_type: @resource.class.name) do
+    %li.icon-file
+    写使用心得
+  %hr
+=render 'experiences/top_maxi'
+=render 'reviews/top'

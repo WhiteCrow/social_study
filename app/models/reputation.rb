@@ -14,6 +14,7 @@ class Reputation
 
   VoteTypes = %w(useful useless)
   StudyTypes = %w(想学 入门 熟练 精通 专家)
+  GradeTypes = %w(1 2 3 4 5)
   scope :useful, where(type: 'useful')
   scope :useless, where(type: 'useless')
 
@@ -21,6 +22,8 @@ class Reputation
                                 if: Proc.new{|r| ["Note", "Experience", "Review"].include? r.reputable_type}
   validates_inclusion_of :type, in: StudyTypes,
                                 if: Proc.new{|r| "Knowledge" ==  r.reputable_type}
+  validates_inclusion_of :type, in: GradeTypes,
+                                if: Proc.new{|r| "Resource" ==  r.reputable_type}
   validates_presence_of :type, :user_id, :reputable_type, :reputable_id
   validates_uniqueness_of :type, scope: [:user_id, :reputable]
   #TODO add custom validation that is user can't vote same reputalbe both useful and useless
