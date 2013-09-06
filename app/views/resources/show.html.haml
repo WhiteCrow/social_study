@@ -9,12 +9,19 @@
 
 %div.operations
   %hr
+    = link_to collect_path(@resource, 'collect'), method: :post, remote: true,
+    class: "alert collect-link" do
+      %span
+        = @collect_state.present? ? '已收藏' : '收藏'
+      .icon-bookmark
+    &nbsp;
   我的评价:
   - Reputation::GradeTypes.each do |type|
     = link_to '', grade_path(@resource, type), method: :post, remote: true,
       class: "grade-#{type} grade-type #{type.to_i <= @grade_state.to_i ? 'hard-graded-type icon-star' : 'icon-star-empty'}"
   %br
   %br
+
   =link_to new_review_path(resource_id: @resource) do
     %li.icon-pencil
     写评论

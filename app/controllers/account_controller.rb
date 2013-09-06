@@ -26,7 +26,7 @@ class AccountController < Devise::RegistrationsController
       respond_with resource, :location => after_update_path_for(resource)
     else
       clean_up_passwords resource
-      flash[:error] = "请输入正确的密码"
+      flash[:error] = "请输入正确的密码" if params[:password].present?
       respond_with resource
     end
   end

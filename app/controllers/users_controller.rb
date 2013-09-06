@@ -1,7 +1,7 @@
 # coding: utf-8
 class UsersController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :get_reputable, only: [:vote, :study, :grade]
+  before_filter :get_reputable, only: [:vote, :study, :grade, :collect]
 
   def show
     @user = User.find(params[:id])
@@ -111,6 +111,19 @@ class UsersController < ApplicationController
     end
   end
 
+  def collect
+    if (reputation = @reputable.reputations.
+                              where(user_id: current_user.id).
+                              in(type: 'collect').first).present?
+      reputation.destroy
+    else
+      @reputable.reputations.create!({user: current_user, type: params[:collect_type]})
+      @collect_state = params[:collect_type]
+    end
+    respond_to do |format|
+      format.js
+    end
+  end
 
   def describe
     @user = User.find(params[:id])

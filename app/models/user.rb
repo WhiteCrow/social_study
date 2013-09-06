@@ -67,7 +67,7 @@ class User
 
   def reputation_with(item)
     begin
-      Reputation.find_by(user_id: self.id, reputable: item)
+      Reputation.where({user_id: self.id, reputable: item})
     rescue Mongoid::Errors::DocumentNotFound
       nil
     end

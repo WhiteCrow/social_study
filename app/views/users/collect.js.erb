@@ -1,0 +1,6 @@
+span = $('.collect-link span')
+<% if @collect_state.present? %>
+    span.text('已收藏')
+<% else %>
+    span.text('收藏')
+<% end %>

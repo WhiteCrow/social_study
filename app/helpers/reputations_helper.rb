@@ -1,5 +1,5 @@
 module ReputationsHelper
-  ['vote', 'study', 'grade'].each do |repute|
+  ['vote', 'study', 'grade', 'collect'].each do |repute|
     define_method "#{repute}_path" do |reputable, repute_type|
       reputable_id = reputable.id
       reputable_type = reputable.class.name
