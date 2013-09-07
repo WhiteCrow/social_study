@@ -10,10 +10,11 @@
   - @reputations.each do |r|
     - node = r.reputable
     .profile.pull-left
-      = image_tag node.image, class: 'normal pull-left'
+      = link_to node do
+        = image_tag node.image, class: 'normal pull-left'
       .short-info
-        %h3
-          = node.title
+        = link_to node do
+          %h3 #{node.title}
         %br
         %p
           = node.description

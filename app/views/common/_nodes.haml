@@ -7,10 +7,11 @@
   #nodes
     - @nodes.each do |n|
       .profile
-        = image_tag n.image, class: 'normal pull-left'
+        = link_to n do
+          = image_tag n.image, class: 'normal pull-left'
         .short-info
-          %h3
-            = n.title
+          = link_to n do
+            %h3 #{n.title}
           %br
           %p
             = n.description
