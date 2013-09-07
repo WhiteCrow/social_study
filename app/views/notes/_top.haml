@@ -10,10 +10,12 @@
       %div.pull-left
         %span
           =link_to note.user.name, note.user
+          %br.big
           的
           =link_to note.knowledge.title, note.knowledge
           笔记
-        %h4.big
+          %br.big
           =link_to note.title, note
+          %br.big
         %small
           ="#{note.reputations.useful.count}有用 #{note.created_at.getlocal.to_date}"
