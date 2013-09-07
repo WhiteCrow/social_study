@@ -8,13 +8,13 @@
         =link_to experience.user do
           = image_tag experience.user.image(:small), class: 'user-face'
       %div.pull-left
-        =link_to experience.user.name, experience.user
+        =link_to experience do
+          %strong #{experience.title}
         %br.big
+        =link_to experience.user.name, experience.user
         的
         =link_to experience.experienceable.title, experience.experienceable
         心得
-        %br.big
-        =link_to experience.title, experience
         %br.big
         %small
           ="#{experience.reputations.useful.count}有用 #{experience.created_at.getlocal.to_date}"
