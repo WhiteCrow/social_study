@@ -13,6 +13,27 @@ module ReputationsHelper
     end
   end
 
+  def repute_icon(type)
+    if Reputation::StudyTypes.include? type
+      content_tag :span, class: 'alert alert-success' do
+        type
+      end
+
+    elsif Reputation::GradeTypes.include? type
+      icons = type.to_i.times.map do
+        "<span class='hard-graded-type icon-star'></span>&nbsp;"
+      end.join
+      raw icons
+
+    elsif Reputation::CollectTypes.include? type
+      content_tag :span, class: 'alert' do
+        content_tag :span do
+          '已收藏'
+        end
+      end
+    end
+  end
+
   def collect_link(reputable)
     link_to collect_path(reputable, 'collect'), method: :post, remote: true,
                                           class: "alert collect-link" do

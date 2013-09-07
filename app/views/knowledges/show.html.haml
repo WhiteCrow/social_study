@@ -11,7 +11,7 @@
   %hr
   - Reputation::StudyTypes.each do |type|
     = link_to study_path(@knowledge, type), method: :post, remote: true, class: "study-type study-#{type}" do
-      %span{class: "#{type == @study_state ? 'alert alert-success' : 'alert alert-info' }" }
+      %span{class: "#{type == current_user.study_state(@knowledge) ? 'alert alert-success' : 'alert alert-info' }" }
         = type
     &nbsp;
   %br

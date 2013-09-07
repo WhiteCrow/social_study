@@ -102,6 +102,16 @@ class User
     end
   end
 
+  def study_state(knowledge)
+    self.reputations.where(reputable: knowledge).
+         in(type: Reputation::StudyTypes).first.try(:type)
+  end
+
+  def grade_state(resource)
+    self.reputations.where(reputable: resource).
+         in(type: Reputation::GradeTypes).first.try(:type)
+  end
+
   def special_entry_by(type)
     return nil if type.blank?
     begin

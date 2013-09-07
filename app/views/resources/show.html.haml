@@ -14,7 +14,7 @@
   我的评价:
   - Reputation::GradeTypes.each do |type|
     = link_to '', grade_path(@resource, type), method: :post, remote: true,
-      class: "grade-#{type} grade-type #{type.to_i <= @grade_state.to_i ? 'hard-graded-type icon-star' : 'icon-star-empty'}"
+      class: "grade-#{type} grade-type #{type.to_i <= current_user.grade_state(@resource).to_i ? 'hard-graded-type icon-star' : 'icon-star-empty'}"
   %br
   %br
 

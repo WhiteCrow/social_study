@@ -1,0 +1,24 @@
+- if @reputation_types.present?
+  %ul.nav.nav-tabs
+    = full_breadcrumb_li request.path do
+      收藏
+    - @reputation_types.each do |type|
+      = full_breadcrumb_li "#{request.path}?type=#{type}" do
+        = type
+
+- if @reputations.present?
+  - @reputations.each do |r|
+    - node = r.reputable
+    .profile.pull-left
+      = image_tag node.image, class: 'normal pull-left'
+      .short-info
+        %h3
+          = node.title
+        %br
+        %p
+          = node.description
+    .pull-right
+      = repute_icon(r.type)
+    %hr.clear
+  .pull-right
+    = paginate @reputations

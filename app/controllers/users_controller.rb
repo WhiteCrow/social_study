@@ -162,24 +162,22 @@ class UsersController < ApplicationController
   def knowledges
     @user = User.find(params[:id])
     types = params[:type].present? ? params[:type] :  Reputation::StudyTypes
-    @nodes =Kaminari.paginate_array(@user.reputations.knowledges.
-                                    in(type: types).
-                                    map(&:reputable)).
-                                    page(params[:page]).per(10)
+    @reputations = Kaminari.paginate_array(
+                              @user.reputations.knowledges.in(type: types)
+                            ).page(params[:page]).per(10)
     @reputation_types = Reputation::StudyTypes
-    @partial_path = 'common/nodes'
+    @partial_path = 'nodes'
     render template: 'users/show'
   end
 
   def resources
     @user = User.find(params[:id])
     types = params[:type].present? ? Reputation::GradeTypes : ['collect']
-    @nodes =Kaminari.paginate_array(@user.reputations.resources.
-                                    in(type: types).
-                                    map(&:reputable)).
-                                    page(params[:page]).per(10)
+    @reputations = Kaminari.paginate_array(
+                              @user.reputations.resources.in(type: types)
+                            ).page(params[:page]).per(10)
     @reputation_types = ['评分']
-    @partial_path = 'common/nodes'
+    @partial_path = 'nodes'
     render template: 'users/show'
   end
 

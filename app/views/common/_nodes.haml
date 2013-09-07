@@ -3,18 +3,9 @@
     = @title
   %hr
 
-- if @reputation_types.present?
-  %ul.nav.nav-tabs
-    = breadcrumb_li request.path do
-      收藏
-    - @reputation_types.each do |type|
-      = breadcrumb_li "#{request.path}?type=#{type}" do
-        = type
-
 - if @nodes.present?
   #nodes
     - @nodes.each do |n|
-      - n = n.reputable if n.is_a? Reputation
       .profile
         = image_tag n.image, class: 'normal pull-left'
         .short-info

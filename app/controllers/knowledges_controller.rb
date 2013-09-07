@@ -44,8 +44,6 @@ class KnowledgesController < ApplicationController
   def show
     @knowledge = Knowledge.find(params[:id])
     @notes = @knowledge.notes.top(4)
-    @study_state = current_user.reputation_with(@knowledge).
-                   in(type: Reputation::StudyTypes).first.try(:type)
     @experiences = @knowledge.experiences.top(4)
   end
 
