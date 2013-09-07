@@ -20,7 +20,8 @@ class Reputation
   [:useful, :useless, :collect].each do |type|
     scope type , where(type: type.to_s)
   end
-
+  scope :knowledges, where(reputable_type: 'Knowledge')
+  scope :resources, where(reputable_type: 'Resource')
   validates_inclusion_of :type, in: VoteTypes + CollectTypes,
                                 if: Proc.new{|r| ["Note", "Experience", "Review"].include? r.reputable_type}
   validates_inclusion_of :type, in: StudyTypes,

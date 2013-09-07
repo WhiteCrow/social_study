@@ -159,12 +159,31 @@ class UsersController < ApplicationController
     end
   end
 
-  #def notes
-  #  @user = User.find(params[:id])
-  #  @items = @user.notes
-  #  @partial_path = 'common/top_leaves_content'
-  #  render template: 'users/show'
-  #end
+  def knowledges
+    @user = User.find(params[:id])
+    types = params[:type].present? ? params[:type] :  Reputation::StudyTypes
+    @nodes =Kaminari.paginate_array(@user.reputations.knowledges.
+                                    in(type: types).
+                                    map(&:reputable)).
+                                    page(params[:page]).per(10)
+    @reputation_types = Reputation::StudyTypes
+    @partial_path = 'common/nodes'
+    render template: 'users/show'
+  end
+
+  def resources
+    @user = User.find(params[:id])
+    types = params[:type].present? ? Reputation::GradeTypes : ['collect']
+    @nodes =Kaminari.paginate_array(@user.reputations.resources.
+                                    in(type: types).
+                                    map(&:reputable)).
+                                    page(params[:page]).per(10)
+    @reputation_types = ['评分']
+    @partial_path = 'common/nodes'
+    render template: 'users/show'
+  end
+
+
 
   protected
   def get_reputable
