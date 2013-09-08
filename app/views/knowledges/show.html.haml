@@ -7,22 +7,24 @@
       = raw @knowledge.description
   %br.clear
 
-%div.operations
-  %hr
-  - Reputation::StudyTypes.each do |type|
-    = link_to study_path(@knowledge, type), method: :post, remote: true, class: "study-type study-#{type}" do
-      %span{class: "#{type == current_user.study_state(@knowledge) ? 'alert alert-success' : 'alert alert-info' }" }
-        = type
+-if current_user
+  %div.operations
+    %hr
+    - Reputation::StudyTypes.each do |type|
+      = link_to study_path(@knowledge, type), method: :post, remote: true, class: "study-type study-#{type}" do
+        %span{class: "#{type == current_user.study_state(@knowledge) ? 'alert alert-success' : 'alert alert-info' }" }
+          = type
+      &nbsp;
+    %br
+    %br
+    =link_to new_note_path(knowledge_id: @knowledge) do
+      %li.icon-pencil
+      写笔记
     &nbsp;
-  %br
-  %br
-  =link_to new_note_path(knowledge_id: @knowledge) do
-    %li.icon-pencil
-    写笔记
-  &nbsp;
-  =link_to new_experience_path(experienceable_id: @knowledge.id, experienceable_type: @knowledge.class.name) do
-    %li.icon-file
-    写学习心得
-  %hr
+    =link_to new_experience_path(experienceable_id: @knowledge.id, experienceable_type: @knowledge.class.name) do
+      %li.icon-file
+      写学习心得
+%hr
+
 =render 'experiences/top_maxi'
 =render 'notes/top'

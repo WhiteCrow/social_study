@@ -35,10 +35,14 @@ module ReputationsHelper
   end
 
   def collect_link(reputable)
+    collect_state = current_user.
+                    reputation_with(reputable).
+                    in(type: Reputation::CollectTypes).first.try(:type)
+
     link_to collect_path(reputable, 'collect'), method: :post, remote: true,
                                           class: "alert collect-link" do
       span = content_tag :span do
-        @collect_state.present? ? '已收藏' : '收藏'
+        collect_state.present? ? '已收藏' : '收藏'
       end
       div = content_tag :div, '', class: 'icon-bookmark'
       span.concat(raw '&nbsp;').concat(div)

@@ -1,9 +1,5 @@
 - if current_user.blank?
-  请
-  =link_to '登录', new_user_session_path
-  后发表评论，没有帐号请
-  =link_to '注册', new_user_registration_path
-  。
+  = render 'common/please_login'
 - else
   .field
     = form_for current_user.comments.build do |f|

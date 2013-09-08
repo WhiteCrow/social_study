@@ -19,11 +19,6 @@ class ExperiencesController < ApplicationController
   def show
     @experience = Experience.find(params[:id])
     @experienceable = @experience.experienceable
-    if current_user
-      @collect_state = current_user.
-                       reputation_with(@experience).
-                       in(type: Reputation::CollectTypes).first.try(:type)
-    end
   end
 
   def new
