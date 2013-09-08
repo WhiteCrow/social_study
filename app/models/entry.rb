@@ -44,7 +44,10 @@ class Entry
       user_id: user_id,
       type: 'menu',
       title: '菜单',
-      content: '<ul><li>[[菜单]]</li><li>[[默认条目]]</li></ul>'
+      content: '<ul class="nav nav-pills nav-stacked">
+       <li>[[菜单]]</li>
+       <li>[[默认条目]]</li>
+      </ul>'
     })
   end
 
