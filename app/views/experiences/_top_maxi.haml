@@ -20,9 +20,9 @@
         %br.big
         %div.text
           .short-content
-            = short_content(experience)
+            = raw short_content(experience)
           .whole-content.hidden
-            = experience.content
+            = raw experience.content
         %p
         %small
           ="#{experience.reputations.useful.count}有用 #{experience.created_at.getlocal.to_date} "

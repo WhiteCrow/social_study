@@ -14,7 +14,7 @@
             %h3 #{n.title}
           %br
           %p
-            = n.description
+            = raw n.description
         %hr.clear
     .pull-right
       = paginate @nodes
