@@ -14,9 +14,11 @@ class NotesController < ApplicationController
   def show
     @note = Note.find(params[:id])
     @knowledge = @note.knowledge
-    @collect_state = current_user.
-                     reputation_with(@note).
-                     in(type: Reputation::CollectTypes).first.try(:type)
+    if current_user
+      @collect_state = current_user.
+                       reputation_with(@note).
+                       in(type: Reputation::CollectTypes).first.try(:type)
+    end
   end
 
   def new

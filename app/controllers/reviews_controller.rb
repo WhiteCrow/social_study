@@ -6,9 +6,11 @@ class ReviewsController < ApplicationController
   def show
     @review = Review.find(params[:id])
     @resource = @review.resource
-    @collect_state = current_user.
-                     reputation_with(@review).
-                     in(type: Reputation::CollectTypes).first.try(:type)
+    if current_user
+      @collect_state = current_user.
+                       reputation_with(@review).
+                       in(type: Reputation::CollectTypes).first.try(:type)
+    end
   end
 
   def new

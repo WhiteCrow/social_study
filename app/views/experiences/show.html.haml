@@ -24,27 +24,25 @@
 
 %div.text
   = raw @experience.content
-
 %br.big
 
-%br.big
-.pull-right
-  = collect_link(@experience)
-  &nbsp;
+- if current_user
+  .pull-right
+    = collect_link(@experience)
+    &nbsp;
 
-  =link_to vote_path(@experience, 'useful'), remote: true, method: :post do
-    %i.icon-thumbs-up
-  %span.useful-count
-    =@experience.repute_count('useful')
+    =link_to vote_path(@experience, 'useful'), remote: true, method: :post do
+      %i.icon-thumbs-up
+    %span.useful-count
+      =@experience.repute_count('useful')
 
-  &nbsp;
-  =link_to vote_path(@experience, 'useless'), remote: true, method: :post do
-    %i.icon-thumbs-down
-  %span.useless-count
-    =@experience.repute_count('useless')
-%br
+    &nbsp;
+    =link_to vote_path(@experience, 'useless'), remote: true, method: :post do
+      %i.icon-thumbs-down
+    %span.useless-count
+      =@experience.repute_count('useless')
+  %br
 
 %hr
-
 =render 'comments/index', commentable: @experience
 =render 'comments/new', commentable: @experience

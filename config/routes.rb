@@ -8,9 +8,9 @@ SocialStudy::Application.routes.draw do
 
   match "/search" => "search#index", :as => :search
 
-  resources :reviews, expect: [:index]
-  resources :notes, expect: [:index]
-  resources :experiences, expect: [:index]
+  resources :reviews, except: [:index]
+  resources :notes, except: [:index]
+  resources :experiences, except: [:index]
   resources :reminds, only: [:index] do
     collection do
       get :short_index

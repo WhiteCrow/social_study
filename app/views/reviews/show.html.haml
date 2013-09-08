@@ -27,21 +27,21 @@
 
 %br.big
 
-%br.big
-.pull-right
-  = collect_link(@review)
-  &nbsp;
-  =link_to vote_path(@review, 'useful'), remote: true, method: :post do
-    %i.icon-thumbs-up
-  %span.useful-count
-    =@review.repute_count('useful')
+-if current_user
+  .pull-right
+    = collect_link(@review)
+    &nbsp;
+    =link_to vote_path(@review, 'useful'), remote: true, method: :post do
+      %i.icon-thumbs-up
+    %span.useful-count
+      =@review.repute_count('useful')
 
-  &nbsp;
-  =link_to vote_path(@review, 'useless'), remote: true, method: :post do
-    %i.icon-thumbs-down
-  %span.useless-count
-    =@review.repute_count('useless')
-%br
+    &nbsp;
+    =link_to vote_path(@review, 'useless'), remote: true, method: :post do
+      %i.icon-thumbs-down
+    %span.useless-count
+      =@review.repute_count('useless')
+  %br
 
 %hr
 

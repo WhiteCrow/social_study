@@ -14,13 +14,6 @@ describe NotesController do
   end
 
   describe "unauthenticated" do
-    describe "GET index" do
-      it "always can access" do
-        get :index
-        response.should be_success
-      end
-    end
-
     describe "GET show" do
       it "assigns the requested note as @note" do
         note
