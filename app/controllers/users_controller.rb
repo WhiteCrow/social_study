@@ -1,6 +1,6 @@
 # coding: utf-8
 class UsersController < ApplicationController
-  before_filter :authenticate_user!, except: [:show, :notes, :knowledges, :resources, :notes, :reviews, :experiences, :states]
+  before_filter :authenticate_user!, except: [:show, :notes, :knowledges, :resources, :notes, :reviews, :experiences, :states, :following, :followers]
   before_filter :get_reputable, only: [:vote, :study, :grade, :collect]
 
   def show
