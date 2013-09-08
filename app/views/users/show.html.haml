@@ -8,7 +8,7 @@
     #user-describe
       = render 'description'
     %hr
-    - if current_user.blank? or current_user != @user
+    - if current_user.present? and current_user != @user
       - if current_user.can_follow?(@user)
         %span.follow-btn
           = follow_btn
