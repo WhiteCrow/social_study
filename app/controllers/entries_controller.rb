@@ -1,7 +1,7 @@
 class EntriesController < ApplicationController
   include ActionView::Helpers::OutputSafetyHelper
 
-  before_filter :require_user, expect: [:show, :index, :next, :add_to_previous]
+  before_filter :require_user, except: [:show, :index, :next, :add_to_previous]
 
   def index
     @user = User.find(params[:user_id])

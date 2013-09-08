@@ -36,7 +36,7 @@ class Entry
   end
 
   def set_default_parsed_content
-    self.parsed_content = "这是一个空条目，请点击右上角的 <i class='icon-edit'></i> 进行编辑"
+    self.parsed_content = "这是一个空条目，如果拥有编辑权限，可以点击右上角的 <i class='icon-edit'></i> 进行编辑"
   end
 
   def self.create_menu_with(user_id)
