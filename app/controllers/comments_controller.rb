@@ -11,14 +11,12 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to controller: params[:comment][:commentable_type].tableize,
-                                  action: 'show',
-                                  id: params[:comment][:commentable_id],
-                                  page: last_page}
+        format.html { redirect_to url_for(commentable) + '#footer', page: last_page}
         #used to states comments that in home page
         format.js{ render locals: {auditable: auditable} }
       else
-        format.html { redirect_to commentable, notice: 'Comment create fail.' }
+        flash[:error] = '评论失败'
+        format.html { redirect_to url_for(commentable) + '#footer' }
       end
     end
   end
