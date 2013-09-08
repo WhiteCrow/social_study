@@ -1,5 +1,6 @@
 window.App = App =
   init: ->
+    $(".textarea").qeditor()
     @Experiences.init()
     @Entry.init()
     @Reputation.init()

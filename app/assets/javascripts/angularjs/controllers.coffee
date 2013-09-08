@@ -34,6 +34,7 @@ myApp.controller "EntryList", ($scope, $http)->
         $scope.remove(entry)
 
   $scope.update = (entry) ->
+    entry.content = $('#entry_content').siblings('.qeditor_preview').html()
     $http.put("/entries/#{entry._id}", {entry: entry}).success (data)->
       $scope.entries.pop()
       $scope.entries.push(data)
