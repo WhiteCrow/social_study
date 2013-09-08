@@ -10,7 +10,7 @@ class ReviewsController < ApplicationController
 
   def new
     @review = current_user.reviews.build(resource_id: params[:resource_id])
-    @resource = Resource.find(params[:resource_id])
+    @resource = @review.resource
   end
 
   def edit
@@ -20,6 +20,7 @@ class ReviewsController < ApplicationController
 
   def create
     @review = current_user.reviews.build(params[:review])
+    @resource = @review.resource
 
     respond_to do |format|
       if @review.save
@@ -32,6 +33,7 @@ class ReviewsController < ApplicationController
 
   def update
     @review = Review.find(params[:id])
+    @resource = @review.resource
 
     respond_to do |format|
       if @review.update_attributes(params[:review])

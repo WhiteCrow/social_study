@@ -28,6 +28,7 @@ class NotesController < ApplicationController
 
   def create
     @note = current_user.notes.build(params[:note])
+    @knowledge = @note.knowledge
 
     respond_to do |format|
       if @note.save
@@ -40,6 +41,7 @@ class NotesController < ApplicationController
 
   def update
     @note = Note.find(params[:id])
+    @knowledge = @note.knowledge
 
     respond_to do |format|
       if @note.update_attributes(params[:note])

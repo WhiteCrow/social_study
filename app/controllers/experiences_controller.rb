@@ -46,6 +46,7 @@ class ExperiencesController < ApplicationController
 
   def update
     @experience = Experience.find(params[:id])
+    @experienceable = @experience.experienceable
 
     respond_to do |format|
       if @experience.update_attributes(params[:experience])
