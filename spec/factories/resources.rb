@@ -2,5 +2,8 @@
 
 FactoryGirl.define do
   factory :resource do
+    sequence(:title){|n| "resource title #{n}" }
+    sequence(:description){|n| "resource description #{n}" }
+    publish true
   end
 end
