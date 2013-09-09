@@ -28,6 +28,14 @@ describe NotesController do
 
     before(:each) { sign_in user; knowledge }
 
+    describe "GET show" do
+      it "assigns the requested note as @note" do
+        note
+        get :show, {:id => note.to_param}
+        assigns(:note).should eq(note)
+      end
+    end
+
     describe "GET new" do
       it "assigns a new note as @note" do
         get :new, {knowledge_id: knowledge.id}
