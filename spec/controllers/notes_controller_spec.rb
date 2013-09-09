@@ -13,6 +13,10 @@ describe NotesController do
     knowledge_id: knowledge.id}
   end
 
+  def invalid_attributes
+    {knowledge_id: knowledge.id}
+  end
+
   describe "unauthenticated" do
     describe "GET show" do
       it "assigns the requested note as @note" do
@@ -68,7 +72,7 @@ describe NotesController do
       describe "with invalid params" do
         it "re-renders the 'new' template" do
           Note.any_instance.stub(:save).and_return(false)
-          post :create, {:note => { "title" => "invalid value" }}
+          post :create, {:note => invalid_attributes}
           response.should render_template("new")
         end
       end
@@ -103,7 +107,7 @@ describe NotesController do
         it "re-renders the 'edit' template" do
           note
           Note.any_instance.stub(:save).and_return(false)
-          put :update, {:id => note.to_param, :note => { "title" => "invalid value" }}
+          put :update, {:id => note.to_param, :note => invalid_attributes}
           response.should render_template("edit")
         end
       end

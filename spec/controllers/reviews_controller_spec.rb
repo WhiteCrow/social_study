@@ -14,6 +14,10 @@ describe ReviewsController do
     resource_id: resource.id}
   end
 
+  def invalid_attributes
+    {resource_id: resource.id}
+  end
+
   describe "unauthenticated" do
     describe "GET show" do
       it "assigns the requested review as @review" do
@@ -60,7 +64,7 @@ describe ReviewsController do
       describe "with invalid params" do
         it "re-renders the 'new' template" do
           Review.any_instance.stub(:save).and_return(false)
-          post :create, {:review => { "title" => "invalid value" }}
+          post :create, {:review => invalid_attributes}
           response.should render_template("new")
         end
       end
@@ -95,7 +99,7 @@ describe ReviewsController do
         it "re-renders the 'edit' template" do
           review
           Review.any_instance.stub(:save).and_return(false)
-          put :update, {:id => review.to_param, :review => { "title" => "invalid value" }}
+          put :update, {:id => review.to_param, :review => invalid_attributes}
           response.should render_template("edit")
         end
       end
