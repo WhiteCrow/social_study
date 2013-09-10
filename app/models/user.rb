@@ -29,7 +29,7 @@ class User
   validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
 
   def role?(target_role)
-    self.role == target_role.to_sym||target_role.to_s
+    self.role == target_role.to_sym || self.role == target_role.to_s
   end
 
   def image(version=:normal)

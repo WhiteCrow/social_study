@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   Time.send :include, TimeExt
 
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to root_path, :alert => exception.message
+    redirect_to '/', :alert => '你没有权限访问这个页面'
   end
 
   def after_sign_up_path_for(user)
