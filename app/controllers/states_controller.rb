@@ -31,7 +31,7 @@ class StatesController < ApplicationController
   end
 
   def destroy
-    @auditable = Audit.find(params[:id]).auditable
+    @auditable = Audit.where(modifier_id: current_user.id).find(params[:id]).auditable
     @auditable.destroy
 
     respond_to do |format|
