@@ -1,5 +1,6 @@
 class ResourcesController < ApplicationController
 
+  load_and_authorize_resource
   layout :choose_layout
 
   def index

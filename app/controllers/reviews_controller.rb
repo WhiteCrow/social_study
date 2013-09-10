@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
 
+  load_and_authorize_resource
   before_filter :require_user, except: [:show, :index]
   layout :choose_post_layout
 

@@ -1,5 +1,6 @@
 class ExperiencesController < ApplicationController
 
+  load_and_authorize_resource
   before_filter :require_user, except: [:show, :index]
   before_filter :get_experienceable, only: [:new]
   layout :choose_post_layout

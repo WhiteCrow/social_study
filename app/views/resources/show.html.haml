@@ -1,5 +1,7 @@
 %div.profile
-  = image_tag @resource.image, class: 'normal pull-left'
+  .profile-left.pull-left
+    = image_tag @resource.image, class: 'normal pull-left'
+    = link_to '更新该资源', edit_resource_path(@resource), class: 'update-link'
   %div.info
     %h3
       = @resource.title

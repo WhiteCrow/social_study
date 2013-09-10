@@ -1,5 +1,6 @@
 class KnowledgesController < ApplicationController
 
+  load_and_authorize_resource
   layout :choose_layout
 
   def index

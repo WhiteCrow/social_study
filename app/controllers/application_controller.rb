@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-  load_and_authorize_resource
   #after_filter :store_location
   Time.send :include, TimeExt
 

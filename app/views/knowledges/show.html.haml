@@ -1,6 +1,8 @@
 %div.profile
-  = image_tag @knowledge.image, class: 'normal pull-left'
-  %div.info
+  .profile-left.pull-left
+    = image_tag @knowledge.image, class: 'normal pull-left'
+    = link_to '更新该知识', edit_knowledge_path(@knowledge), class: 'update-link'
+  .info
     %h3
       = @knowledge.title
     %div

@@ -2,6 +2,20 @@ class StatesController < ApplicationController
   before_filter :require_user, except: [:show]
   layout 'main', except: [:index]
 
+  def index
+    if current_user
+      @microblog = Microblog.new
+      @states = Audit.state.
+                      in(:modifier => [current_user] + current_user.following).
+                      desc('created_at').
+                      page(params[:page]||1).per(20)
+      respond_to do |format|
+        format.html
+        format.js { render 'states/paginate' }
+      end
+    end
+  end
+
   def show
     @state = Audit.find(params[:id])
     @statable = @state.statable
