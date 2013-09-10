@@ -1,6 +1,5 @@
 class ResourcesController < ApplicationController
 
-  before_filter :require_user, except: [:show, :index]
   layout :choose_layout
 
   def index
@@ -51,11 +50,7 @@ class ResourcesController < ApplicationController
   # GET /resources/new.json
   def new
     @resource = Resource.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @resource }
-    end
+    flash[:notice] = '你每天仅有20次创建以及更新知识或学习资源的机会，并且在审核通过前仅自己可见'
   end
 
   # GET /resources/1/edit
@@ -95,15 +90,4 @@ class ResourcesController < ApplicationController
     end
   end
 
-  # DELETE /resources/1
-  # DELETE /resources/1.json
-  def destroy
-    @resource = Resource.find(params[:id])
-    @resource.destroy
-
-    respond_to do |format|
-      format.html { redirect_to resources_url }
-      format.json { head :no_content }
-    end
-  end
 end

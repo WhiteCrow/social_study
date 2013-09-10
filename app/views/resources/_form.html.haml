@@ -1,13 +1,13 @@
 %br
 = form_for @resource do |f|
   .field
-    = f.label :title, '标题'
+    = f.label :title, '标题 *'
     = f.text_field :title
   .field
     = f.label :url, '参考网址'
     = f.text_field :url
   .field
-    = f.label :description, '描述'
+    = f.label :description, '描述 *'
     = f.text_area :description, class: 'textarea'
   .actions
     = f.submit '提交', class: 'btn btn-primary'

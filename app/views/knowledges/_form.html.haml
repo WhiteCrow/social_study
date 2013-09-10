@@ -1,13 +1,13 @@
 %br
 = form_for @knowledge do |f|
   .field
-    = f.label :title, '标题'
+    = f.label :title, '标题 *'
     = f.text_field :title
   .field
     = f.label :second_title, '又名'
     = f.text_field :second_title
   .field
-    = f.label :description, '内容'
+    = f.label :description, '内容 *'
     = f.text_area :description, class: 'textarea'
   .actions
     = f.submit '提交', class: 'btn btn-primary'

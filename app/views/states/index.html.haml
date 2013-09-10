@@ -1,0 +1,29 @@
+- if current_user
+  %div.span7
+    %div.row.well
+      %h4有什么想告诉大家：
+      %br
+      =render 'microblogs/form'
+      %br.clear
+      %hr
+      =render 'index'
+
+  %div.span4
+    %div.row.ml10
+      = render 'users/rmod_info', user: current_user
+
+- else
+  %div#intro-page
+    %br
+    %div.span4.offset8.well
+      %div.tabbable
+        %ul.nav.nav-tabs
+          %li.active
+            =link_to "登录", '#sign_in', "data-toggle"=>"tab"
+          %li
+            =link_to "注册", '#sign_up', "data-toggle"=>"tab"
+        %div.tab-content
+          %div.tab-pane.active#sign_in
+            =render 'devise/sessions/sign_in'
+          %div.tab-pane#sign_up
+            =render 'devise/registrations/sign_up'

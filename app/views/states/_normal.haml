@@ -2,7 +2,7 @@
   = statable.user.name
 .text.box
   = statable.content
-.small-box.oprate-mic
+.small-box.operate-mic
   = state_comments_link(state)
   - if operable(state)
     = link_to '删除', state_path(state), class: 'pl5 gray-link unvisible', method: :delete, remote: true, confirm: '你确定要删除这条广播吗？'

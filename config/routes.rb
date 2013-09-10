@@ -61,7 +61,7 @@ SocialStudy::Application.routes.draw do
       get :experiences
     end
   end
-  resources :knowledges do
+  resources :knowledges, expect: :destroy do
     member do
       get :notes
       get :experiences
@@ -74,7 +74,7 @@ SocialStudy::Application.routes.draw do
     end
   end
 
-  resources :resources do
+  resources :resources, expect: :destroy do
     collection do
       get :top
       get :top_experiences
@@ -82,7 +82,7 @@ SocialStudy::Application.routes.draw do
     end
   end
 
-  root :to => "home#index"
+  root :to => "states#index"
 
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 end

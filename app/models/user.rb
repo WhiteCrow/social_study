@@ -10,6 +10,8 @@ class User
   ROLES = %w(admin user)
 
   has_many :microblogs
+  has_many :knowledges
+  has_many :resources
   has_many :entries
   has_many :relays
   has_many :notes
@@ -27,6 +29,10 @@ class User
   validates_uniqueness_of :email, :case_sensitive => false
   validates_inclusion_of :role, in: ROLES
   validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
+
+  before_create do
+    self.role = 'user'
+  end
 
   def role?(target_role)
     self.role == target_role.to_sym || self.role == target_role.to_s
@@ -123,6 +129,7 @@ class User
 
   ## Database authenticatable
   field :name,               :type => String
+  field :operate_node_count, :type => Integer, default: 0
   field :email,              :type => String, :default => ""
   field :encrypted_password, :type => String, :default => ""
   field :role,               :type => String, :default => "user"

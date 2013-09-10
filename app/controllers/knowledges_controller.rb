@@ -40,7 +40,6 @@ class KnowledgesController < ApplicationController
     @experiences = @knowledge.experiences.top
   end
 
-
   def show
     @knowledge = Knowledge.find(params[:id])
     @notes = @knowledge.notes.top(4)
@@ -49,6 +48,7 @@ class KnowledgesController < ApplicationController
 
   def new
     @knowledge = Knowledge.new
+    flash[:notice] = '你每天仅有20次创建以及更新知识或学习资源的机会，并且在审核通过前仅自己可见'
   end
 
   def edit

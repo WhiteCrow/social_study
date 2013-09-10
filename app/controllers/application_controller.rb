@@ -1,9 +1,14 @@
 class ApplicationController < ActionController::Base
+  load_and_authorize_resource
   #after_filter :store_location
   Time.send :include, TimeExt
 
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to '/', :alert => '你没有权限访问这个页面'
+    if request.env["HTTP_REFERER"]
+      redirect_to :back, :alert => '你没有权限进行这个操作'
+    else
+      redirect_to '/', :alert => '你没有权限进行这个操作'
+    end
   end
 
   def after_sign_up_path_for(user)
