@@ -6,22 +6,57 @@
       %li{"data-target"=>"#introCarousel", "data-slide-to"=> "2"}
     .carousel-inner
       #intro-slide-first.active.item
+        = image_tag 'default-rel.png'
       #intro-slide-second.item
+        = image_tag 'weiteluweiren.png'
       #intro-slide-third.item
+        = image_tag 'kabala_shu.png'
     %a.carousel-control.left{ href: "#introCarousel", 'data-slide'=>"prev" }
       &lsaquo;
     %a.carousel-control.right{ href: "#introCarousel", 'data-slide'=>"next" }
       &rsaquo;
-  %br
-  %div.span4.offset11.well
-    %div.tabbable
-      %ul.nav.nav-tabs
-        %li.active
-          =link_to "登录", '#sign_in', "data-toggle"=>"tab"
-        %li
-          =link_to "注册", '#sign_up', "data-toggle"=>"tab"
-      %div.tab-content
-        %div.tab-pane.active#sign_in
-          =render 'devise/sessions/sign_in'
-        %div.tab-pane#sign_up
-          =render 'devise/registrations/sign_up'
+
+  #content
+    %hr.clear
+    .span7.intro-text
+      %h2 发现知识和学习资源
+      %p
+        %strong 收藏你感兴趣的知识，发现喜欢的学习资源。
+        这里有高质量的学习资源和知识评论，你可以在发现各种公开课，论文，发现TED，Coursera等高价值的资源。
+        同时通过打分和高质量的评论将筛选最适合你的学习资源。
+      %h4
+        "未来已经悄悄来临，只是还未惠及所有人"
+
+    %hr.clear
+    .span7.offset5.intro-text
+      %h2 云中大脑
+      %p
+        %strong 撰写你的笔记，学习心得，甚至创建属于自己的维基百科。
+        最新最快的个人维基系统，帮助你以全新的交互形式归纳整理你的大脑，构建属于你自己的维基百科。
+      %h4
+        "想黑客一样构建你的在线大脑，如此容易。"
+
+    %hr.clear
+    .span7.intro-text
+      %h2 开放式学习
+      %p
+        %strong 和你网上的小伙伴一起成长。
+        恰好你在某一方面有所专长，正是其他人需要的：无论是计算机、数学、金融、财务、绘画……
+        请加入我们，写出你想学的和想教的，共同协作。
+      %h4
+        “自己受益的同时，也让更多人受益。”
+
+    #login-and-signup
+      .span7
+      .span4.well
+        %div.tabbable
+          %ul.nav.nav-tabs
+            %li.active
+              =link_to "注册", '#sign_up', "data-toggle"=>"tab"
+            %li
+              =link_to "登录", '#sign_in', "data-toggle"=>"tab"
+          %div.tab-content
+            .active.tab-pane#sign_up
+              =render 'devise/registrations/sign_up'
+            .tab-pane#sign_in
+              =render 'devise/sessions/sign_in'

@@ -1,8 +1,8 @@
-<%- unless ['sessions','home'].include? controller_name %>
+<%- unless ['sessions','states'].include? controller_name %>
   <%= link_to "登录", new_user_session_path(resource_name) %><br />
 <% end -%>
 
-<%- if devise_mapping.registerable? && !(['account','home'].include? controller_name) %>
+<%- if devise_mapping.registerable? && !(['account','states'].include? controller_name) %>
   <%= link_to "注册", new_user_registration_path %><br />
 <% end -%>
 
