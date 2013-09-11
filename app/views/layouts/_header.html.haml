@@ -1,5 +1,5 @@
 %div#header
-  %div.navbar.navbar-fixed-top.navbar-inverse
+  %div.navbar.navbar-fixed-top
     %div.navbar-inner
       %div#header-content.container
 
@@ -15,18 +15,19 @@
           %li
             %form.navbar-search.pull-right{action: "/search", method: 'get'}
               %div.input-append
-                %input.search-input.span3{:type=>"text", :name=>"q", :placeholder=>"知识、参考、成员、广播"}
+                %input.search-input.span3{:type=>"text", :name=>"q", :placeholder=>"知识、资源、成员..."}
                 %span.add-on
                   %button{:type=>"submit",:value=>'搜索'}
                     %i.icon-search
-          %li.dropdown
           - if current_user
             %li.dropdown#remind-menu
               = link_to short_index_reminds_path, class: 'dropdown-toggle', "data-toggle"=>"dropdown", remote: true do
                 .badge{style: remind_count_bgcolor}
                   = unread_remind_count
               %ul.dropdown-menu
-
+            %li
+              =link_to current_user do
+                = image_tag current_user.image(:small), class: 'img-circle'
             %li.dropdown#user-menu
               =link_to '#user_menu', :class=>'dropdown-toggle', "data-toggle"=>"dropdown" do
                 =current_user.name

@@ -1,9 +1,15 @@
-- @reminds.each do |remind|
-  %li.remind
-    %span
-      = remind.kind
-      = link_to remind.commentable_short_content, remind.commentable
-      有了新回复
-    %hr
-%li#view-all-notice
-  = link_to '查看全部提醒', reminds_path
+- if @reminds.present?
+  - @reminds.each do |remind|
+    %li.remind
+      %span
+        = remind.kind
+        = link_to remind.commentable_short_content, remind.commentable
+        有了新回复
+      %hr
+  %li#view-all-notice
+    = link_to '查看全部提醒', reminds_path
+- else
+  %br
+  %li#view-all-notice
+    没有更多提醒
+  %br

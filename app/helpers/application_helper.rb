@@ -20,7 +20,11 @@ module ApplicationHelper
   end
 
   def operable(item)
-    current_user.present? and (item == current_user or item.user == current_user or item.modifier == current_user)
+    current_user.present? and (
+      item == current_user or
+      (item.respond_to?(:user) and item.user == current_user) or
+      (item.respond_to?(:modifier) and item.modifier== current_user)
+    )
   end
 
   def short_content(item)
@@ -37,7 +41,7 @@ module ApplicationHelper
   end
 
   def remind_count_bgcolor
-    "background-color:#bd362f;" if unread_remind_count > 0
+    unread_remind_count > 0 ? "background-color:#bd362f;" : "background-color:#ccc;"
   end
 
 end
