@@ -1,0 +1,27 @@
+%div#intro-page
+  #introCarousel.carousel.slide
+    %ol.carousel-indicators
+      %li.active{"data-target"=>"#introCarousel", "data-slide-to"=> "0"}
+      %li{"data-target"=>"#introCarousel", "data-slide-to"=> "1"}
+      %li{"data-target"=>"#introCarousel", "data-slide-to"=> "2"}
+    .carousel-inner
+      #intro-slide-first.active.item
+      #intro-slide-second.item
+      #intro-slide-third.item
+    %a.carousel-control.left{ href: "#introCarousel", 'data-slide'=>"prev" }
+      &lsaquo;
+    %a.carousel-control.right{ href: "#introCarousel", 'data-slide'=>"next" }
+      &rsaquo;
+  %br
+  %div.span4.offset11.well
+    %div.tabbable
+      %ul.nav.nav-tabs
+        %li.active
+          =link_to "登录", '#sign_in', "data-toggle"=>"tab"
+        %li
+          =link_to "注册", '#sign_up', "data-toggle"=>"tab"
+      %div.tab-content
+        %div.tab-pane.active#sign_in
+          =render 'devise/sessions/sign_in'
+        %div.tab-pane#sign_up
+          =render 'devise/registrations/sign_up'

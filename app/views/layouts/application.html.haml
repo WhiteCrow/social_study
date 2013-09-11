@@ -9,11 +9,20 @@
   %body
     =render 'layouts/header'
     =render 'common/messages', flash: flash
-    %div#content.row-fluid
+    %div
       - if content_for?(:main)
-        =yield(:main)
+        #content.row-fluid
+          =yield(:main)
+
       - elsif content_for?(:sidebar)
-        =yield(:sidebar)
+        #content.row-fluid
+          =yield(:sidebar)
+
+      - elsif content_for?(:blank)
+        =yield(:blank)
+
       - else
-        =yield
+        #content.row-fluid
+          =yield
+
     =render 'layouts/footer'

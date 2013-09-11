@@ -13,6 +13,10 @@ class StatesController < ApplicationController
         format.html
         format.js { render 'states/paginate' }
       end
+    else
+      respond_to do |format|
+        format.html { render 'common/home', layout: 'blank' }
+      end
     end
   end
 
