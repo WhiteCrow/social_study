@@ -4,6 +4,7 @@ class Ability
   def initialize(user)
     user ||= User.new
     alias_action :new, :edit, :create, :update, :destroy, :to => :operate
+    alias_action :top, :top_experiences, :top_notes, :top_reviews, :to => :look
     if user.role? :admin
       can :access, :rails_admin       # only allow admin users to access Rails Admin
       can :dashboard                  # allow access to dashboard
@@ -16,6 +17,7 @@ class Ability
       end
     else
       can :read, :all
+      can :look, :all
     end
     # Define abilities for the passed in user here. For example:
     #

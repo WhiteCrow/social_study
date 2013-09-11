@@ -137,7 +137,7 @@ class User
   field :operate_node_count, :type => Integer, default: 0
   field :email,              :type => String, :default => ""
   field :encrypted_password, :type => String, :default => ""
-  field :role,               :type => String, :default => "user"
+  field :role,               :type => String
   field :description,        :type => String
 
   ## Recoverable
