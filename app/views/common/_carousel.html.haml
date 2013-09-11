@@ -7,7 +7,7 @@
         %small
           =title
       %ol.carousel-indicators
-        - (items.count/5 + 1).times.each do |index|
+        - ((items.count + 4)/5).times.each do |index|
           %li{'data-target'=>"#Carousel#{title.hash}", 'data-slide-to' => index, class: ('active' if 0==index)}
 
       %a{class: 'carousel-control right left-side', href: "#Carousel#{title.hash}", 'data-slide'=>'prev'}
