@@ -46,6 +46,7 @@ group :development do
   gem "mongoid_colored_logger", "0.2.2"
   gem 'better_errors'
   gem "binding_of_caller"
+  gem 'rails-dev-boost', :git => 'git://github.com/thedarkone/rails-dev-boost.git'
 end
 
 group :development, :test do

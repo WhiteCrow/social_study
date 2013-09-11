@@ -137,10 +137,11 @@ a.gray-link{
   width: 620px;
   h3 {color:black;}
   .profile-left{
+    float: left;
     width: 106px;
-    img{margin-bottom: 8px;}
     margin-right:14px;
     text-align: center;
+    img{margin-bottom: 8px;}
   }
   .update-link{
     color: #bbb;

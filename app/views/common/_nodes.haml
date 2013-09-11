@@ -7,8 +7,9 @@
   #nodes
     - @nodes.each do |n|
       .profile
-        = link_to n do
-          = image_tag n.image, class: 'normal pull-left'
+        .profile-left
+          = link_to n do
+            = image_tag n.image, class: 'normal pull-left'
         .short-info
           = link_to n do
             %h3 #{n.title}

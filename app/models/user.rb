@@ -34,6 +34,11 @@ class User
     self.role = 'user'
   end
 
+  def created_nodes_count_today
+    self.knowledges.where(:created_at.gt => Date.today).count +
+    self.resources.where(:created_at.gt => Date.today).count
+  end
+
   def role?(target_role)
     self.role == target_role.to_sym || self.role == target_role.to_s
   end

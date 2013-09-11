@@ -3,13 +3,17 @@ class Ability
 
   def initialize(user)
     user ||= User.new
-    alias_action :create, :update, :destroy, :to => :operate
+    alias_action :new, :edit, :create, :update, :destroy, :to => :operate
     if user.role? :admin
       can :access, :rails_admin       # only allow admin users to access Rails Admin
       can :dashboard                  # allow access to dashboard
       can :manage, :all
     elsif user.role? :user
       can :manage, :all
+      cannot :operate, [Knowledge, Resource] do
+        #forbid user create nodes if created count greated than 30
+        user.created_nodes_count_today >= 30
+      end
     else
       can :read, :all
     end
