@@ -49,7 +49,7 @@ class KnowledgesController < ApplicationController
 
   def new
     @knowledge = current_user.knowledges.new
-    flash[:notice] = "你每天仅有30次创建知识或学习资源的机会，并且在审核通过前仅自己可见，今天还剩#{30 - current_user.created_nodes_count_today}次"
+    flash.now[:notice] = "你每天仅有30次创建知识或学习资源的机会，并且在审核通过前仅自己可见，今天还剩#{30 - current_user.created_nodes_count_today}次"
   end
 
   def edit
