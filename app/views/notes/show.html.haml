@@ -42,11 +42,7 @@
     %span.useless-count
       =@note.repute_count('useless')
   %br
+  %hr
 
-%hr
-
-%div
-  =render 'comments/index', commentable: @note
-
-%div
-  =render 'comments/new', commentable: @note
+=render 'comments/index', commentable: @note
+=render 'comments/new', commentable: @note
