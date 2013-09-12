@@ -16,42 +16,48 @@
     %a.carousel-control.right{ href: "#introCarousel", 'data-slide'=>"next" }
       &rsaquo;
 
-  #content
-    %hr.clear
-    .span7.intro-text
-      %h2 发现知识和学习资源
-      %p
-        %strong 收藏你感兴趣的知识，发现喜欢的学习资源。
-        这里有高质量的学习资源和知识评论，你可以在发现各种公开课，论文，发现TED，Coursera等高价值的资源。
-        同时通过打分和高质量的评论将筛选最适合你的学习资源。
-      %h4
-        “未来已经悄悄来临，只是还未惠及所有人”
-
-    %hr.clear
-    .span7.offset5.intro-text
-      %h2 云中大脑
-      %p
-        %strong 撰写你的笔记，学习心得，甚至创建属于自己的维基百科。
-        最新最快的个人维基系统，帮助你以全新的交互形式归纳整理你的大脑，构建属于你自己的维基百科。
-      %h4
-        “想黑客一样构建你的在线大脑，如此容易。”
-
-    %hr.clear
-    .span7.intro-text
-      %h2 开放式学习
-      %p
-        %strong 和你网上的小伙伴一起成长。
-        恰好你在某一方面有所专长，正是其他人需要的：无论是计算机、数学、金融、财务、绘画……
-        请加入我们，写出你想学的和想教的，共同协作。
-      %h4
-        “自己受益的同时，也让更多人受益。”
-
-    %hr.clear
+  #content.row-fluid
+    %hr
+    .intro-layer
+      .span7.intro-text
+        %h2 发现知识和学习资源
+        %p
+          %strong 收藏你感兴趣的知识，发现喜欢的学习资源。
+          这里有高质量的学习资源和知识评论，你可以在发现各种公开课，论文，发现TED，Coursera等高价值的资源。
+          同时通过打分和高质量的评论将筛选最适合你的学习资源。
+        %h4
+          “未来已经悄悄来临，只是还未惠及所有人”
+      .span5
+        = image_tag 'intro-img-1.png'
+    %hr
+    .intro-layer
+      .span5
+        = image_tag 'intro-img-2.png'
+      .span7.intro-text
+        %h2 云中大脑
+        %p
+          %strong 撰写你的笔记，学习心得，甚至创建属于自己的维基百科。
+          最新最快的个人维基系统，帮助你以全新的交互形式归纳整理你的大脑，构建属于你自己的维基百科。
+        %h4
+          “想黑客一样构建你的在线大脑，如此容易。”
+    %hr
+    .intro-layer
+      .span7.intro-text
+        %h2 开放式学习
+        %p
+          %strong 和你网上的小伙伴一起成长。
+          恰好你在某一方面有所专长，正是其他人需要的：无论是计算机、数学、金融、财务、绘画……
+          请加入我们，写出你想学的和想教的，共同协作。
+        %h4
+          “自己受益的同时，也让更多人受益。”
+      .span5
+        = image_tag 'intro-img-3.png'
+    %hr
     %br.big
     #login-and-signup
       .span7
-      .span4.well
-        %div.tabbable
+      .span5
+        %div.well
           %ul.nav.nav-tabs
             %li.active
               =link_to "注册", '#sign_up', "data-toggle"=>"tab"

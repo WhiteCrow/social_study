@@ -5,16 +5,17 @@
   %div.well.user-profile{"data-user-id" => @user.id}
     =image_tag @user.image, class: 'user-face'
     %hr.clear
-    #user-describe
-      = render 'description'
-    %hr
     - if current_user.present? and current_user != @user
       - if current_user.can_follow?(@user)
         %span.follow-btn
           = follow_btn
+        %hr
       - elsif current_user.followed?(@user)
         %span.follow-btn
           = unfollow_btn
+        %hr
+    #user-describe
+      = render 'description'
     %p
       %b #{@user.name} 关注 #{link_to @user.following_ids.count, following_user_path(@user)} 人
     %p

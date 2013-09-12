@@ -117,7 +117,9 @@ a.gray-link{
   clear:both;
 }
 
-.well .form-actions{background: whitesmoke;}
+.well{
+  .form-actions{background: whitesmoke;}
+}
 .whole-content{display:note;}
 
 //image version
