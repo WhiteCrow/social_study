@@ -40,9 +40,9 @@ myApp.controller "EntryList", ($scope, $http)->
   $scope.update = (entry) ->
     entry.content = $('#entry_content').siblings('.qeditor_preview').html()
     $http.put("/entries/#{entry._id}", {entry: entry}).success (data)->
-      $scope.entries.pop()
-      $scope.entries.push(data)
-      $scope.currentEntry = _.last($scope.entries)
+      $scope.currentEntry.title = data.title
+      $scope.currentEntry.content = data.content
+      $scope.currentEntry.parsed_content = data.parsed_content
       $scope.currentHtml = $scope.currentEntry.parsed_content
 
   $scope.clear = ->

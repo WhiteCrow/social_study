@@ -32,7 +32,9 @@ class Entry
     self.parsed_content = self.content.
           gsub(/\[\[\]\]/, " ").
           #gsub(/\[\[(?<foo>[^\]\]]+)\]\]/, '<a href=\'/entries/next/\k<foo>\' class="entry-title" ng-click="next()">\k<foo></a>')
-          gsub(/\[\[(?<foo>[^\]\]]+)\]\]/, '<a class="entry-title" ng-click="next(\'\k<foo>\')">\k<foo></a>')
+          gsub(/\[\[(?<foo>[^\]\]]+)\]\]/, '<a class="entry-title" ng-click="next(\'\k<foo>\')">\k<foo></a>').
+          gsub(/\\\[\\\[\\\]\\\]/, '[[]]').
+          gsub(/\\\[\\\[(?<foo>[^\]\]]+)\\\]\\\]/, '[[\k<foo>]]')
   end
 
   def set_default_parsed_content
@@ -47,6 +49,7 @@ class Entry
       content: '<ul class="nav nav-pills nav-stacked">
        <li>[[菜单]]</li>
        <li>[[默认条目]]</li>
+       <li>[[日记]]</li>
       </ul>'
     })
   end
@@ -56,7 +59,22 @@ class Entry
       user_id: user_id,
       type: 'default',
       title: '默认条目',
-      content: '默认条目'
+      content:"<p><b>使用说明：</b></p>
+              <p>欢迎迎实用你的个人维基系统，
+              你可以点击右上角的&nbsp;<i class='icon-edit'></i>编辑你的当前条目，
+              右上角的&nbsp;<i class='icon-trash'></i>用于删除当前条目。</p>
+              <br>
+              <p>编辑时键入<b>“\\[\\[条目名\\]\\]”</b>
+              来创建新条目或链接到已有条目。<b>“\\[\\[\\]\\]”</b>是一种特殊语法，
+              它用于创建和链接条目。同时，[[菜单]]和[[日记]]也是一种条目，
+              可以随时进行个性化编辑。</p>
+              <p></p><p>更新[[菜单]]后刷新页面，
+              可以看见你更新后的菜单内容。</p><p><br></p><p>点击左侧的
+              “所有条目”，可以查看全部非空条目。
+              <br></p><p></p><p><br></p><p>编辑时点击编辑器的右侧的
+              <span class='icon-fullscreen'></i>，可以进入全屏编辑模式。
+              <br>菜单和默认条目被删除后会自动还原到初始版本。
+              "
     })
   end
 
