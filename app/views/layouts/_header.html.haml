@@ -25,9 +25,9 @@
                 .badge{style: remind_count_bgcolor}
                   = unread_remind_count
               %ul.dropdown-menu
-            %li
-              =link_to current_user do
-                = image_tag current_user.image(:small), class: 'img-circle'
+            /%li
+            /  =link_to current_user do
+            /    = image_tag current_user.image(:small), class: 'img-circle'
             %li.dropdown#user-menu
               =link_to '#user_menu', :class=>'dropdown-toggle', "data-toggle"=>"dropdown" do
                 =current_user.name

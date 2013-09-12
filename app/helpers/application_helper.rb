@@ -41,7 +41,7 @@ module ApplicationHelper
   end
 
   def remind_count_bgcolor
-    unread_remind_count > 0 ? "background-color:#bd362f;" : "background-color:#ccc;"
+    unread_remind_count > 0 ? "background-color:#bd362f;" : "background-color:#999;"
   end
 
 end
