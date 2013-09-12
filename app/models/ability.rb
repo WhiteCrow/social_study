@@ -15,9 +15,15 @@ class Ability
         #forbid user create nodes if created count greated than 30
         user.created_nodes_count_today >= 30
       end
+      cannot :show, [Knowledge, Resource] do |node|
+        node.publish != true and node.user != user
+      end
     else
       can :read, :all
       can :look, :all
+      cannot :show, [Knowledge, Resource] do |node|
+        node.publish != true
+      end
     end
     # Define abilities for the passed in user here. For example:
     #

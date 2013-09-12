@@ -10,8 +10,8 @@ class Knowledge
   validates_presence_of :title, :description, :user_id
   validates_uniqueness_of :title
 
-  scope :hottest, ->(num=16){desc('created_at').limit(num)}
-  scope :newest, ->(num=16){desc('created_at').limit(num)}
+  scope :hottest, ->(num=16){desc('created_at').where(publish: true).limit(num)}
+  scope :newest, ->(num=16){desc('created_at').where(publish: true).limit(num)}
 
   field :title, type: String
   field :second_title, type: String
