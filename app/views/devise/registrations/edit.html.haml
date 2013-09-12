@@ -1,4 +1,4 @@
-%h3 账户设置
+%h3 更新你的账户
 %hr
 = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
   .field
@@ -6,6 +6,8 @@
     = f.text_field :name
 
   .field
+    %p
+      %b 如果你需要修改密码:
     = f.label :password, '更换密码'
     = f.password_field :password
 

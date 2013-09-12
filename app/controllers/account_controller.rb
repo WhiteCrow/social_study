@@ -23,10 +23,11 @@ class AccountController < Devise::RegistrationsController
       end
       sign_in resource_name, resource, :bypass => true
       flash[:notice] = "账户更新成功"
-      respond_with resource, :location => after_update_path_for(resource)
+      #respond_with resource, :location => after_update_path_for(resource)
+      redirect_to '/'
     else
       clean_up_passwords resource
-      flash[:error] = "请输入正确的密码" if params[:password].present?
+      flash.now[:error] = "请输入正确的密码"
       respond_with resource
     end
   end
@@ -39,7 +40,8 @@ class AccountController < Devise::RegistrationsController
       if resource.active_for_authentication?
         set_flash_message :notice, :signed_up if is_navigational_format?
         sign_in(resource_name, resource)
-        respond_with resource, :location => after_sign_up_path_for(resource)
+        #respond_with resource, :location => after_sign_up_path_for(resource)
+        redirect_to edit_user_registration_path
       else
         set_flash_message :notice, :"signed_up_but_#{resource.inactive_message}" if is_navigational_format?
         expire_session_data_after_sign_in!

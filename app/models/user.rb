@@ -30,8 +30,9 @@ class User
   validates_inclusion_of :role, in: ROLES
   validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
 
-  before_create do
+  before_validation(on: :create) do
     self.role = 'user'
+    self.name = self.email.split('@').first
   end
 
   def created_nodes_count_today

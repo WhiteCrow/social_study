@@ -1,14 +1,10 @@
 = form_for(resource, as: resource_name, method: :post, url: registration_path(resource_name)) do |f|
   %div
-    = f.label '昵称', for: :user_name
-    = f.text_field :name
-  %div
     = f.label '邮箱', for: :user_email
     = f.email_field :email
   %div
     = f.label '密码', for: :user_password
     = f.password_field :password
-
   %div
     = f.label '确认密码', for: :password_confirmation
     = f.password_field :password_confirmation
