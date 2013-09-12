@@ -2,6 +2,10 @@
   %div{"ng-controller"=>"EntryList"}
     .span2
       =render 'entries/menu'
+      %ul.nav.nav-pills.nav-stacked
+        %li
+          %a{"ng-click"=>"history()"}
+            所有条目
     .span10.box.left-line
       =render 'entries/tabs'
       =render 'entries/contents'

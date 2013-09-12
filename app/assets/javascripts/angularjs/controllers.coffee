@@ -22,6 +22,10 @@ myApp.controller "EntryList", ($scope, $http)->
         $scope.currentEntry = _.last($scope.entries)
       $scope.currentHtml = $scope.currentEntry.parsed_content
 
+  $scope.history = ->
+    $http.get("/entries/history?user_id=#{$scope.userId}").success (data)->
+      $scope.currentHtml = data
+
   $scope.edit = (entry)->
     id = entry._id
     $http.get("/entries/#{id}/edit?title=#{entry.title}").success (data)->

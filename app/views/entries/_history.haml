@@ -1,0 +1,5 @@
+%ul.nav.nav-pills
+  - @entries_titles.each do |title|
+    %li
+      %a.entry-title{"ng-click"=>"next('#{title}')"}
+        = title

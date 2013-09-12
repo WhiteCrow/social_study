@@ -11,6 +11,12 @@ class EntriesController < ApplicationController
     end
   end
 
+  def history
+    user = User.find(params[:user_id])
+    @entries_titles = user.entries.desc('created_at').pluck(:title)
+    render partial: 'entries/history'
+  end
+
   def next
     title = params[:title]
     @user = User.find(params[:user_id])
