@@ -1,5 +1,5 @@
 class StatesController < ApplicationController
-  load_and_authorize_resource
+  before_filter :require_user, except: [:show, :index]
   layout 'main', except: [:index]
 
   def index

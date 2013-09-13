@@ -16,6 +16,7 @@
         %hr
     #user-describe
       = render 'description'
+    %hr
     %p
       %b #{@user.name} 关注 #{link_to @user.following_ids.count, following_user_path(@user)} 人
     %p
