@@ -4,10 +4,11 @@ module Remind
     RemindScope = ["comment"]
     belongs_to :receiver, class_name: 'User'
     before_create :set_receiver
-    scope :remind, where(action: 'create').
-                   in(scope: RemindScope).
-                   ne(receiver_id: nil).
-                   desc('created_at')
+    #scope :remind, where(action: 'create').
+    #               in(scope: RemindScope).
+    #               ne(receiver_id: nil).
+    #               desc('created_at')
+
     validates_presence_of :unread
     #TODO will add the validation
     #validates_presence_of :receiver_id,

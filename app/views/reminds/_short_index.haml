@@ -1,7 +1,7 @@
 - if @reminds.present?
-  - @reminds.each do |remind|
+  - @reminds.each_with_index do |remind, index|
     %li.remind
-      %span
+      %span{style: "#{'color: rgb(218, 79, 73);' if @read_count >= (index + 1)}"}
         = remind.kind
         = link_to remind.commentable_short_content, remind.commentable
         有了新回复

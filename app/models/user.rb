@@ -104,14 +104,24 @@ class User
     relay.destroy
   end
 
+  def all_reminds
+    reminds = self.reminds.desc('created_at').to_a
+    reminds.present? ? reminds.uniq{|e| e.modified["auditable_id"]} : []
+  end
+
   def unread_reminds
-    self.reminds.where(unread: true)
+    unread_reminds = self.reminds.desc('created_at').where(unread: true).to_a
+    if unread_reminds.present?
+      unread_reminds.uniq{|e| e.modified["auditable_id"]}
+    else
+      []
+    end
   end
 
   def read_all_reminds
-    self.unread_reminds.each do |remind|
+    self.unread_reminds.map do |remind|
       remind.update_attributes(unread: false)
-    end
+    end.count
   end
 
   def study_state(knowledge)
