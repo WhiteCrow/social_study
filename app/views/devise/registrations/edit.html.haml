@@ -7,19 +7,13 @@
 
   .field
     %p
-      %b 如果你需要修改密码:
+      %b 如果你需要更改当前密码:
     = f.label :password, '更换密码'
     = f.password_field :password
 
   .field
     = f.label :password_confirmation, '密码确认'
     = f.password_field :password_confirmation
-
-  .field
-    %p
-      %b 请输入当前的密码以确认修改:
-    = f.label :current_password, '当前密码'
-    = f.password_field :current_password
 
   .form-actions
     = f.submit "提交", class: "btn btn-primary"

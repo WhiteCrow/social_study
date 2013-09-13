@@ -14,7 +14,7 @@ class AccountController < Devise::RegistrationsController
     resource.email = resource_params[:email] if self.resource.email.blank?
 
     # code from Devise
-    if resource.update_with_password(resource_params)
+    if resource.update_without_password(resource_params)
       if is_navigational_format?
         if resource.respond_to?(:pending_reconfirmation?) && resource.pending_reconfirmation?
           flash_key = :update_needs_confirmation
