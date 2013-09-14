@@ -46,9 +46,6 @@ task :setup => :environment do
   queue! %[mkdir -p "#{deploy_to}/shared/tmp/pids"]
   queue! %[mkdir -p "#{deploy_to}/shared/tmp/sockets"]
 
-  # RefineryCMS saves images in this directory
-  queue! %[mkdir -p "#{deploy_to}/shared/public/system"]
-
   queue! %[mkdir -p "#{deploy_to}/shared/log"]
   queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/log"]
 

@@ -42,14 +42,13 @@ gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
 #backend
 gem 'rails_admin'
 
-# Use unicorn as the app server
-gem 'unicorn'
-
 group :development do
   gem "mongoid_colored_logger", "0.2.2"
   gem 'better_errors'
   gem "binding_of_caller"
   gem 'rails-dev-boost', :git => 'git://github.com/thedarkone/rails-dev-boost.git'
+  # Use unicorn as the app server
+  gem 'unicorn'
 end
 
 group :development, :test do
