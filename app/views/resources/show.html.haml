@@ -1,12 +1,17 @@
 %div.profile
   .profile-left
     = image_tag @resource.image, class: 'normal pull-left'
+    - if @resource.url.present?
+      = link_to '参考地址', @resource.url, class: 'update-link', target: '_blank'
+      %br.big
     = link_to '更新该资源', edit_resource_path(@resource), class: 'update-link'
+
   %div.info
     %h3
       = @resource.title
     %div
       = raw @resource.description
+
 %br.clear
 -if current_user
   %div.operations
