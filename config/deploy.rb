@@ -17,7 +17,7 @@ set :repository, 'https://github.com/WhiteCrow/social_study.git'
 set :branch, 'master'
 set :app_path, "#{deploy_to}/#{current_path}"
 set :rvm_path, '/usr/local/rvm/bin/rvm'
-set :bundle_dir, "/usr/local/rvm/rubies/ruby-2.0.0-p247/bin/ruby"
+set :bundle_dir, "/usr/local/rvm/gems/ruby-2.0.0-p247/bin/bundle"
 # Manually create these paths in shared/ (eg: shared/config/database.yml) in your server.
 # They will be linked in the 'deploy:link_shared_paths' step.
 set :shared_paths, ['config/mongoid.yml', 'log', 'tmp']
@@ -35,7 +35,7 @@ task :environment do
   # invoke :'rbenv:load'
 
   # For those using RVM, use this to load an RVM version@gemset.
-  invoke :'rvm:use[2.0.0]'
+#  invoke :'rvm:use[2.0.0]'
 end
 
 # Put any custom mkdir's in here for when `mina setup` is ran.
@@ -54,8 +54,8 @@ task :setup => :environment do
   queue! %[mkdir -p "#{deploy_to}/shared/config"]
   queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/config"]
 
-  queue! %[touch "#{deploy_to}/shared/config/database.yml"]
-  queue  %[echo "-----> Be sure to edit 'shared/config/database.yml'."]
+  queue! %[touch "#{deploy_to}/shared/config/mongoid.yml"]
+  queue  %[echo "-----> Be sure to edit 'shared/config/mongoid.yml'."]
 end
 
 desc "Deploys the current version to the server."
