@@ -25,4 +25,4 @@ production:
     default:
       hosts:
         - 127.0.0.1:27017
-      database: social_study_production
+      database: social_study
