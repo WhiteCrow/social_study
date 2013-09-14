@@ -62,15 +62,13 @@ class ResourcesController < ApplicationController
   # POST /resources
   # POST /resources.json
   def create
-    @resource = Resource.new(params[:resource])
+    @resource = current_user.resources.new(params[:resource])
 
     respond_to do |format|
       if @resource.save
         format.html { redirect_to @resource, notice: 'Resource was successfully created.' }
-        format.json { render json: @resource, status: :created, location: @resource }
       else
         format.html { render action: "new" }
-        format.json { render json: @resource.errors, status: :unprocessable_entity }
       end
     end
   end
