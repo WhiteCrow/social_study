@@ -42,6 +42,9 @@ gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
 #backend
 gem 'rails_admin'
 
+# Use unicorn as the app server
+gem 'unicorn'
+
 group :development do
   gem "mongoid_colored_logger", "0.2.2"
   gem 'better_errors'
