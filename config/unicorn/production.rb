@@ -1,4 +1,4 @@
-rails_root = "/apps/website_wuhan/current"
+rails_root = "/apps/social_study/current"
 rails_env = ENV["RAILS_ENV"] || "production"
 
 worker_processes 4

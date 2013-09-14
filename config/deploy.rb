@@ -21,7 +21,7 @@ set :bundle_bin, "/usr/local/rvm/gems/ruby-2.0.0-p247/bin/bundle"
 set :term_mode, :system
 # Manually create these paths in shared/ (eg: shared/config/database.yml) in your server.
 # They will be linked kn the 'deploy:link_shared_paths' step.
-set :shared_paths, ['config/mongoid.yml', 'log', 'tmp']
+set :shared_paths, ['config/*.yml', 'log', 'tmp']
 
 # Optional settings:
 #   set :user, 'foobar'    # Username in the server to SSH to.
