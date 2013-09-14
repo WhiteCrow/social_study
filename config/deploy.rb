@@ -17,7 +17,7 @@ set :repository, 'https://github.com/WhiteCrow/social_study.git'
 set :branch, 'master'
 set :app_path, "#{deploy_to}/#{current_path}"
 set :rvm_path, '/usr/local/rvm/bin/rvm'
-set :bundle_dir, "/usr/local/rvm/gems/ruby-2.0.0-p247/bin/bundle"
+set :bundle_dir, "/usr/local/rvm/gems/ruby-2.0.0-p247/bin/"
 # Manually create these paths in shared/ (eg: shared/config/database.yml) in your server.
 # They will be linked in the 'deploy:link_shared_paths' step.
 set :shared_paths, ['config/mongoid.yml', 'log', 'tmp']
