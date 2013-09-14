@@ -13,7 +13,8 @@
       - elsif current_user.followed?(@user)
         %span.follow-btn
           = unfollow_btn
-        %hr
+    %h4
+      = @user.name
     #user-describe
       = render 'description'
     %hr
