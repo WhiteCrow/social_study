@@ -12,8 +12,8 @@ timeout 30
 
 pid "#{rails_root}/tmp/pids/unicorn.pid"
 
-# stderr_path "#{rails_root}/log/unicorn.stderr.log"
-# stdout_path "#{rails_root}/log/unicorn.stdout.log"
+stderr_path "#{rails_root}/log/unicorn.stderr.log"
+stdout_path "#{rails_root}/log/unicorn.stdout.log"
 
 preload_app true
 
