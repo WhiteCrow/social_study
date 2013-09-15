@@ -22,3 +22,5 @@
       %b #{@user.name} 关注 #{link_to @user.following_ids.count, following_user_path(@user)} 人
     %p
       %b #{@user.name} 被 #{link_to @user.follower_ids.count, followers_user_path(@user)} 人关注
+    %p
+      %b 广播 #{link_to @user.microblogs.count, states_user_path(@user)} 条
